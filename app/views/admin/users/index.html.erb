@@ -1,0 +1,11 @@
+<div class="d-flex">
+  <%= render "admin/shared/sidebar", categories: @categories %>
+  <div class="sidebar-aware-container">
+    <div class="container pt-4">
+      <p>Name | Email | Documents | State | Date of Application </p>
+      <% @users.each do |user| %>
+        <p><%= user.name %> | <%= user.email %> | No documents | <%= user.approved %> | <%= user.created_at.strftime('%b %d, %Y') %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
