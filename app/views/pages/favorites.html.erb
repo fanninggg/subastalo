@@ -1,0 +1,8 @@
+<div class="container">
+  <h3 class="my-4">Me Favoritos</h3>
+  <div class="product-grid">
+    <% @favorites.each do |product| %>
+      <%= render "shared/product_card", product: product %>
+    <% end %>
+  </div>
+</div>

@@ -12,4 +12,8 @@ class PagesController < ApplicationController
 
   def contact
   end
+
+  def favorites
+    @favorites = current_user.all_favorites.map { |favorite| Product.find(favorite.favoritable_id)}
+  end
 end
