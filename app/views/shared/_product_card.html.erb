@@ -1,0 +1,30 @@
+<div class="product-card">
+  <!-- This will be replaced by the category image once cloudinary is set up -->
+  <div class="product-img" style="background-image: url('https://images.pexels.com/photos/3422964/pexels-photo-3422964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+    <div class="product-img-overlay">
+      <div class="product-badge">TODO</div>
+      <div class="favourite">♥</div>
+    </div>
+  </div>
+  <h5 class="product-name"><%= product.name %></h5>
+  <div class="product-info">
+    <div class="product-info-panel">
+      <p class="blue m-0">Ultima Oferta:</p>
+      <p class="m-0 green"><%= product.bids.length > 0 ? "$#{product.bids.last}" : "No bids" %></p>
+      <p class="blue m-0 mt-2">Tiempo Restante:</p>
+      <p class="m-0 orange"><%= product.start_time.strftime('%l:%M %p, %e %b %Y') %></p>
+      <p class="blue m-0 mt-2">Kilometraje:</p>
+      <p class="m-0 grey">TODO</p>
+    </div>
+    <div class="product-info-divider"></div>
+    <div class="product-info-panel">
+      <p class="blue m-0">Precio de Inicio:</p>
+      <p class="m-0 green">$<%= product.opening_price %></p>
+      <p class="blue m-0 mt-2">Fecha de Terminación:</p>
+      <p class="m-0 orange"><%= product.end_time.strftime('%l:%M %p, %e %b %Y') %></p>
+      <p class="blue m-0 mt-2">Tiempo Activo:</p>
+      <p class="m-0 grey">TODO</p>
+    </div>
+  </div>
+  <%= link_to "Ver Productito", product_path(product), class: "product-card-link" %>
+</div>

@@ -2,17 +2,62 @@ body {
   background-color: #fff;
 }
 
+h1 {
+  font-size: 60px;
+  font-family: "tablet-gothic", sans-serif;
+  font-weight: 400;
+}
+
 h3 {
   color: $blue;
   font-size: 32px;
-  font-weight: bold;
+  font-family: "tablet-gothic", sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: "neue-haas-unica", sans-serif;
+  font-size: 14px;
 }
 
 .orange {
   color: $orange;
 }
 
+.blue {
+  color: $blue;
+}
+
+.white {
+  color: #fff;
+}
+
+.btn {
+  line-height: 1.2 !important;
+  // border-radius: 4px !important;
+}
+
 .btn-primary {
   color: #fff !important;
+  padding: 6px 20px;
+}
+
+.btn-secondary {
+  background-color: #CAD0D9 !important;
+  border-color: #CAD0D9 !important;
+  color: #626A79 !important;
+  padding: 6px 20px;
+}
+
+.margin-80-top {
+  margin-top: 80px;
+}
+
+.margin-80-bottom {
+  margin-bottom: 80px;
+}
+
+.center-padding {
+  padding: 0 25%;
 }
 

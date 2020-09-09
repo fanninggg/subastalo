@@ -1,2 +1,48 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-banner">
+  <div class="banner-content">
+    <h1>Llego a Panama Subastalo</h1>
+    <p class="mt-4">Donde podrás encontrar vehículos, propiedades</p>
+    <p>motocicletas, arte y mucho artículos mas.</p>
+    <div class="d-flex mt-4">
+      <%= link_to "Subastas", categories_path, class: "btn btn-primary" %>
+      <%= link_to "Nostros", about_path, class: "btn btn-secondary ml-3" %>
+    </div>
+  </div>
+</div>
+<div class="container margin-80-top">
+  <h3>Subastas</h3>
+  <p class="w-50">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
+  <div class="category-grid">
+    <% @categories.each do |category| %>
+    <!-- This will be replaced by the category image once cloudinary is set up -->
+      <%= link_to category_path(category), class: "category-card", style: "background-image: url('https://images.pexels.com/photos/225841/pexels-photo-225841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')" do %>
+        <div class="category-card-overlay"></div>
+        <p class="category-card-text"><%= category.name %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <h3 class="text-center margin-80-top">Las Mejores Ofertas</h3>
+  <p class="text-center blue center-padding">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
+  <div class="product-grid mt-5">
+    <% @featured.each do |product| %>
+      <%= render "shared/product_card", product: product %>
+    <% end %>
+  </div>
+  <div class="d-flex margin-80-top margin-80-bottom">
+    <div class="pr-5">
+      <h3>Nuestra Empresa</h3>
+      <p>Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
+      <p>Aqui podremos hablar de algunos de los fundadores y de los valores de la empresa.</p>
+      <p>Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
+      <p>Aqui podremos hablar de algunos de los fundadores y de los valores de la empresa.</p>
+      <p>Siempre ponemos Textos ejemplares para seguir mostrando.</p>
+      <%= link_to "Empresa", about_path, class: "btn btn-primary" %>
+    </div>
+    <%= image_tag "people.png", alt: "People on a crosswalk", class: 'home-image' %>
+  </div>
+</div>
+<div class="contact-banner">
+  <h3 class="white">Quieres saber mas de nosotros?</h3>
+  <%= link_to "Contactanos", contact_path, class: "btn btn-primary"  %>
+</div>
+
