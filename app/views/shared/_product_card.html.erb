@@ -3,7 +3,15 @@
   <div class="product-img" style="background-image: url('https://images.pexels.com/photos/3422964/pexels-photo-3422964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
     <div class="product-img-overlay">
       <div class="product-badge">TODO</div>
-      <div class="favourite">♥</div>
+      <% if current_user.favorited?(product) %>
+        <%= link_to unfavorite_product_path(product), method: :post do %>
+          <i class="fas fa-heart size-20"></i>
+        <% end %>
+      <% else %>
+        <%= link_to favorite_product_path(product), method: :post do %>
+          <i class="far fa-heart size-20"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <h5 class="product-name"><%= product.name %></h5>
@@ -26,5 +34,5 @@
       <p class="m-0 grey">TODO</p>
     </div>
   </div>
-  <%= link_to "Ver Productito", product_path(product), class: "product-card-link" %>
+  <%= link_to "Ver Producto", product_path(product), class: "product-card-link" %>
 </div>

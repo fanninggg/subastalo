@@ -4,7 +4,13 @@ Rails.application.routes.draw do
 
   get "/about", to: "pages#about"
   get "/contact", to: "pages#contact"
-  resources :products, only: [:show]
+  get "/favorites", to: "pages#favorites"
+  resources :products, only: [:show] do
+    member do
+      post "/favorite", to: "products#favorite"
+      post "/unfavorite", to: "products#unfavorite"
+    end
+  end
   resources :categories, only: [:show, :index]
 
   # Admin Routes
