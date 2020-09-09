@@ -1,6 +1,15 @@
-.navbar-lewagon {
+.navbar-subastalo {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  height: 68px;
+  padding: 0 40px;
   background: white;
+  border-bottom: 1px solid #C7C7C7;
+}
+
+.nav-link {
+  color: $gray;
 }
 
 .navbar-lewagon .navbar-collapse {

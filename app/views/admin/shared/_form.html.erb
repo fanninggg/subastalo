@@ -1,0 +1,14 @@
+<%= simple_form_for([:admin, product]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :opening_price %>
+  <%= f.input :maximum_price %>
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time, :ampm => true, :minute_step => 15 %>
+  <br>
+  <%= f.label :end_time %>
+  <%= f.datetime_select :end_time, :ampm => true, :minute_step => 15 %>
+  <%= f.association :category %>
+  <%= f.submit %>
+<% end %>
+

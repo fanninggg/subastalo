@@ -1,0 +1,4 @@
+<p><%= @product.name %></p>
+<% if current_user.admin? %>
+  <%= link_to "Edit this product", edit_admin_product_path(@product) %>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="admin-sidebar">
+  <%= link_to "Subastas", admin_categories_path, class: "#{params[:controller] == 'admin/categories' && params[:action] == 'index' ? 'active sidebar-link sidebar-subheader' : 'sidebar-link sidebar-subheader' }"  %>
+  <div class="sidebar-links-holder">
+    <% categories.each do |category| %>
+      <%= link_to category.name, admin_category_path(category), class: "#{params[:controller] == 'admin/categories' && params[:id] == category.id.to_s ? 'active sidebar-link' : 'sidebar-link' }" %>
+    <% end %>
+  </div>
+  <p class="sidebar-subheader">Usuarios</p>
+  <div class="sidebar-links-holder">
+    <%= link_to "Indice", admin_users_path, class: "#{params[:controller] == 'admin/users' && params[:action] == 'index' ? 'active sidebar-link' : 'sidebar-link' }" %>
+  </div>
+</div>
