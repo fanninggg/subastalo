@@ -2,10 +2,28 @@
   <%= render "admin/shared/sidebar", categories: @categories %>
   <div class="sidebar-aware-container">
     <div class="container pt-4">
-      <p>Name | Email | Documents | State | Date of Application </p>
-      <% @users.each do |user| %>
-        <p><%= user.name %> | <%= user.email %> | No documents | <%= user.approved %> | <%= user.created_at.strftime('%b %d, %Y') %></p>
-      <% end %>
+      <h3 class="my-3">Confirmar Usuarios</h3>
+      <div class="users-table">
+        <div class="users-header">
+          <p class="m-0">Nombre Completo</p>
+          <p class="m-0">Correo Electronico</p>
+          <p class="m-0">Documentos</p>
+          <p class="m-0">Estado</p>
+          <p class="m-0">Dia de Aplicacion</p>
+        </div>
+        <% @users.each do |user| %>
+          <div class="users-row">
+            <p class="m-0"><%= user.name %></p>
+            <p class="m-0"><%= user.email %></p>
+            <p class="m-0"><%= user.documents.length > 0 ? "TODO" : "No documents" %></p>
+            <%= simple_form_for([:admin, user]) do |f| %>
+              <%= f.check_box :approved %>
+              <%= f.submit %>
+            <% end %>
+            <p class="m-0"><%= user.created_at.strftime('%b %d, %Y') %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

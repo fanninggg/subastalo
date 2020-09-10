@@ -1,4 +1,47 @@
-<p><%= @product.name %></p>
-<% if current_user.admin? %>
-  <%= link_to "Edit this product", edit_admin_product_path(@product) %>
-<% end %>
+<div class="container d-flex pt-4">
+  <div class="w-50 px-3">
+    <%= image_tag "people.png", alt: "alttext", class: "product-show-img" %>
+  </div>
+  <div class="w-50 px-3">
+    <h3><%= @product.name %></h3>
+    <% if current_user %>
+      <% if current_user.admin? %>
+        <%= link_to "Edit this product", edit_admin_product_path(@product) %>
+      <% end %>
+    <% end %>
+    <p class="blue m-0">Descripción:</p>
+    <p><%= @product.description %></p>
+    <p class="blue">Historial de Ofertas:</p>
+    <div class="bids">
+      <% @product.bids.each do |bid| %>
+        <p><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | $<%= bid.price %></p>
+      <% end %>
+    </div>
+    <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
+      Ofertar
+    </button>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <% if current_user %>
+          <h3 class="text-center">Escoge el monto de oferta</h3>
+          <p class="blue text-center">Monto de Oferta en USD Dolaress</p>
+          <%= simple_form_for(@bid) do |f| %>
+            <%= f.input :price %>
+            <%= hidden_field_tag 'product', @product.id %>
+            <%= f.submit class: "btn btn-primary w-100" %>
+          <% end %>
+        <% else %>
+          <h3 class="text-center">Only approved users can bid</h3>
+          <%= link_to "Login", new_user_session_path, class: "btn btn-primary w-100" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

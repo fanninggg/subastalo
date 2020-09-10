@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product
   def show
+    @bid = Bid.new
   end
 
   def favorite
