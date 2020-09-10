@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_action :set_categories
+  before_action :authenticate_user!
 
   def index
   end

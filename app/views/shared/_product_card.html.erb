@@ -3,7 +3,11 @@
   <div class="product-img" style="background-image: url('https://images.pexels.com/photos/3422964/pexels-photo-3422964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
     <div class="product-img-overlay">
       <div class="product-badge">TODO</div>
-      <% if current_user.favorited?(product) %>
+      <% if current_user.nil? %>
+        <%= link_to new_user_session_path do %>
+          <i class="far fa-heart size-20"></i>
+        <% end %>
+      <% elsif current_user.favorited?(product) %>
         <%= link_to unfavorite_product_path(product), method: :post do %>
           <i class="fas fa-heart size-20"></i>
         <% end %>

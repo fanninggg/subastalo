@@ -12,11 +12,12 @@ Rails.application.routes.draw do
     end
   end
   resources :categories, only: [:show, :index]
+  resources :bids, only: [:new, :create]
 
   # Admin Routes
   namespace :admin do
     resources :products, only: [:new, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :update, :destroy]
     resources :categories, only: [:index, :show, :edit, :update, :destroy]
   end
 end
