@@ -20,6 +20,7 @@
               <%= f.check_box :approved %>
               <%= f.submit %>
             <% end %>
+            <%= button_to 'Strike user', new_admin_user_strike_path(user), method: :get %>
             <p class="m-0"><%= user.created_at.strftime('%b %d, %Y') %></p>
           </div>
         <% end %>
