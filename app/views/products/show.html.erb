@@ -1,4 +1,4 @@
-<div class="container d-flex pt-4">
+<div class="container d-flex pt-4" data-controller="products">
   <div class="w-50 pr-3">
     <%= image_tag "people.png", alt: "alttext", class: "product-show-img" %>
   </div>
@@ -24,7 +24,7 @@
       <div class="product-stats">
         <div class="product-stat time-left">
           <span>Tiempo Restante</span>
-          <p><%= "#{@dd}:#{@hh.to_s.rjust(2, "0")}:#{@mm.to_s.rjust(2, "0")}:#{@ss.to_i}" %></p>
+          <p id="timer" data-time="<%= @product.end_time.to_s %>" data-target="products.timer"><%= "#{@dd}:#{@hh.to_s.rjust(2, "0")}:#{@mm.to_s.rjust(2, "0")}:#{@ss.to_i}" %></p>
         </div>
         <div class="product-stat winning-offer">
           <span>Ultima Oferta</span>
