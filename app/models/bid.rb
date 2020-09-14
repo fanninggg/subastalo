@@ -2,7 +2,17 @@ class Bid < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
-  validates :price, numericality: true
-  # Am I retarded, how the fuck do you access an instance in a validation :cryingseb:
-  # validates :price, :numericality => { :greater_than => self.opening_price }
+  monetize :price_cents
+  validates :price_cents, numericality: true
+  validate :price_in_range
+
+  def price_in_range
+    if price_cents < product&.opening_price_cents
+      errors.add(:price, 'must be greater than or equal to opening price')
+    elsif price_cents > product&.maximum_price_cents
+      errors.add(:price, 'must be less than or equal to maximum price')
+    elsif price_cents <= (product&.bids&.maximum(:price_cents) || 0)
+      errors.add(:price, 'must be greater than previous bid')
+    end
+  end
 end

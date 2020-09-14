@@ -4,4 +4,7 @@ class Product < ApplicationRecord
   has_many :likes
   has_many :bids
   has_many :features
+
+  monetize :opening_price_cents
+  monetize :maximum_price_cents
 end
