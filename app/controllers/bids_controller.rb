@@ -7,7 +7,7 @@ class BidsController < ApplicationController
     if @bid.save
       redirect_to product_path(@product)
     else
-      render "products/show"
+      redirect_to product_path(@product), notice: @bid.errors.full_messages.join(',')
     end
   end
 
