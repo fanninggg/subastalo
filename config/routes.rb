@@ -15,15 +15,17 @@ Rails.application.routes.draw do
   resources :bids, only: [:new, :create]
 
   # Admin Routes
-  namespace :admin do
-    resources :products, only: [:new, :create, :edit, :update, :destroy] do
-      member do
-        patch '/hide', to: 'products#hide'
+  authenticate :user, ->(user) { user.admin? } do
+    namespace :admin do
+      resources :products, only: [:new, :create, :edit, :update, :destroy] do
+        member do
+          patch '/hide', to: 'products#hide'
+        end
       end
+      resources :users, only: [:index, :show, :update, :destroy] do
+        resources :strikes, only: [:new, :create]
+      end
+      resources :categories, only: [:index, :show, :edit, :update, :destroy]
     end
-    resources :users, only: [:index, :show, :update, :destroy] do
-      resources :strikes, only: [:new, :create]
-    end
-    resources :categories, only: [:index, :show, :edit, :update, :destroy]
   end
 end
