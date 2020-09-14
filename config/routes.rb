@@ -16,7 +16,11 @@ Rails.application.routes.draw do
 
   # Admin Routes
   namespace :admin do
-    resources :products, only: [:new, :create, :edit, :update, :destroy]
+    resources :products, only: [:new, :create, :edit, :update, :destroy] do
+      member do
+        patch '/hide', to: 'products#hide'
+      end
+    end
     resources :users, only: [:index, :show, :update, :destroy] do
       resources :strikes, only: [:new, :create]
     end

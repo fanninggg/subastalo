@@ -10,7 +10,7 @@
 
         <% @category.products.each do |product| %>
           <div class="product-card">
-
+            <%= link_to product.hidden? ? 'Unhide' : 'Hide', hide_admin_product_path(product), method: :patch %>
           </div>
         <% end %>
       </div>
