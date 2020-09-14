@@ -14,7 +14,7 @@
     <p class="blue">Historial de Ofertas:</p>
     <div class="bids">
       <% @product.bids.each do |bid| %>
-        <p><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | $<%= bid.price %></p>
+        <p><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | <%= humanized_money_with_symbol bid.price %></p>
       <% end %>
     </div>
     <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
@@ -31,7 +31,7 @@
           <h3 class="text-center">Escoge el monto de oferta</h3>
           <p class="blue text-center">Monto de Oferta en USD Dolaress</p>
           <%= simple_form_for(@bid) do |f| %>
-            <%= f.input :price %>
+            <%= f.input :price, as: :integer %>
             <%= hidden_field_tag 'product', @product.id %>
             <%= f.submit class: "btn btn-primary w-100" %>
           <% end %>

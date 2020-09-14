@@ -31,7 +31,7 @@
     <div class="product-info-divider"></div>
     <div class="product-info-panel">
       <p class="blue m-0">Precio de Inicio:</p>
-      <p class="m-0 green">$<%= product.opening_price %></p>
+      <p class="m-0 green"><%= humanized_money_with_symbol product.opening_price %></p>
       <p class="blue m-0 mt-2">Fecha de Terminación:</p>
       <p class="m-0 orange"><%= product.end_time.strftime('%l:%M %p, %e %b %Y') %></p>
       <p class="blue m-0 mt-2">Tiempo Activo:</p>

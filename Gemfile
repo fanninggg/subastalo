@@ -35,6 +35,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'cloudinary', '~> 1.16.0'
 gem 'acts_as_favoritor'
+gem 'money-rails', '~>1.12'
 
 
 group :development, :test do  gem 'pry-byebug'
