@@ -3,6 +3,13 @@
     <%= image_tag "people.png", alt: "alttext", class: "product-show-img" %>
   </div>
   <div class="w-50 px-3">
+    <div class="breadcrumb">
+      <%= link_to "Subastas", categories_path %>
+      <span class="mx-1">/</span>
+      <%= link_to @product.category.name.capitalize, category_path(@product.category) %>
+      <span class="mx-1">/</span>
+      <span><%= @product.name %></span>
+    </div>
     <h3><%= @product.name %></h3>
     <% if current_user %>
       <% if current_user.admin? %>
@@ -13,14 +20,31 @@
     <p><%= @product.description %></p>
     <p class="blue">Historial de Ofertas:</p>
     <div class="bids">
-      <% @product.bids.each do |bid| %>
-        <p><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | <%= humanized_money_with_symbol bid.price %></p>
+      <% if @product.bids.length > 0 %>
+        <% @product.bids.each do |bid| %>
+          <p><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | <%= humanized_money_with_symbol bid.price %></p>
+        <% end %>
+      <% else %>
+        <h4 class="text-center">No bids yet</h4>
       <% end %>
     </div>
     <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
       Ofertar
     </button>
   </div>
+  <% if @product.features.length > 0 %>
+    <h4>Detalles de Producto</h4>
+    <div class="product-details">
+      <% @product.features.each do |feature| %>
+        <p class="blue mt-4"><%= feature.key %></p>
+        <p class="orange"><%= feature.value %></p>
+      <% end %>
+    </div>
+  <% elsif current_user %>
+    <% if current_user.admin %>
+      <%= link_to "Add some details", edit_admin_product_path(@product) %>
+    <% end %>
+  <% end %>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
