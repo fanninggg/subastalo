@@ -1,7 +1,15 @@
 <div class="container">
   <h3 class="my-3"><%= @category.name %></h3>
+  <div class="filter">
+    <%= simple_form_for :filter, url: category_path(@category), method: :get do |f| %>
+        <div class="price-slider" data-min="<%= @min %>" data-max="<%= @max %>" data-start="<%= @start || @min %>" data-end="<%= @end || @max %>"></div>
+        <div class="slider-display d-flex justify-content-center"></div>
+        <%= f.input :price, as: :hidden %>
+        <%= f.submit 'Filter' %>
+    <% end %>
+  </div>
   <div class="product-grid my-4">
-    <% @category.products.each do |product| %>
+    <% @products.each do |product| %>
       <%= render "shared/product_card", product: product %>
     <% end %>
   </div>
