@@ -1,1 +1,9 @@
-<p>TODO</p>
+<div class="container">
+  <%= simple_form_for @contact do |f| %>
+      <% unless current_user %>
+        <%= f.input :email %>
+      <% end %>
+      <%= f.input :message, input_html: { rows: 15 } %>
+      <%= f.submit 'Send' %>
+  <% end %>
+</div>

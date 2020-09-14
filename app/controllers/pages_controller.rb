@@ -10,9 +10,10 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @contact = Contact.new
   end
 
   def favorites
-    @favorites = current_user.all_favorites.map { |favorite| Product.find(favorite.favoritable_id)}
+    @favorites = current_user&.all_favorites&.map { |favorite| Product.find(favorite.favoritable_id)} || []
   end
 end
