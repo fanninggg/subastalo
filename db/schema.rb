@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_111640) do
+ActiveRecord::Schema.define(version: 2020_09_14_131854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_111640) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "opening_price_cents"
     t.integer "maximum_price_cents"
+    t.boolean "hidden", default: false
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

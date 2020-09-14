@@ -33,6 +33,12 @@ class Admin::ProductsController < ApplicationController
 
   end
 
+  def hide
+    @product = Product.find(params[:id])
+    @product.update(hidden: !@product.hidden?)
+    redirect_to admin_category_path(@product.category)
+  end
+
   private
 
   def product_params
