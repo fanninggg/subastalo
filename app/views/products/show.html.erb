@@ -1,23 +1,41 @@
 <div class="container d-flex pt-4">
-  <div class="w-50 px-3">
+  <div class="w-50 pr-3">
     <%= image_tag "people.png", alt: "alttext", class: "product-show-img" %>
   </div>
-  <div class="w-50 px-3">
-    <div class="breadcrumb">
-      <%= link_to "Subastas", categories_path %>
-      <span class="mx-1">/</span>
-      <%= link_to @product.category.name.capitalize, category_path(@product.category) %>
-      <span class="mx-1">/</span>
-      <span><%= @product.name %></span>
+  <div class="w-50 pl-3">
+    <div class="d-flex">
+      <div class="pr-3">
+        <div class="breadcrumb">
+          <%= link_to "Subastas", categories_path %>
+          <span class="mx-1">/</span>
+          <%= link_to @product.category.name.capitalize, category_path(@product.category) %>
+          <span class="mx-1">/</span>
+          <span><%= @product.name %></span>
+        </div>
+        <h3><%= @product.name %></h3>
+        <% if current_user %>
+          <% if current_user.admin? %>
+            <%= link_to "Edit this product", edit_admin_product_path(@product) %>
+          <% end %>
+        <% end %>
+        <p class="blue m-0">Descripción:</p>
+        <p><%= @product.description %></p>
+      </div>
+      <div class="product-stats">
+        <div class="product-stat time-left">
+          <span>Tiempo Restante</span>
+          <p><%= "#{@dd}:#{@hh.to_s.rjust(2, "0")}:#{@mm.to_s.rjust(2, "0")}:#{@ss.to_i}" %></p>
+        </div>
+        <div class="product-stat winning-offer">
+          <span>Ultima Oferta</span>
+          <p><%= @winning_bid ? @winning_bid.price : 'No bids yet' %></p>
+        </div>
+        <div class="product-stat your-offer">
+          <span>Tu Oferta</span>
+          <p><%= @users_offers.length > 0 ? @users_offers.last : '$00.00'%></p>
+        </div>
+      </div>
     </div>
-    <h3><%= @product.name %></h3>
-    <% if current_user %>
-      <% if current_user.admin? %>
-        <%= link_to "Edit this product", edit_admin_product_path(@product) %>
-      <% end %>
-    <% end %>
-    <p class="blue m-0">Descripción:</p>
-    <p><%= @product.description %></p>
     <p class="blue">Historial de Ofertas:</p>
     <div class="bids">
       <% if @product.bids.length > 0 %>
@@ -32,6 +50,8 @@
       Ofertar
     </button>
   </div>
+</div>
+<div class="container">
   <% if @product.features.length > 0 %>
     <h4>Detalles de Producto</h4>
     <div class="product-details">
@@ -45,6 +65,9 @@
       <%= link_to "Add some details", edit_admin_product_path(@product) %>
     <% end %>
   <% end %>
+  <h4>Documentos</h4>
+  <div class="product-details mb-5">
+  </div>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

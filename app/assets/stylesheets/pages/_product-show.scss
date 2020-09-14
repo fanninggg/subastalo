@@ -16,4 +16,48 @@
 
 .breadcrumb {
   background-color: #fff;
+  padding: 0;
+}
+
+.product-details {
+  border: 1px solid #CAD0D9;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.product-stat {
+  border-radius: 8px;
+  margin-bottom: 16px;
+  width: 159px;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $orange;
+  padding: 4px;
+  span {
+    font-size: 10px;
+    color: $orange;
+  }
+  p {
+    font-size: 22px;
+    color: $orange;
+    margin: 0;
+  }
+}
+
+.winning-offer {
+  background-color: #1C9F72;
+  border: none;
+  span, p {
+    color: #fff;
+  }
+}
+
+.your-offer {
+  background-color: #CCCDD0;
+  border: none;
+  span, p {
+    color: #fff;
+  }
 }
