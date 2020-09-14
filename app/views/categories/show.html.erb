@@ -1,5 +1,8 @@
-<p><%= @category.name %></p>
-
-<% @category.products.each do |product| %>
-  <%= link_to product.name, product_path(product)  %>
-<% end %>
+<div class="container">
+  <h3 class="my-3"><%= @category.name %></h3>
+  <div class="product-grid my-4">
+    <% @category.products.each do |product| %>
+      <%= render "shared/product_card", product: product %>
+    <% end %>
+  </div>
+</div>

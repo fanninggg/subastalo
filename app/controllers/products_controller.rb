@@ -6,10 +6,12 @@ class ProductsController < ApplicationController
 
   def favorite
     current_user.favorite(@product)
+    redirect_back fallback_location: favorites_path
   end
 
   def unfavorite
     current_user.unfavorite(@product)
+    redirect_back fallback_location: favorites_path
   end
 
   private
