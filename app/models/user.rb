@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
   has_many :bids
   has_many :likes
+  has_many :strikes
   has_many_attached :documents
 end
