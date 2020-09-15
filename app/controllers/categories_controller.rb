@@ -13,6 +13,9 @@ class CategoriesController < ApplicationController
       @products = @products.where(opening_price_cents: bounds[0]..bounds[1])
       @start = bounds[0]
       @end = bounds[1]
+      if params.dig(:filter, :time).present?
+        @products = @products.where(end_time: Date.today..Date.today.advance(days: params.dig(:filter, :time).to_i))
+      end
     end
   end
 end
