@@ -1,0 +1,23 @@
+.contact-bubble {
+  background-color: $orange;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 25px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:hover {
+    background-color: #f85c02;
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.contact-input {
+  background-color: #F5F5F5;
+  margin-bottom: 16px;
+  border-radius: 4px !important;
+}
+
+#map {
+  border-radius: 4px;
+  border: 1px solid $light-gray;
+}

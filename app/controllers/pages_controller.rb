@@ -13,6 +13,8 @@ class PagesController < ApplicationController
   end
 
   def favorites
-    @favorites = current_user.all_favorites.map { |favorite| Product.find(favorite.favoritable_id)}
+    if current_user
+      @favorites = current_user.all_favorites.map { |favorite| Product.find(favorite.favoritable_id)}
+    end
   end
 end

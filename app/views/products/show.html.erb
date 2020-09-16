@@ -43,7 +43,7 @@
           <p><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | <%= humanized_money_with_symbol bid.price %></p>
         <% end %>
       <% else %>
-        <h4 class="text-center">No bids yet</h4>
+        <h4 class="text-center">No bids yet. Be the first to make an offer</h4>
       <% end %>
     </div>
     <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">

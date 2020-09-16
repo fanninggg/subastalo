@@ -36,8 +36,13 @@
     </div>
     <div class="footer-section w-25">
       <p class="size-13">Aplica a Nuestros Trabajos</p>
-      <input type="text" class='footer-input' placeholder="Tu Correo Electrónico ">
-      <span class="btn-footer">Enviar</span>
+      <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/YOUR_EMAIL_HERE" method="post" class="form-group">
+        <fieldset id="fs-frm-inputs">
+          <input type="email" name="_replyto" id="email-address" placeholder="Tu Correo Electrónico" required="" class="footer-input">
+          <input type="hidden" name="_subject" id="email-subject" value="Job Form Submission">
+        </fieldset>
+        <input type="submit" value="Enviar" class="btn-footer">
+      </form>
       <div class="d-flex mt-4">
         <div class="icon-holder large-icon-holder mr-3">
           <i class="fab fa-facebook-f"></i>

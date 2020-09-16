@@ -23,14 +23,15 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
+import "controllers"
 import "bootstrap";
-
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
-});
+  initMapbox();
+  const mapMarker = document.querySelector('svg').children[0].children[1]
+  if (mapMarker) {
+    mapMarker.style.fill = '#FD7323';
+  }
+})
 
-import "controllers"
