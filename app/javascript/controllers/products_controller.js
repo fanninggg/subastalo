@@ -2,9 +2,12 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
 
-  static targets = ['timer']
+  static targets = ['timer', 'bidInput']
+
   connect() {
-    setInterval(this.tick, 1000);
+    if(this.hasTimerTarget) {
+      setInterval(this.tick, 1000);
+    }
   }
 
   tick = () => {
@@ -19,6 +22,18 @@ export default class extends Controller {
     if (distance < 0) {
       clearInterval(x);
       this.timerTarget.innerText = "Auction Finished";
+    }
+  }
+
+  increment() {
+    this.bidInputTarget.value = parseInt(this.bidInputTarget.value) + 1
+  }
+
+  decrement() {
+    if(parseInt(this.bidInputTarget.value) - 1 === 0) {
+      this.bidInputTarget.value = 1
+    } else {
+      this.bidInputTarget.value = parseInt(this.bidInputTarget.value) - 1
     }
   }
 }

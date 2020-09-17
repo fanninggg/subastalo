@@ -29,10 +29,10 @@ import { initFilterSlider } from '../components/filterSlider'
 import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
-   initFilterSlider()
+  initFilterSlider()
   initMapbox();
-  const mapMarker = document.querySelector('svg').children[0].children[1]
-  if (mapMarker) {
-    mapMarker.style.fill = '#FD7323';
+  const map = document.getElementById('map')
+  if (map) {
+    document.querySelector('svg').children[0].children[1].style.fill = '#FD7323';
   }
 })
