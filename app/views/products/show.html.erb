@@ -28,11 +28,11 @@
         </div>
         <div class="product-stat winning-offer">
           <span>Ultima Oferta</span>
-          <p><%= @winning_bid ? @winning_bid.price : 'No bids yet' %></p>
+          <p><%= @winning_bid ? humanized_money_with_symbol(@winning_bid.price) : 'No bids yet' %></p>
         </div>
         <div class="product-stat your-offer">
           <span>Tu Oferta</span>
-          <p><%= @users_offers.length > 0 ? @users_offers.last : '$00.00'%></p>
+          <p><%= @users_offers.length > 0 ? humanized_money_with_symbol(@users_offers.last.price) : '$00.00'%></p>
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="products">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -78,9 +78,20 @@
           <h3 class="text-center">Escoge el monto de oferta</h3>
           <p class="blue text-center">Monto de Oferta en USD Dolaress</p>
           <%= simple_form_for(@bid) do |f| %>
-            <%= f.input :price, as: :integer %>
+            <div class="d-flex align-items-center">
+              <span class="input-currency">$</span>
+              <%= f.input :price, as: :integer, label: false, input_html: { class: "bid-input", value: @product.bids.length > 0 ? humanized_money(@product.bids.last.price).delete(',').to_i : humanized_money(@product.opening_price).delete(',').to_i, data: { target: "products.bidInput" } } %>
+              <div class="arrows">
+                <svg width="22" height="17" viewBox="0 0 22 17" fill="none" class="arrow" id="upArrow" data-action="click->products#increment">
+                  <path d="M11 0L22 17H0L11 0Z" fill="#8E98B0"/>
+                </svg>
+                <svg width="22" height="17" viewBox="0 0 22 17" fill="none" class="arrow" id="downArrow" data-action="click->products#decrement">
+                  <path d="M11 0L22 17H0L11 0Z" fill="#8E98B0"/>
+                </svg>
+              </div>
+            </div>
             <%= hidden_field_tag 'product', @product.id %>
-            <%= f.submit class: "btn btn-primary w-100" %>
+            <%= f.submit "Enviar Oferta", class: "btn btn-bid btn-primary w-100" %>
           <% end %>
         <% else %>
           <h3 class="text-center">Only approved users can bid</h3>

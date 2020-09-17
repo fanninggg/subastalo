@@ -62,3 +62,54 @@
     color: #fff;
   }
 }
+
+.input-currency {
+  font-size: 80px;
+  color: $blue;
+  font-weight: bold;
+  margin-top: -16px;
+}
+
+.bid-input {
+  font-size: 80px !important;
+  color: $blue !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  border: none !important;
+  // This looks better but is fucked for bids over a million
+  // margin-left: -16px;
+  // background-color: transparent !important;
+  padding: 0 !important;
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.bid-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.arrows {
+  margin-top: -8px;
+}
+
+path {
+  transition: fill 0.15s ease-in-out;
+}
+
+.arrow {
+  cursor: pointer;
+  &:hover {
+    path {
+      fill: $blue;
+    }
+  }
+}
+
+#downArrow {
+  transform: rotate(180deg);
+}
+
+.btn-bid {
+  padding: 12px !important;
+}

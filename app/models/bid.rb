@@ -6,7 +6,13 @@ class Bid < ApplicationRecord
   validates :price_cents, numericality: true
   validate :price_in_range
   validate :bidder_approved
+  validate :whole_number
 
+  def whole_number
+    unless price_cents.to_s.split('').last(2).all? { |digit| digit == "0"}
+      errors.add(:price, 'must be a whole number')
+    end
+  end
 
   def price_in_range
     if price_cents < product&.opening_price_cents

@@ -61,6 +61,7 @@ p {
 .btn-primary {
   color: #fff !important;
   padding: 6px 20px;
+  border-radius: 4px;
 }
 
 .btn-secondary {
@@ -70,16 +71,21 @@ p {
   padding: 6px 20px;
 }
 
-.modal-dialog {
-  top: 25%;
-}
-
 .margin-80-top {
   margin-top: 80px;
 }
 
 .margin-80-bottom {
   margin-bottom: 80px;
+}
+
+
+.modal-dialog {
+  top: 20%;
+}
+
+.modal-body {
+  padding: 3rem !important;
 }
 
 .center-padding {
