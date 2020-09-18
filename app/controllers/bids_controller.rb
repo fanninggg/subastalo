@@ -5,6 +5,7 @@ class BidsController < ApplicationController
     @bid.user = current_user
     @bid.product = @product
     if @bid.save
+      @product.update(highest_bid_cents: @bid.price_cents)
       redirect_to product_path(@product)
     else
       redirect_to product_path(@product), notice: @bid.errors.full_messages.join(',')

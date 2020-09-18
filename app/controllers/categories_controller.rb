@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
     @max = @products.maximum(:opening_price_cents)
     if params[:filter]
       bounds = params.dig(:filter, :price).split('-').map(&:to_i)
-      @products = @products.where(opening_price_cents: bounds[0]..bounds[1])
+      @products = @products.where(opening_price_cents: bounds[0]..bounds[1], highest_bid_cents: nil).or(@products.where(highest_bid_cents: bounds[0]..bounds[1]))
       @start = bounds[0]
       @end = bounds[1]
       if params.dig(:filter, :time).present?
