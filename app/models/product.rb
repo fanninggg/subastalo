@@ -7,4 +7,5 @@ class Product < ApplicationRecord
 
   monetize :opening_price_cents
   monetize :maximum_price_cents
+  monetize :highest_bid_cents
 end
