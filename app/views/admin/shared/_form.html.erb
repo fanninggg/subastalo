@@ -9,6 +9,21 @@
   <%= f.label :end_time %>
   <%= f.datetime_select :end_time, :ampm => true, :minute_step => 15 %>
   <%= f.association :category %>
+  <div>
+    <h4>Features</h4>
+    <%= f.fields_for :feature do |a| %>
+      <% product.features.each do |feature| %>
+        <div class="form-inline justify-content-around">
+          <%= a.input :key, required: false, input_html: { name: 'product[current_features][][key]', value: feature.key } %>
+          <%= a.input :value, required: false, input_html: { name: 'product[current_features][][value]', value: feature.value } %>
+          <%= link_to admin_feature_path(feature), method: :delete  do %>
+            <button>Delete</button>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+    <button type="button" id="feature-btn">Add Feature</button>
+  </div>
   <%= f.submit %>
 <% end %>
 

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
           patch '/hide', to: 'products#hide'
         end
       end
+      resources :features, only: [:destroy]
       resources :users, only: [:index, :show, :update, :destroy] do
         resources :strikes, only: [:new, :create]
       end

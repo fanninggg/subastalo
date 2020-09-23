@@ -21,18 +21,20 @@ require('channels')
 // ----------------------------------------------------
 
 // External imports
-import "controllers"
-import "bootstrap";
+import 'controllers'
+import 'bootstrap'
 import 'nouislider/distribute/nouislider.css'
 
 import { initFilterSlider } from '../components/filterSlider'
-import { initMapbox } from '../plugins/init_mapbox';
+import { initMapbox } from '../plugins/init_mapbox'
+import { initProdForm } from '../components/prodForm'
 
 document.addEventListener('turbolinks:load', () => {
   initFilterSlider()
-  initMapbox();
+  initMapbox()
+  initProdForm()
   const map = document.getElementById('map')
   if (map) {
-    document.querySelector('svg').children[0].children[1].style.fill = '#FD7323';
+    document.querySelector('svg').children[0].children[1].style.fill = '#FD7323'
   }
 })
