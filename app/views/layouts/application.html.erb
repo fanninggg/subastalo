@@ -21,7 +21,8 @@
     <div class="min-height">
       <%= yield %>
     </div>
-    <%= render 'shared/devise_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
+    <%= render 'shared/login_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
+    <%= render 'shared/signup_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
     <%= render 'shared/footer' %>
   </body>
 </html>
