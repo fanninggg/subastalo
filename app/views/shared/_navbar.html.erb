@@ -9,11 +9,37 @@
     <%= link_to "Contacto", contact_path, class: "nav-link" %>
     <%= link_to "Subastas", root_path, class: "btn btn-primary nav-link" %>
     <% if user_signed_in? %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link orange" %>
+      <div class="navbar-user">
+        <p class="orange m-0">Hola, <%= current_user.name.split[0] %></p>
+        <div class="avatar-holder" id="navbarDropdown" data-toggle="dropdown" aria-haspopup=true aria-expanded=false>
+          <div class="navbar-burger">
+            <div class="burger-slice"></div>
+            <div class="burger-slice"></div>
+            <div class="burger-slice"></div>
+          </div>
+          <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1541155767/uvhq9if5vmyyphmcqtyk.jpg", alt: "alttext", class: "navbar-avatar" %>
+        </div>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link orange" %>
+        </div>
+      </div>
     <% else %>
-      <a class="nav-link orange" data-toggle="modal" data-target="#loginModal">
-        Login
-      </a>
+      <div class="navbar-user">
+        <p></p>
+        <div class="avatar-holder" id="navbarDropdown" data-toggle="dropdown" aria-haspopup=true aria-expanded=false>
+          <div class="navbar-burger">
+            <div class="burger-slice"></div>
+            <div class="burger-slice"></div>
+            <div class="burger-slice"></div>
+          </div>
+          <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg", alt: "alttext", class: "navbar-avatar" %>
+        </div>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="nav-link orange" data-toggle="modal" data-target="#loginModal">
+            Login
+          </a>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
