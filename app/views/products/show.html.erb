@@ -39,8 +39,8 @@
     <p class="blue">Historial de Ofertas:</p>
     <div class="bids">
       <% if @product.bids.length > 0 %>
-        <% @product.bids.each do |bid| %>
-          <p><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | <%= humanized_money_with_symbol bid.price %></p>
+        <% @product.bids.each_with_index do |bid, index| %>
+          <p class="<%= index.odd? ? 'bid highlighted-bid' : 'bid' %>"><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | <%= humanized_money_with_symbol bid.price %></p>
         <% end %>
       <% else %>
         <h4 class="text-center">No bids yet. Be the first to make an offer</h4>
