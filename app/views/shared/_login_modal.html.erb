@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" data-controller="devise">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="devise-modal-header">
@@ -27,8 +27,11 @@
         <% end %>
       </div>
       <div class="devise-modal-footer">
-        <p style="color: rgba(98, 106, 121, 0.6)">No tiene cuenta? <%= link_to "Crear Cuenta", new_registration_path(resource_name), class: "devise-link" %><br /></p>
+        <p style="color: rgba(98, 106, 121, 0.6)">No tiene cuenta? <a class="devise-link" data-self="loginModal" data-action="click->devise#closeSelf" data-toggle="modal" data-target="#signupModal">
+        Crear Cuenta
+      </a>
       </div>
     </div>
   </div>
 </div>
+

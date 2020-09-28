@@ -1,0 +1,79 @@
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true" data-controller="devise">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="devise-modal-header">
+        <h3>Aplicación para Crear Cuenta</h3>
+        <p>Paso <span data-target="devise.pageCounter">1</span> de 3</p>
+      </div>
+      <div class="devise-modal-body">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <div class="" data-target="devise.page devise.page1">
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          label: false,
+                          placeholder: "Correo Electrónico",
+                          input_html: { autocomplete: "email", class: "contact-input" }%>
+              <%= f.input :password,
+                          required: true,
+                          label: false,
+                          placeholder: "Contrasena",
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password", class: "contact-input" } %>
+              <%= f.input :password_confirmation,
+                          required: true,
+                          label: false,
+                          placeholder: "Confirmar Contraseña",
+                          input_html: { autocomplete: "new-password", class: "contact-input" } %>
+              <div class="btn btn-primary btn-devise" data-page="2" data-action="click->devise#nextPage">Continuar Aplición</div>
+            </div>
+            <div class="d-none" data-target="devise.page devise.page2">
+              <%= f.input :name,
+                          required: true,
+                          autofocus: true,
+                          label: false,
+                          placeholder: "Nombre",
+                          input_html: { autocomplete: "name" }%>
+              <%= f.input :address,
+                          required: true,
+                          autofocus: true,
+                          label: false,
+                          placeholder: "Direccion",
+                          input_html: { autocomplete: "address" }%>
+              <%= f.input :sex,
+                          required: true,
+                          autofocus: true,
+                          label: false,
+                          placeholder: "Sexo",
+                          input_html: { autocomplete: "sex" }%>
+              <%= f.input :age,
+                          required: true,
+                          autofocus: true,
+                          label: false,
+                          placeholder: "Edad",
+                          input_html: { autocomplete: "age" }%>
+              <div class="btn btn-primary btn-devise" data-page="3" data-action="click->devise#nextPage">Continuar Aplición</div>
+
+            </div>
+            <div class="d-none" data-target="devise.page devise.page3">
+              <p>Uploaders will live here</p>
+              <%= f.button :submit, "Enviar Aplicación", class: "btn-primary btn-devise" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="devise-modal-footer">
+        <p style="color: rgba(98, 106, 121, 0.6)">Tiene cuenta? <a class="devise-link" data-self="signupModal" data-action="click->devise#closeSelf" data-toggle="modal" data-target="#loginModal">
+        Login</a><br /></p>
+        <div class="signup-indicator">
+          <div class="indicator-dot active-dot"></div>
+          <div class="indicator-dot" data-target="devise.dot1"></div>
+          <div class="indicator-dot" data-target="devise.dot2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
