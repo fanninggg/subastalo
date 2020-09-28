@@ -9,6 +9,10 @@ class PagesController < ApplicationController
   def about
   end
 
+  def profile
+    @user = current_user
+  end
+
   def contact
     @contact = Contact.new
   end
