@@ -11,7 +11,9 @@
     <% if user_signed_in? %>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link orange" %>
     <% else %>
-      <%= link_to "Login", new_user_session_path, class: "nav-link orange" %>
+      <a class="nav-link orange" data-toggle="modal" data-target="#exampleModal">
+        Login
+      </a>
     <% end %>
   </div>
 </div>

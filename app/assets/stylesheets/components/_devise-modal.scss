@@ -1,0 +1,29 @@
+.devise-modal-header {
+  border-top: 8px solid $orange;
+  padding-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.devise-modal-body {
+  padding: 18px 32px;
+}
+
+.devise-link {
+  color: rgba(98, 106, 121, 0.6);
+  text-decoration: underline;
+  margin-bottom: 22px;
+  display: inline-block;
+}
+
+.devise-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-devise {
+  width: 100%;
+  padding: 10px 0 !important;
+}
