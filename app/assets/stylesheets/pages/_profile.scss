@@ -1,0 +1,129 @@
+.profile-container {
+  margin: 0 40px;
+}
+
+.profile-section {
+  margin: 40px 0;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(98,106,121,0.2);
+}
+
+.profile-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-status {
+  width: 295px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  font-size: 20px;
+  padding: 0px 8px;
+  justify-content: space-between;
+}
+
+.status-approved {
+  border: 1px solid #1C9F72;
+  color: #1C9F72;
+}
+
+.status-unapproved {
+  border: 1px solid #EF3E36;
+  color: #EF3E36;
+}
+
+.profile-status-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.hidden-profile-status-img {
+  width: 8px;
+  opacity: 0;
+}
+
+.profile-image-section {
+  @media(max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.profile-img {
+  width: 195px;
+  height: 195px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-upload-holder {
+  width: 195px;
+  text-align: center;
+  p {
+    margin-top: 8px;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #626A79;
+    cursor: pointer;
+  }
+  input {
+    display: none;
+  }
+}
+
+.profile-input-flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.profile-section {
+  .form-group {
+    width: 48%;
+    margin: 0;
+  }
+  @media(max-width: 768px) {
+    flex-direction: column;
+    .form-group {
+      width: 100%;
+    }
+  }
+}
+
+.document-upload-holder {
+  input {
+    display: none;
+  }
+}
+
+.document-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: rgba(202,208,217,0.2);
+  height: 256px;
+  width: 290px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.document-upload-img {
+  width: 55px;
+  height: 55px;
+}
+
+.document-upload-text {
+  position: absolute;
+  bottom: 26px;
+  margin-top: 67px;
+  color: #CAD0D9;
+  font-size: 20px;
+}
