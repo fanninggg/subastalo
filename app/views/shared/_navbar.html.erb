@@ -4,13 +4,15 @@
   <% end %>
 
   <div class="d-flex align-items-center">
-    <%= link_to "Nosotros", about_path, class: "nav-link" %>
-    <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
-    <%= link_to "Contacto", contact_path, class: "nav-link" %>
-    <%= link_to "Subastas", root_path, class: "btn btn-primary nav-link" %>
+    <div class="desktop-flex mobile-hidden">
+      <%= link_to "Nosotros", about_path, class: "nav-link" %>
+      <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
+      <%= link_to "Contacto", contact_path, class: "nav-link" %>
+      <%= link_to "Subastas", root_path, class: "btn btn-primary nav-link" %>
+    </div>
     <% if user_signed_in? %>
       <div class="navbar-user">
-        <p class="orange m-0">Hola, <%= current_user.name.split[0] %></p>
+        <p class="orange m-0 mobile-hidden">Hola, <%= current_user.name.split[0] %></p>
         <div class="avatar-holder" id="navbarDropdown" data-toggle="dropdown" aria-haspopup=true aria-expanded=false>
           <div class="navbar-burger">
             <div class="burger-slice"></div>
@@ -20,7 +22,16 @@
           <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1541155767/uvhq9if5vmyyphmcqtyk.jpg", alt: "alttext", class: "navbar-avatar" %>
         </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <div class="desktop-hidden">
+            <%= link_to "Nosotros", about_path, class: "nav-link" %>
+            <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
+            <%= link_to "Contacto", contact_path, class: "nav-link" %>
+            <%= link_to "Subastas", root_path, class: "nav-link" %>
+          </div>
           <%= link_to "Mi Perfil", edit_user_registration_path, class: "nav-link" %>
+          <% if current_user && current_user.admin %>
+            <%= link_to "Admin", admin_categories_path %>
+          <% end %>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %>
         </div>
       </div>
@@ -36,6 +47,12 @@
           <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg", alt: "alttext", class: "navbar-avatar" %>
         </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <div class="desktop-hidden">
+            <%= link_to "Nosotros", about_path, class: "nav-link" %>
+            <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
+            <%= link_to "Contacto", contact_path, class: "nav-link" %>
+            <%= link_to "Subastas", root_path, class: "nav-link" %>
+          </div>
           <a class="nav-link orange" data-toggle="modal" data-target="#loginModal">
             Login
           </a>

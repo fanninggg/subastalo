@@ -80,7 +80,6 @@ p {
   margin-bottom: 80px;
 }
 
-
 .modal-dialog {
   top: 20%;
 }
@@ -103,5 +102,23 @@ p {
 
 .w-66 {
   width: 66.66%;
+}
+
+.mobile-hidden {
+  @media(max-width: 768px) {
+    display: none;
+  }
+}
+
+.desktop-hidden {
+  @media(min-width: 768px) {
+    display: none;
+  }
+}
+
+.desktop-flex {
+  @media(min-width: 768px) {
+    display: flex;
+  }
 }
 

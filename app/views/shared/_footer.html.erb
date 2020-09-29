@@ -34,7 +34,7 @@
       <%= link_to "Términos y Condiciónenos ", root_path  %>
       <%= link_to "Licencia de Subastas", root_path %>
     </div>
-    <div class="footer-section w-25">
+    <div class="footer-section footer-inputs">
       <p class="size-13">Aplica a Nuestros Trabajos</p>
       <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/YOUR_EMAIL_HERE" method="post" class="form-group">
         <fieldset id="fs-frm-inputs">
@@ -43,7 +43,7 @@
         </fieldset>
         <input type="submit" value="Enviar" class="btn-footer">
       </form>
-      <div class="d-flex mt-4">
+      <div class="d-flex mt-4 footer-mobile-center">
         <div class="icon-holder large-icon-holder mr-3">
           <i class="fab fa-facebook-f"></i>
         </div>
@@ -58,9 +58,6 @@
   </div>
   <div class="footer-bottom">
     <p class="m-0">Subastalo ™ Todos los derechos reservados</p>
-    <% if current_user && current_user.admin %>
-      <%= link_to "Admin", admin_categories_path %>
-    <% end %>
     <p class="m-0">Desarrollado por Hoxton Digital <a href="https://www.hoxton-digital.com" target="blank">London Web Developers</a></p>
   </div>
 </div>
