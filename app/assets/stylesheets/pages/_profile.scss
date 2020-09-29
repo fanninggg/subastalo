@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 40px;
 }
 
 .profile-status {
@@ -69,7 +70,7 @@
     margin-top: 8px;
     font-size: 20px;
     text-decoration: underline;
-    color: #626A79;
+    color: #CAD0D9;
     cursor: pointer;
   }
   input {
@@ -81,6 +82,9 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .profile-section {
@@ -89,7 +93,6 @@
     margin: 0;
   }
   @media(max-width: 768px) {
-    flex-direction: column;
     .form-group {
       width: 100%;
     }
