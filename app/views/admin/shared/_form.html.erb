@@ -3,6 +3,7 @@
   <%= f.input :description %>
   <%= f.input :opening_price, as: :integer %>
   <%= f.input :maximum_price, as: :integer %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.label :start_time %>
   <%= f.datetime_select :start_time, :ampm => true, :minute_step => 15 %>
   <br>

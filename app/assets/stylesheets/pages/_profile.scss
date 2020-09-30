@@ -13,6 +13,9 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 40px;
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .profile-status {
@@ -116,11 +119,19 @@
   width: 290px;
   border-radius: 5px;
   cursor: pointer;
+  @media(max-width: 768px) {
+    height: 159px;
+    width: 180px;
+  }
 }
 
 .document-upload-img {
   width: 55px;
   height: 55px;
+  @media(max-width: 768px) {
+    height: 30px;
+    width: 30px;
+  }
 }
 
 .document-upload-text {
@@ -129,4 +140,8 @@
   margin-top: 67px;
   color: #CAD0D9;
   font-size: 20px;
+  @media(max-width: 768px) {
+    font-size: 16px;
+    bottom: 18px;
+  }
 }

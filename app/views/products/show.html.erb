@@ -1,6 +1,6 @@
 <div class="container d-flex pt-4" data-controller="products">
   <div class="w-50 pr-3">
-    <%= image_tag "people.png", alt: "alttext", class: "product-show-img" %>
+    <%= cl_image_tag @product.photos.first.key, crop: :fill, class: "product-show-img" %>
   </div>
   <div class="w-50 pl-3">
     <div class="d-flex">
