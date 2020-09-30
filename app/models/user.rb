@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :bids, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :strikes, dependent: :destroy
+  has_one_attached :photo
   has_many_attached :documents
 end

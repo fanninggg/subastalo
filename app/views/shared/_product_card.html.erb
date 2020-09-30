@@ -1,6 +1,6 @@
 <div class="product-card">
   <!-- This will be replaced by the category image once cloudinary is set up -->
-  <div class="product-img" style="background-image: url('https://images.pexels.com/photos/3422964/pexels-photo-3422964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+  <div class="product-img" style="background-image: url('<%= cl_image_path(product.photos.first.key) %>')">
     <div class="product-img-overlay">
       <span class="product-badge">TODO</span>
       <% if current_user.nil? %>
