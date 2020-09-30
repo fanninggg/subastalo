@@ -1,3 +1,17 @@
+.carousel-indicators {
+  bottom: -50px !important;
+  li {
+    background-color: $orange !important;
+    opacity: 0.25 !important;
+    border-radius: 50% !important;
+    width: 10px !important;
+    height: 10px !important;
+    &.active {
+      opacity: 1 !important;
+    }
+  }
+}
+
 .product-show-img {
   height: 424px;
   width: 100%;

@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_many :bids, dependent: :destroy
   has_many :features, dependent: :destroy
   has_many_attached :photos
+  has_many_attached :documents
 
   monetize :opening_price_cents
   monetize :maximum_price_cents
