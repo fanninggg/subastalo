@@ -84,6 +84,8 @@
           </div>
         </label>
         <input class="form-control-file file optional absCenter" type="file" name="user[photo]" id="user_photo">
+        <%= f.input :photo %>
+        <%= f.input :documents, as: :file, input_html: { multiple: true } %>
       </div>
     </div>
     <div class="profile-section">
