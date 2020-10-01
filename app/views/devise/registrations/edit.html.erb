@@ -1,4 +1,4 @@
-<div class="profile-container">
+<div class="profile-container" data-controller="devise">
   <div class="profile-section profile-header-section">
     <h3>Mi Perfil</h3>
     <div class="d-flex">
@@ -21,12 +21,14 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
     <div class="profile-section profile-image-section">
-      <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg", alt: "alttext", class: "profile-img" %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, alt: "alttext", class: "profile-img", data: { target: 'devise.photoPreview' } %>
+      <% else %>
+        <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg", alt: "alttext", class: "profile-img", data: { target: 'devise.photoPreview' } %>
+      <% end %>
       <div class="image-upload-holder">
-        <label for="user_photo">
-          <p>Cambiar Foto</p>
-        </label>
-        <input class="form-control-file file optional absCenter" type="file" name="user[photo]" id="user_photo">
+        <label class="file optional" for="user_photo">Cambiar Foto</label>
+        <input class="form-control-file is-valid file optional" type="file" name="user[photo]" id="user_photo" data-action="change->devise#preview">
       </div>
     </div>
     <div class="profile-section">
@@ -77,14 +79,13 @@
     <div class="profile-section">
       <h4 class="blue mb-4">Documentos Legales</h4>
       <div class="document-upload-holder">
-        <label for="user_photo">
+<!--         <label for="user_photo">
           <div class="document-upload">
-            <%= image_tag "plus.png", alt: "alttext", class: 'document-upload-img' %>
+            <%#= image_tag "plus.png", alt: "alttext", class: 'document-upload-img' %>
             <span class="document-upload-text">Agregar Documento</span>
           </div>
         </label>
-        <input class="form-control-file file optional absCenter" type="file" name="user[photo]" id="user_photo">
-        <%= f.input :photo %>
+        <input class="form-control-file file optional" multiple="multiple" type="file" name="user[documents][]" id="user_documents"> -->
         <%= f.input :documents, as: :file, input_html: { multiple: true } %>
       </div>
     </div>
