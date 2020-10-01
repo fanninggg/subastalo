@@ -23,6 +23,8 @@
     </div>
     <%= render 'shared/login_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
     <%= render 'shared/signup_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
-    <%= render 'shared/footer' %>
+    <% unless params[:controller].include?('admin') %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>

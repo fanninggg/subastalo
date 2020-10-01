@@ -15,15 +15,44 @@
           <div class="users-row">
             <p class="m-0"><%= user.name %></p>
             <p class="m-0"><%= user.email %></p>
-            <p class="m-0"><%= user.documents.length > 0 ? "TODO" : "No documents" %></p>
-            <%= simple_form_for([:admin, user]) do |f| %>
-              <%= f.check_box :approved %>
-              <%= f.submit %>
+            <% if user.documents.length > 0 %>
+              <a href="#" data-toggle="modal" data-target="#documentsModal">View Documents</a>
+            <% else %>
+              <p class="m-0">No Documents</p>
             <% end %>
-            <%= button_to 'Strike user', new_admin_user_strike_path(user), method: :get %>
+            <% if user.approved %>
+              <%= button_to 'Strike user', new_admin_user_strike_path(user), method: :get %>
+            <% else %>
+              <%= simple_form_for([:admin, user]) do |f| %>
+                <%= f.check_box :approved %>
+                <%= f.submit %>
+              <% end %>
+            <% end %>
             <p class="m-0"><%= user.created_at.strftime('%b %d, %Y') %></p>
           </div>
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="documentsModal" tabindex="-1" role="dialog" aria-labelledby="documentsModalLabel" aria-hidden="true" data-controller="loading">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="devise-modal-header">
+        <h3></h3>
+      </div>
+      <div class="devise-modal-body">
+        <h3 class="text-center mb-4">Loading Documents</h3>
+        <div class="loading-dots">
+          <div class="loading-dot loading-dot-active" data-target="loading.dot"></div>
+          <div class="loading-dot" data-target="loading.dot"></div>
+          <div class="loading-dot" data-target="loading.dot"></div>
+          <div class="loading-dot" data-target="loading.dot"></div>
+        </div>
+      </div>
+      <div class="devise-modal-footer">
+
       </div>
     </div>
   </div>
