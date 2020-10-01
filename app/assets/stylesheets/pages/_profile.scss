@@ -106,10 +106,57 @@
   }
 }
 
+.documents-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+  @media(max-width: 824px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media(max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+}
+
 .document-upload-holder {
   input {
     display: none;
   }
+  .user_documents {
+    display: none;
+  }
+}
+
+.document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(202,208,217,0.2);
+  height: 256px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(98,106,121,0.2);
+  margin-right: 40px;
+  p {
+    font-size: 18px;
+  }
+}
+
+.pdf-logo {
+  height: 80px;
+  margin-bottom: 8px;
+  @media(max-width: 768px) {
+    height: 40px;
+  }
+}
+
+.document-preview {
+  width: 80%;
+  height: 70%;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .document-upload {
@@ -120,13 +167,9 @@
   position: relative;
   background-color: rgba(202,208,217,0.2);
   height: 256px;
-  width: 290px;
+  width: 100%;
   border-radius: 5px;
   cursor: pointer;
-  @media(max-width: 768px) {
-    height: 159px;
-    width: 180px;
-  }
 }
 
 .document-upload-img {
