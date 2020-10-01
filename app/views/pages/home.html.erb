@@ -9,9 +9,9 @@
     </div>
   </div>
 </div>
-<div class="container margin-80-top">
+<div class="container margin-80-top text-center-mobile">
   <h3>Subastas</h3>
-  <p class="w-50">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
+  <p class="w-50-desktop">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
   <div class="category-grid">
     <% @categories.each do |category| %>
     <!-- This will be replaced by the category image once cloudinary is set up -->
@@ -22,14 +22,14 @@
     <% end %>
   </div>
   <h3 class="text-center margin-80-top">Las Mejores Ofertas</h3>
-  <p class="text-center blue center-padding">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
+  <p class="text-center blue center-padding-desktop">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
   <div class="product-grid mt-5">
     <% @featured.each do |product| %>
       <%= render "shared/product_card", product: product %>
     <% end %>
   </div>
-  <div class="d-flex margin-80-top margin-80-bottom">
-    <div class="pr-5">
+  <div class="d-flex margin-80-top margin-80-bottom flex-column-mobile text-center-mobile">
+    <div class="pr-5-desktop">
       <h3>Nuestra Empresa</h3>
       <p>Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
       <p>Aqui podremos hablar de algunos de los fundadores y de los valores de la empresa.</p>
@@ -38,7 +38,7 @@
       <p>Siempre ponemos Textos ejemplares para seguir mostrando.</p>
       <%= link_to "Empresa", about_path, class: "btn btn-primary" %>
     </div>
-    <%= image_tag "people.png", alt: "People on a crosswalk", class: 'home-image' %>
+    <%= image_tag "people.png", alt: "People on a crosswalk", class: 'home-image d-none-mobile' %>
   </div>
 </div>
 <div class="contact-banner">

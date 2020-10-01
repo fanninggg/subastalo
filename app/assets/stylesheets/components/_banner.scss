@@ -7,6 +7,7 @@
   background-image: asset-url('banner.png');
   background-size: cover;
   background-position: center;
+
 }
 
 .banner-content {
@@ -18,5 +19,14 @@
     line-height: 29px;
     // Weight not working atm
     font-weight: lighter;
+  }
+  @media(max-width: 768px) {
+    padding: 0 0 0 20px;
+    h1 {
+      font-size: 40px;
+    }
+    p {
+      font-size: 18px;
+    }
   }
 }

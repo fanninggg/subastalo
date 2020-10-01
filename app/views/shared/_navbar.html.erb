@@ -4,7 +4,7 @@
   <% end %>
 
   <div class="d-flex align-items-center">
-    <div class="desktop-flex mobile-hidden">
+    <div class="desktop-flex d-none-mobile">
       <%= link_to "Nosotros", about_path, class: "nav-link" %>
       <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
       <%= link_to "Contacto", contact_path, class: "nav-link" %>
@@ -12,7 +12,7 @@
     </div>
     <% if user_signed_in? %>
       <div class="navbar-user">
-        <p class="orange m-0 mobile-hidden">Hola, <%= current_user.name.split[0] %></p>
+        <p class="orange m-0 d-none-mobile">Hola, <%= current_user.name.split[0] %></p>
         <div class="avatar-holder" id="navbarDropdown" data-toggle="dropdown" aria-haspopup=true aria-expanded=false>
           <div class="navbar-burger">
             <div class="burger-slice"></div>
@@ -22,7 +22,7 @@
           <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1541155767/uvhq9if5vmyyphmcqtyk.jpg", alt: "alttext", class: "navbar-avatar" %>
         </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <div class="desktop-hidden">
+          <div class="d-none-desktop">
             <%= link_to "Nosotros", about_path, class: "nav-link" %>
             <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
             <%= link_to "Contacto", contact_path, class: "nav-link" %>
@@ -47,7 +47,7 @@
           <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg", alt: "alttext", class: "navbar-avatar" %>
         </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <div class="desktop-hidden">
+          <div class="d-none-desktop">
             <%= link_to "Nosotros", about_path, class: "nav-link" %>
             <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
             <%= link_to "Contacto", contact_path, class: "nav-link" %>

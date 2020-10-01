@@ -26,6 +26,9 @@ h3 {
   font-size: 32px;
   font-family: "tablet-gothic", sans-serif;
   font-weight: 700;
+   @media(max-width: 768px) {
+    font-size: 24px;
+  }
 }
 
 p {
@@ -95,10 +98,62 @@ p {
 
 .modal-body {
   padding: 3rem !important;
+  @media(max-width: 768px) {
+    padding: 2rem !important;
+  }
 }
 
 .center-padding {
   padding: 0 25%;
+}
+
+.center-padding-desktop {
+  padding: 0 25%;
+  @media(max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.pt-5-mobile {
+  padding-top: 0rem !important;
+  @media(max-width: 768px) {
+    padding-top: 3rem !important;;
+  }
+}
+
+.pl-3-desktop {
+  padding-left: 1rem !important;
+  @media(max-width: 768px) {
+    padding-left: 0 !important;;
+  }
+}
+
+.pr-3-desktop {
+  padding-right: 1rem !important;
+  @media(max-width: 768px) {
+    padding-right: 0 !important;;
+  }
+}
+
+.pr-4-desktop {
+  padding-right: 1.5rem !important;
+  @media(max-width: 768px) {
+    padding-right: 0 !important;;
+  }
+}
+
+.pr-5-desktop {
+  padding-right: 3rem !important;
+  @media(max-width: 768px) {
+    padding-right: 0 !important;;
+  }
+}
+
+.mb-5-desktop {
+  margin-bottom: 3rem !important;
+  @media(max-width: 768px) {
+    margin-bottom: 0 !important;;
+  }
 }
 
 .w-30 {
@@ -113,15 +168,10 @@ p {
   width: 66.66%;
 }
 
-.mobile-hidden {
+.w-50-desktop {
+  width: 50% !important;
   @media(max-width: 768px) {
-    display: none;
-  }
-}
-
-.desktop-hidden {
-  @media(min-width: 768px) {
-    display: none;
+    width: 100% !important;
   }
 }
 
@@ -130,4 +180,29 @@ p {
     display: flex;
   }
 }
+
+.flex-column-mobile {
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.text-center-mobile {
+  @media(max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.d-none-mobile {
+  @media(max-width: 768px) {
+    display: none;
+  }
+}
+
+.d-none-desktop {
+  @media(min-width: 768px) {
+    display: none;
+  }
+}
+
 

@@ -15,7 +15,7 @@
           <%= image_tag "cross.png", alt: "alttext", class: "hidden-profile-status-img" %>
         </div>
       <% end %>
-      <button type="submit" form="edit_user" class="btn btn-primary ml-4 mobile-hidden">Guardar Cambios</button>
+      <button type="submit" form="edit_user" class="btn btn-primary ml-4 d-none-mobile">Guardar Cambios</button>
     </div>
   </div>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -101,5 +101,5 @@
                   input_html: { autocomplete: "current-password", class: "contact-input" } %>
     </div>
   <% end %>
-  <button type="submit" form="edit_user" class="btn btn-primary w-100 mb-4 desktop-hidden">Guardar Cambios</button>
+  <button type="submit" form="edit_user" class="btn btn-primary w-100 mb-4 d-none-desktop">Guardar Cambios</button>
 </div>
