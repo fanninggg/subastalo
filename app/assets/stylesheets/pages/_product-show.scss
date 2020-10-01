@@ -1,3 +1,12 @@
+.product-flex {
+  display: flex;
+  padding-top: 3rem;
+  @media(max-width: 768px) {
+    flex-direction: column;
+    padding-top: 1rem;
+  }
+}
+
 .carousel-indicators {
   bottom: -50px !important;
   li {
@@ -17,6 +26,9 @@
   width: 100%;
   object-fit: cover;
   object-position: center;
+  @media(max-width: 768px) {
+    height: 243px;
+  }
 }
 
 .bids {
@@ -82,6 +94,9 @@
   color: $blue;
   font-weight: bold;
   margin-top: -16px;
+  @media(max-width: 768px) {
+    font-size: 40px !important;
+  }
 }
 
 .bid-input {
@@ -96,6 +111,9 @@
   padding: 0 !important;
   &:focus {
     box-shadow: none !important;
+  }
+  @media(max-width: 768px) {
+    font-size: 40px !important;
   }
 }
 
@@ -135,4 +153,19 @@ path {
 
 .highlighted-bid {
   background-color: rgba(253,115,35,0.05);
+}
+
+.fixed-offer-button-holder {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 94px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E4E5E6;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.16);
+  z-index: 20;
+  padding: 0 10px;
 }

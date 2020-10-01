@@ -1,5 +1,8 @@
 .profile-container {
   margin: 0 40px;
+  @media(max-width: 768px) {
+    margin: 0 20px;
+  }
 }
 
 .profile-section {

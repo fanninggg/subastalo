@@ -1,5 +1,5 @@
-<div class="container d-flex">
-  <div class="w-50 pr-4 mb-5">
+<div class="container contact-flex">
+  <div class="w-50-desktop pr-4-desktop mb-5-desktop">
     <h3 class="my-4">Contactanos</h3>
     <p style="line-height: 28px">Puedes llamarnos al <%= link_to "+353 399 2774", "tel:#{+3533992774}", class: 'contact-bubble' %> o escríbenos a <%= mail_to "contacto@subastalo.co.pty", "contacto@subastalo.co.pty", class: 'contact-bubble' %></p>
     <p class="mb-5">Para escribirnos directamente por favor llena el siguiente formulario.</p>
@@ -13,7 +13,7 @@
       <input type="submit" value="Enviar Mensaje" class="btn btn-primary btn-contact">
     </form>
   </div>
-  <div class="w-50 margin-80-top">
+  <div class="w-50-desktop margin-80-top">
     <div id="map"
      style="width: 100%; height: 451px;"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>

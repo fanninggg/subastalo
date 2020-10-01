@@ -1,3 +1,10 @@
+.contact-flex {
+  display: flex;
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
 .contact-bubble {
   background-color: $orange;
   color: #fff;
