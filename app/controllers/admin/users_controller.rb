@@ -19,6 +19,11 @@ class Admin::UsersController < ApplicationController
 
   end
 
+  def documents
+    @user = User.find(params[:id])
+    render partial: 'modal_content', locals: { documents: @user.documents }
+  end
+
   private
 
   def user_params
