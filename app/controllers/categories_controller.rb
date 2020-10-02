@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @products = @category.products
+    @products = @category.products.where(hidden: false)
     @min = @products.minimum(:opening_price_cents)
     @max = @products.maximum(:opening_price_cents)
     if params[:filter]
