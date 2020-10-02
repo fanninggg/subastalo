@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index]
   resources :bids, only: [:new, :create]
   resources :contacts, only: [:create]
+  resources :documents, only: [:destroy]
 
   # Admin Routes
   authenticate :user, ->(user) { user.admin? } do
