@@ -32,7 +32,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-
+    @product = Product.find(params[:id])
+    @category = @product.category
+    @product.delete
+    redirect_to admin_category_path(@category)
   end
 
   def hide

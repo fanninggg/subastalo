@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def home
     @categories = Category.all
     # No idea how featured things are meant to be assigned 🤷‍♂️. For now it's the first 6
-    @featured = Product.where(category_id: 1).first(6)
+    @featured = Product.first(6)
   end
 
   def about
