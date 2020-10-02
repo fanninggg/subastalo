@@ -6,10 +6,15 @@
   }
 }
 
+.admin-product-card {
+  height: 584px;
+}
+
 .product-img {
   height: 227px;
   background-size: cover;
   background-position: center;
+  border-bottom: 1px solid #CAD0D9;
 }
 
 .product-img-overlay {
@@ -40,6 +45,56 @@
   height: 100%;
   width: 2px;
   border-left: 1px dashed #CAD0D9;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #F2F7FF;
+  margin: 16px;
+  padding: 16px 8px;
+}
+
+.admin-offers {
+  display: flex;
+  align-items: center;
+}
+
+.admin-links {
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-link {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  i {
+    color: #fff;
+    font-size: 12px;
+    margin-left: 1px;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.hide-link {
+  background-color: #081F4E;
+}
+
+.edit-link {
+  background-color: #FCB20F;
+}
+
+.delete-link {
+  background-color: #EF3E36;
 }
 
 .product-card-link {

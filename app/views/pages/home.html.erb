@@ -4,14 +4,14 @@
     <p class="mt-4">Donde podrás encontrar vehículos, propiedades</p>
     <p>motocicletas, arte y mucho artículos mas.</p>
     <div class="d-flex mt-4">
-      <%= link_to "Subastas", categories_path, class: "btn btn-primary" %>
-      <%= link_to "Nostros", about_path, class: "btn btn-secondary ml-3" %>
+      <%= link_to "Subastas", categories_path, class: "btn btn-primary btn-large" %>
+      <%= link_to "Nostros", about_path, class: "btn btn-secondary btn-large ml-3" %>
     </div>
   </div>
 </div>
 <div class="container margin-80-top text-center-mobile">
   <h3>Subastas</h3>
-  <p class="w-50-desktop">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
+  <p class="w-50-desktop mb-5">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
   <div class="category-grid">
     <% @categories.each do |category| %>
     <!-- This will be replaced by the category image once cloudinary is set up -->
@@ -25,7 +25,7 @@
   <p class="text-center blue center-padding-desktop">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
   <div class="product-grid mt-5">
     <% @featured.each do |product| %>
-      <%= render "shared/product_card", product: product %>
+      <%= render "shared/product_card", product: product, admin: false %>
     <% end %>
   </div>
   <div class="d-flex margin-80-top margin-80-bottom flex-column-mobile text-center-mobile">

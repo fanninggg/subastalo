@@ -2,16 +2,13 @@
   <%= render "admin/shared/sidebar", categories: @categories %>
   <div class="sidebar-aware-container">
     <div class="container pt-4">
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center mb-4">
         <h3><%= @category.name %></h3>
-        <%= link_to "+ Agregar Subasta", new_admin_product_path, class: "btn btn-primary" %>
+        <%= link_to "+ Agregar Subasta", new_admin_product_path, class: "btn btn-primary btn-large" %>
       </div>
       <div class="category-grid">
-
         <% @category.products.each do |product| %>
-          <div class="product-card">
-            <%= link_to product.hidden? ? 'Unhide' : 'Hide', hide_admin_product_path(product), method: :patch %>
-          </div>
+          <%= render "shared/product_card", product: product, admin: true %>
         <% end %>
       </div>
     </div>
