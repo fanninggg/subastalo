@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all.order(:created_at)
+    @users = User.where(completed: true).order(:created_at)
   end
 
   def show
