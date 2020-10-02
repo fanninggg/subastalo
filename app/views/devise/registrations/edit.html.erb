@@ -89,6 +89,7 @@
               <h2 class="text-center"><%= document.blob.content_type %></h2>
             <% end %>
             <p class="blue text-center m-0 mt-2"><%= document.blob.filename %></p>
+            <%= link_to 'Delete', document_path(document), method: :delete %>
           </div>
         <% end %>
         <div class="document-upload-holder">
@@ -98,6 +99,11 @@
               <span class="document-upload-text">Agregar Documento</span>
             </div>
           </label>
+          <% if current_user.documents.attached? %>
+            <% current_user.documents.each do |doc| %>
+              <%= f.hidden_field :documents, multiple: true, value: doc.signed_id, id: 'hidden_docs' %>
+            <% end %>
+          <% end %>
           <%= f.input :documents, as: :file, input_html: { multiple: true } %>
         </div>
       </div>
