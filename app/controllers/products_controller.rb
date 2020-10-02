@@ -29,6 +29,6 @@ class ProductsController < ApplicationController
   end
 
   def check_hidden
-    redirect_back(fallback_location: request.referer) if @product.hidden?
+    redirect_back(fallback_location: root_path) if @product.hidden?
   end
 end

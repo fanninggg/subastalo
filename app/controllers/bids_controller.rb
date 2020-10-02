@@ -2,6 +2,10 @@ class BidsController < ApplicationController
   def create
     @bid = Bid.new(bid_params)
     @product = Product.find(params[:product])
+    if @product.hidden?
+      redirect_back(fallback_location: root_path)
+      return
+    end
     @bid.user = current_user
     @bid.product = @product
     if @bid.save
