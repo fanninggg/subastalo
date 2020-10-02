@@ -15,5 +15,6 @@ class PagesController < ApplicationController
 
   def favorites
     @favorites = current_user&.all_favorites&.map { |favorite| Product.find(favorite.favoritable_id)} || []
+    @favorites.reject!(&:hidden?)
   end
 end
