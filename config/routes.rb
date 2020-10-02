@@ -25,6 +25,9 @@ Rails.application.routes.draw do
       end
       resources :features, only: [:destroy]
       resources :users, only: [:index, :show, :update, :destroy] do
+        member do
+          get 'documents', to: 'users#documents'
+        end
         resources :strikes, only: [:new, :create]
       end
       resources :categories, only: [:index, :show, :edit, :update, :destroy]
