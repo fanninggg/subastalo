@@ -1,19 +1,24 @@
 <div class="<%= admin ? 'product-card admin-product-card' : 'product_card' %>">
-  <!-- This will be replaced by the category image once cloudinary is set up -->
   <div class="product-img" style="background-image: url('<%= cl_image_path(product.photos.first.key) %>')">
     <div class="product-img-overlay">
-      <span class="product-badge">TODO</span>
-      <% if current_user.nil? %>
-        <%= link_to new_user_session_path do %>
-          <i class="far fa-heart size-20"></i>
-        <% end %>
-      <% elsif current_user.favorited?(product) %>
-        <%= link_to unfavorite_product_path(product), method: :post do %>
-          <i class="fas fa-heart size-20"></i>
-        <% end %>
+      <% if product.end_time.to_date.past? %>
+        <span class="bubble big-bubble red-bubble">Inactivo</span>
       <% else %>
-        <%= link_to favorite_product_path(product), method: :post do %>
-          <i class="far fa-heart size-20"></i>
+        <span class="bubble big-bubble green-bubble">Activo</span>
+      <% end %>
+      <% unless admin %>
+        <% if current_user.nil? %>
+          <%= link_to new_user_session_path do %>
+            <i class="far fa-heart size-20"></i>
+          <% end %>
+        <% elsif current_user.favorited?(product) %>
+          <%= link_to unfavorite_product_path(product), method: :post do %>
+            <i class="fas fa-heart size-20"></i>
+          <% end %>
+        <% else %>
+          <%= link_to favorite_product_path(product), method: :post do %>
+            <i class="far fa-heart size-20"></i>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -46,7 +51,7 @@
     <div class="admin-info">
       <div class="admin-offers">
         <p class="m-0">Offertas:</p>
-        <p class="m-0 ml-2 orange-bubble"><%= product.bids.length %></p>
+        <p class="m-0 ml-2 bubble orange-bubble"><%= product.bids.length %></p>
       </div>
       <div class="admin-links">
         <%= link_to hide_admin_product_path(product), method: :patch, class: "admin-link hide-link" do %>

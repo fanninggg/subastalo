@@ -1,0 +1,27 @@
+.bubble {
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 25px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:hover {
+    background-color: #f85c02;
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.big-bubble {
+  padding: 6px 18px;
+}
+
+.orange-bubble {
+  background-color: $orange;
+}
+
+.red-bubble {
+  background-color: #EF3E36;
+}
+
+.green-bubble {
+  background-color: #1C9F72;
+}
