@@ -73,11 +73,16 @@
 .image-upload-holder {
   width: 195px;
   text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
   p {
     margin-top: 8px;
     font-size: 20px;
     text-decoration: underline;
     color: #CAD0D9;
+    cursor: pointer;
+  }
+  label {
     cursor: pointer;
   }
   input {

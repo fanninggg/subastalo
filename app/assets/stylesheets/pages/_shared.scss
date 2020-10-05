@@ -89,19 +89,6 @@ p {
   padding: 10px 30px !important;
 }
 
-.orange-bubble {
-  background-color: $orange;
-  color: #fff;
-  padding: 2px 8px;
-  border-radius: 25px;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  &:hover {
-    background-color: #f85c02;
-    text-decoration: none;
-    color: #fff;
-  }
-}
-
 .margin-80-top {
   margin-top: 80px;
 }
