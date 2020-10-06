@@ -1,31 +1,54 @@
 <%= simple_form_for([:admin, product]) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :opening_price, as: :integer %>
-  <%= f.input :maximum_price, as: :integer %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.label :start_time %>
-  <%= f.datetime_select :start_time, :ampm => true, :minute_step => 15 %>
-  <br>
-  <%= f.label :end_time %>
-  <%= f.datetime_select :end_time, :ampm => true, :minute_step => 15 %>
-  <%= f.association :category %>
-  <%= f.input :hidden %>
-  <div>
-    <h4>Features</h4>
-    <%= f.fields_for :feature do |a| %>
-      <% product.features.each do |feature| %>
-        <div class="form-inline justify-content-around">
-          <%= a.input :key, required: false, input_html: { name: 'product[current_features][][key]', value: feature.key } %>
-          <%= a.input :value, required: false, input_html: { name: 'product[current_features][][value]', value: feature.value } %>
-          <%= link_to admin_feature_path(feature), method: :delete  do %>
-            <button>Delete</button>
+  <div class="new-product-container">
+    <div>
+      <div class="new-product-card">
+        <h5>Detalles</h5>
+        <%= f.input :name, label: "Nombre de Producto", placeholder: "LandCruiser 4X4 Sahara Edition" %>
+        <%= f.input :description, label: "Descripcion" %>
+        <%= f.association :category %>
+      </div>
+      <div class="new-product-card">
+        <h5>Fotos</h5>
+        <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
+      </div>
+      <div class="new-product-card">
+        <h5>Precio</h5>
+        <%= f.input :opening_price, as: :integer, label: 'Precio Inicial' %>
+        <%= f.input :maximum_price, as: :integer, label: 'Precio Maximo' %>
+      </div>
+      <div class="new-product-card">
+        <h5>Fechas</h5>
+        <%#= f.label :start_time, label: "Fecha de Incio" %>
+        <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <br>
+        <%#= f.label :end_time, label: "Fecha Final" %>
+        <%= f.input :end_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+      </div>
+      <div class="new-product-card">
+        <h5>Documentos</h5>
+        <%= f.input :documents, as: :file, input_html: { multiple: true }, label: false %>
+      </div>
+      <div class="new-product-card">
+        <h5>Opciones</h5>
+        <%= f.fields_for :feature do |a| %>
+          <% product.features.each do |feature| %>
+            <div class="form-inline justify-content-around mb-3">
+              <%= a.input :key, required: false, input_html: { name: 'product[current_features][][key]', value: feature.key } %>
+              <%= a.input :value, required: false, input_html: { name: 'product[current_features][][value]', value: feature.value } %>
+              <%= link_to admin_feature_path(feature), method: :delete  do %>
+                <button class="btn btn-danger">Delete</button>
+              <% end %>
+            </div>
           <% end %>
-        </div>
-      <% end %>
-    <% end %>
-    <button type="button" id="feature-btn">Add Feature</button>
+        <% end %>
+        <button type="button" id="feature-btn" class="btn btn-secondary mt-4">Agregar Otra Opción </button>
+      </div>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+    <div class="new-product-card small-new-product-card">
+      <h5>Disponibilidad del Producto</h5>
+      <%= f.input :hidden %>
+    </div>
   </div>
-  <%= f.submit %>
 <% end %>
 

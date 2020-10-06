@@ -1,0 +1,23 @@
+.new-product-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.new-product-card {
+  border: 1px solid #CAD0D9;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  padding: 16px;
+  margin-bottom: 24px;
+  min-width: 581px;
+  background-color: #fff;
+  h5 {
+    color: $blue;
+
+  }
+}
+
+.small-new-product-card {
+  min-width: 382px;
+}

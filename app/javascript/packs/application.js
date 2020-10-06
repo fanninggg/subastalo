@@ -28,6 +28,8 @@ import 'nouislider/distribute/nouislider.css'
 import { initFilterSlider } from '../components/filterSlider'
 import { initMapbox } from '../plugins/init_mapbox'
 import { initProdForm } from '../components/prodForm'
+import flatpickr from "flatpickr";
+
 
 document.addEventListener('turbolinks:load', () => {
   initFilterSlider()
@@ -37,4 +39,8 @@ document.addEventListener('turbolinks:load', () => {
   if (map) {
     document.querySelector('svg').children[0].children[1].style.fill = '#FD7323'
   }
+  flatpickr(".datepicker", {
+    enableTime: true,
+    altInput: true
+  });
 })

@@ -27,6 +27,9 @@
   object-fit: cover;
   object-position: center;
   @media(max-width: 768px) {
+    height: 400px;
+  }
+  @media(max-width: 440px) {
     height: 243px;
   }
 }
