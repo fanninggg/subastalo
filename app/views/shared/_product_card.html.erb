@@ -27,7 +27,7 @@
   <div class="product-info">
     <div class="product-info-panel">
       <p class="blue m-0">Ultima Oferta:</p>
-      <p class="m-0 green"><%= product.bids.length > 0 ? "$#{product.bids.last}" : "No bids" %></p>
+      <p class="m-0 green"><%= product.bids.length > 0 ? humanized_money_with_symbol(product.bids.last.price) : "No bids" %></p>
       <p class="blue m-0 mt-2">Tiempo Restante:</p>
       <p class="m-0 orange"><%= product.start_time.strftime('%l:%M %p, %e %b %Y') %></p>
       <% if product.features.length > 0 %>
@@ -65,6 +65,8 @@
         <% end %>
       </div>
     </div>
+    <%= link_to "Ver Subasta", admin_product_path(product), class: "product-card-link" %>
+  <% else %>
+    <%= link_to "Ver Producto", product_path(product), class: "product-card-link" %>
   <% end %>
-  <%= link_to "Ver Producto", product_path(product), class: "product-card-link" %>
 </div>
