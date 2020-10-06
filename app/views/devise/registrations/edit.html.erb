@@ -133,9 +133,10 @@
               <%= f.hidden_field :documents, multiple: true, value: doc.signed_id, id: 'hidden_docs' %>
             <% end %>
           <% end %>
-          <%= f.input :documents, as: :file, input_html: { multiple: true } %>
+          <%= f.input :documents, as: :file, input_html: { multiple: true, data: {action: "change->devise#documentPreview"} } %>
         </div>
       </div>
+      <p class="m-0 ml-3" data-target="devise.documentNames"></p>
     </div>
     <div class="profile-section">
       <h4 class="blue">Cambio de Contraseña</h4>
