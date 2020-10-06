@@ -55,3 +55,16 @@
 .active-dot {
   opacity: 100%;
 }
+
+.upload-photo {
+  border: 1px solid $orange;
+  color: $orange;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.user_documents {
+  margin: 0;
+}

@@ -1,41 +1,65 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" }%>
-    <%= f.input :address,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "address" }%>
-    <%= f.input :sex,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "sex" }%>
-    <%= f.input :age,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "age" }%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+<div class="devise-container" data-controller="devise">
+  <div class="modal-content">
+    <div class="devise-modal-header">
+      <h3>Aplicación para Crear Cuenta</h3>
+    </div>
+    <div class="devise-modal-body">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: "Correo Electrónico",
+                      input_html: { autocomplete: "email", class: "contact-input" }%>
+          <%= f.input :password,
+                      required: true,
+                      label: false,
+                      placeholder: "Contrasena",
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password", class: "contact-input" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      label: false,
+                      placeholder: "Confirmar Contraseña",
+                      input_html: { autocomplete: "new-password", class: "contact-input" } %>
+          <%= f.input :name,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: "Nombre",
+                      input_html: { autocomplete: "name" }%>
+          <%= f.input :address,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: "Direccion",
+                      input_html: { autocomplete: "address" }%>
+          <%= f.input :sex,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: "Sexo",
+                      input_html: { autocomplete: "sex" }%>
+          <%= f.input :age,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: "Edad",
+                      input_html: { autocomplete: "age" }%>
+          <p>Debe subir un documento legal llámese, Pasaporte, Cédula, Licencia de Conducción o Certificado de Nacimiento de Ambos Lados.</p>
+          <div class="d-flex align-items-center mb-4">
+            <%= f.input :documents, as: :file, input_html: { multiple: true, class: 'd-none', data: {action: "change->devise#documentPreview"} }, label_html: { class: 'upload-photo'}, label: 'Subir Fotos' %>
+            <p class="m-0 ml-3" data-target="devise.documentNames"></p>
+          </div>
+          <%= f.button :submit, "Enviar Aplicación", class: "btn-primary btn-devise" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="devise-modal-footer">
+      <p style="color: rgba(98, 106, 121, 0.6)">Tiene cuenta? <a class="devise-link" data-self="signupModal" data-action="click->devise#closeSelf" data-toggle="modal" data-target="#loginModal">
+      Login</a><br /></p>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

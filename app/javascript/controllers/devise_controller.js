@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "page", "page1", "page2", "page3", "pageCounter", "dot1", "dot2", "photoPreview" ]
+  static targets = [ "page", "page1", "page2", "page3", "pageCounter", "dot1", "dot2", "photoPreview", "documentNames", "profileDocumentNames" ]
 
   closeSelf(event) {
     const modal = event.currentTarget.dataset.self
@@ -28,6 +28,26 @@ export default class extends Controller {
       const reader = new FileReader();
       reader.onload = (event) => {
         this.photoPreviewTarget.src = event.currentTarget.result;
+      }
+      reader.readAsDataURL(event.currentTarget.files[0])
+    }
+  }
+
+  documentPreview(event) {
+    if (event.currentTarget.files && event.currentTarget.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        this.documentNamesTarget.innerText = `Archivos agregados`
+      }
+      reader.readAsDataURL(event.currentTarget.files[0])
+    }
+  }
+
+  profileDocumentPreview(event) {
+    if (event.currentTarget.files && event.currentTarget.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        this.profileDocumentNamesTarget.innerText = `Archivos agregados`
       }
       reader.readAsDataURL(event.currentTarget.files[0])
     }
