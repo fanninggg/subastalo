@@ -2,6 +2,16 @@ class Admin::ProductsController < ApplicationController
   before_action :set_categories
   before_action :authenticate_user!
 
+  def show
+    @product = Product.find(params[:id])
+    @bids = @product.bids.sort_by { |bid| bid.price_cents }.reverse!
+    @time_left = @product.end_time - Time.now
+    @mm, @ss = @time_left.divmod(60)
+    @hh, @mm = @mm.divmod(60)
+    @dd, @hh = @hh.divmod(24)
+    @winning_bid = @product.bids.last
+  end
+
   def new
     @product = Product.new
   end

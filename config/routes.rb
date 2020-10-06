@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # Admin Routes
   authenticate :user, ->(user) { user.admin? } do
     namespace :admin do
-      resources :products, only: [:new, :create, :edit, :update, :destroy] do
+      resources :products, only: [:show, :new, :create, :edit, :update, :destroy] do
         member do
           patch '/hide', to: 'products#hide'
         end
