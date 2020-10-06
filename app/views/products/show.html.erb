@@ -103,7 +103,21 @@
     <% end %>
     <% if @product.documents.length > 0 %>
       <h4>Documentos</h4>
-      <div class="product-details mb-5">
+      <div class="product-details d-flex mb-5">
+        <div class="documents-grid">
+          <% @product.documents.each do |document| %>
+            <div class="document">
+              <% if document.blob.filename.to_s.include?('pdf') %>
+                <%= image_tag "pdf-logo.png", alt: "alttext", class: "pdf-logo" %>
+              <% elsif document.blob.content_type.to_s.include?('image') %>
+                <%= image_tag rails_blob_path(document, disposition: 'preview'), alt: "Preview of document", class: "document-preview" %>
+              <% else %>
+                <h2 class="text-center"><%= document.blob.content_type %></h2>
+              <% end %>
+              <p class="blue text-center m-0 mt-2"><%= document.blob.filename %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
