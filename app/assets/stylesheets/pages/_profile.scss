@@ -42,6 +42,11 @@
   color: #EF3E36;
 }
 
+.status-pending {
+  border: 1px solid #FCB20F;
+  color: #FCB20F;
+}
+
 .profile-status-img {
   width: 32px;
   height: 32px;
@@ -51,6 +56,29 @@
 .hidden-profile-status-img {
   width: 8px;
   opacity: 0;
+}
+
+.profile-alert {
+  width: 100%;
+  height: 141px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-alert-img {
+  height: 89px;
+  width: 89px;
+  margin: 0 16px;
+}
+
+.rejection-alert {
+  background-color: rgba(239,62,54,0.08);
+  border-left: 6px solid #EF3E36;
+}
+
+.incomplete-alert {
+  background-color: rgba(252,178,15,0.08);
+  border-left: 6px solid #FCB20F;
 }
 
 .profile-image-section {

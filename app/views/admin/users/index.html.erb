@@ -22,12 +22,41 @@
                 <p class="m-0">No Documents</p>
               <% end %>
               <% if user.approved %>
-                <%= button_to 'Strike user', new_admin_user_strike_path(user), method: :get %>
+                <%= button_to 'Strike user', new_admin_user_strike_path(user), method: :get, class: "btn btn-danger" %>
               <% else %>
-                <%= simple_form_for([:admin, user]) do |f| %>
-                  <%= f.check_box :approved %>
-                  <%= f.submit %>
-                <% end %>
+                <a href="#" data-toggle="modal" data-target="#decisionModal" class="btn btn-secondary">Decision</a>
+                <div class="modal fade" id="decisionModal" tabindex="-1" role="dialog" aria-labelledby="decisionModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="devise-modal-header">
+                        <h3 data-target="admin.rejectionTitle">Aprobar o Decline</h3>
+                      </div>
+                      <div class="devise-modal-body">
+                        <div data-target="admin.rejectionOptions">
+                          <% if user.rejection %>
+                            <h6>This user has been rejected for the following reason: <br> <strong><%= user.rejection %></strong></h6>
+                            <h6>You can change this by choosing one of the options below:</h6>
+                          <% end %>
+                          <div class="d-flex justify-content-around mt-4">
+                            <%= simple_form_for([:admin, user]) do |f| %>
+                              <%= f.check_box :approved, label: false, checked: true, class: "d-none" %>
+                              <%= f.submit "Aprobar", class: "btn btn-primary w-100" %>
+                            <% end %>
+                            <a class="btn btn-secondary" data-action="click->admin#rejectUser">Decline</a>
+                          </div>
+                        </div>
+                        <div class="d-none" data-target="admin.rejectionForm">
+                          <%= simple_form_for([:admin, user]) do |f| %>
+                            <%= f.input :rejection, label: false, placeholder: "Razón por la cual se rechazo aplicación." %>
+                            <%= f.submit "Enviar", class: "btn btn-primary w-100" %>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="devise-modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <% end %>
               <p class="m-0"><%= user.created_at.strftime('%b %d, %Y') %></p>
             </div>

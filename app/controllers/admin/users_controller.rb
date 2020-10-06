@@ -27,6 +27,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:approved)
+    params.require(:user).permit(:approved, :rejection)
   end
 end
