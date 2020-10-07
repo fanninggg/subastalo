@@ -2,7 +2,14 @@
   <div class="profile-section profile-header-section">
     <h3>Mi Perfil</h3>
     <div class="d-flex">
-      <% if current_user.approved %>
+      <% if current_user.strikes.length > 0 %>
+        <% strike_info = current_user.strikes.each_with_index.map { |strike, index| "Strike #{index + 1}: #{strike.reason}" } %>
+        <div class="profile-status status-unapproved" title='<%= strike_info.join("\n") %> <%= "\n" %>Para comunicarte con nosotros escríbenos a contacto@subastalo.pty o llámanos al +353 343 343 8288 '>
+          <%= image_tag "down.png", alt: "alttext", class: "profile-status-img" %>
+          <span><%= pluralize(current_user.strikes.length, 'Strike') %></span>
+          <%= image_tag "down.png", alt: "alttext", class: "hidden-profile-status-img" %>
+        </div>
+      <% elsif current_user.approved %>
         <div class="profile-status status-approved">
           <%= image_tag "tick.png", alt: "alttext", class: "profile-status-img" %>
           <span>Perfil Habilitado</span>
