@@ -22,7 +22,24 @@
                 <p class="m-0">No Documents</p>
               <% end %>
               <% if user.approved %>
-                <%= button_to 'Strike user', new_admin_user_strike_path(user), method: :get, class: "btn btn-danger" %>
+                <a href="#" data-toggle="modal" data-target="#strikeModal" class="btn btn-danger">Strike</a>
+                <div class="modal fade" id="strikeModal" tabindex="-1" role="dialog" aria-labelledby="strikeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="devise-modal-header">
+                        <h3 data-target="admin.rejectionTitle">Strike <%= user.name %></h3>
+                      </div>
+                      <div class="devise-modal-body">
+                        <%= simple_form_for([:admin, user, @strike]) do |f| %>
+                          <%= f.input :reason, label: "Razón", placeholder: "Se negó a comprar Land Rover después de ganar la subasta" %>
+                          <%= f.submit "Strike", class: 'btn btn-danger w-100' %>
+                        <% end %>
+                      </div>
+                      <div class="devise-modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <% else %>
                 <a href="#" data-toggle="modal" data-target="#decisionModal" class="btn btn-secondary">Decision</a>
                 <div class="modal fade" id="decisionModal" tabindex="-1" role="dialog" aria-labelledby="decisionModalLabel" aria-hidden="true">

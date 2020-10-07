@@ -4,6 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.where(completed: true).order(:created_at)
+    @strike = Strike.new
   end
 
   def show
