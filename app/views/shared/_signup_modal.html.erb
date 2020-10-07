@@ -73,9 +73,9 @@
         <p style="color: rgba(98, 106, 121, 0.6)">Tiene cuenta? <a class="devise-link" data-self="signupModal" data-action="click->devise#closeSelf" data-toggle="modal" data-target="#loginModal">
         Login</a><br /></p>
         <div class="signup-indicator">
-          <div class="indicator-dot active-dot"></div>
-          <div class="indicator-dot" data-target="devise.dot1"></div>
-          <div class="indicator-dot" data-target="devise.dot2"></div>
+          <div class="indicator-dot active-dot" data-target="devise.dot devise.dot1" data-action="click->devise#changePage" data-page-target='1'></div>
+          <div class="indicator-dot" data-target="devise.dot devise.dot2" data-action="click->devise#changePage" data-page-target='2'></div>
+          <div class="indicator-dot" data-target="devise.dot devise.dot3" data-action="click->devise#changePage" data-page-target='3'></div>
         </div>
       </div>
     </div>
