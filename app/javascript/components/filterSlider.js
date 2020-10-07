@@ -3,7 +3,12 @@ import wNumb from 'wnumb'
 
 export const initFilterSlider = () => {
   const slider = document.querySelector('.price-slider')
+  const existingSlider = document.querySelector('.noUi-target')
   if (slider) {
+    // Deletes multiple sliders created by turbolinks and browser back button
+    if (existingSlider) {
+      existingSlider.children[0].remove()
+    }
     const display = document.querySelector('.slider-display')
     const input = document.querySelector('#filter_price')
     const formatter = wNumb({
