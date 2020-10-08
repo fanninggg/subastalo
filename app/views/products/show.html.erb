@@ -1,9 +1,14 @@
 <div class="container position-relative">
   <div class="product-flex" data-controller="products">
+    <!-- This section only appears on mobile -->
     <div class="product-stats d-none-desktop">
       <div class="product-stat w-100 time-left">
         <span>Tiempo Restante</span>
-        <p id="timer" data-time="<%= @product.end_time.to_s %>" data-target="products.timer"><%= "#{@dd}:#{@hh.to_s.rjust(2, "0")}:#{@mm.to_s.rjust(2, "0")}:#{@ss.to_i}" %></p>
+        <% if @product.end_time.to_datetime.past? %>
+          <p class="timer-finished">Subasta terminada</p>
+        <% else %>
+          <p id="timer" data-time="<%= @product.end_time.to_s %>" data-target="products.timer"><%= "#{@dd}:#{@hh.to_s.rjust(2, "0")}:#{@mm.to_s.rjust(2, "0")}:#{@ss.to_i}" %></p>
+        <% end %>
       </div>
       <div class="product-stat w-100 winning-offer">
         <span>Ultima Oferta</span>
@@ -57,10 +62,15 @@
           <p class="blue m-0">Descripción:</p>
           <p><%= @product.description %></p>
         </div>
+        <!-- This section only appears on desktop -->
         <div class="product-stats d-none-mobile">
           <div class="product-stat time-left">
             <span>Tiempo Restante</span>
-            <p id="timer" data-time="<%= @product.end_time.to_s %>" data-target="products.timer"><%= "#{@dd}:#{@hh.to_s.rjust(2, "0")}:#{@mm.to_s.rjust(2, "0")}:#{@ss.to_i}" %></p>
+            <% if @product.end_time.to_datetime.past? %>
+              <p class="timer-finished">Subasta terminada</p>
+            <% else %>
+              <p id="timer" data-time="<%= @product.end_time.to_s %>" data-target="products.timer"><%= "#{@dd}:#{@hh.to_s.rjust(2, "0")}:#{@mm.to_s.rjust(2, "0")}:#{@ss.to_i}" %></p>
+            <% end %>
           </div>
           <div class="product-stat winning-offer">
             <span>Ultima Oferta</span>

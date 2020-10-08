@@ -6,7 +6,7 @@
         <h3><%= @category.name %></h3>
         <%= link_to "+ Agregar Subasta", new_admin_product_path, class: "btn btn-primary btn-large" %>
       </div>
-      <div class="category-grid">
+      <div class="product-grid">
         <% @category.products.each do |product| %>
           <%= render "shared/product_card", product: product, admin: true %>
         <% end %>
