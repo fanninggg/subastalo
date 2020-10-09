@@ -1,3 +1,41 @@
+.slider-container {
+  width: 80%;
+  height: 0px;
+  transition: 0.25s ease-in;
+  overflow-y: hidden;
+  padding: 0 16px;
+}
+
+.slider-open {
+  height: 60px;
+}
+
+.noUi-target {
+  margin-top: 8px;
+}
+
 .noUi-connect {
   background-color: $orange !important;
+}
+
+.filter-btn {
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  background-color: #F0F0F0;
+  max-width: 170px;
+  border: 1px solid #B7B7B7;
+  cursor: pointer;
+  color: $gray;
+  margin-right: 16px;
+  // Hiding dropdown arrow
+  -o-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  &:hover {
+    text-decoration: none;
+    background-color: #FAFAFA;
+    color: $gray;
+  }
 }
