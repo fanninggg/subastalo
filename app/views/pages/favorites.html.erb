@@ -1,12 +1,15 @@
 <div class="container">
-  <% if @favorites %>
+  <% if @favorites.length > 0 %>
     <h3 class="my-4">Me Favoritos</h3>
     <div class="product-grid mb-5">
       <% @favorites.each do |product| %>
         <%= render "shared/product_card", product: product, admin: false %>
       <% end %>
     </div>
+  <% elsif current_user %>
+    <h3 class="my-4 text-center">Sus artículos favoritos aparecerán aquí.</h3>
+    <h3 class="text-center">Para marcar algo como favorito, simplemente haga clic en el pequeño corazón en la parte superior derecha de una tarjeta de subasta</h3>
   <% else %>
-    <h3 class="my-4">Please sign in to begin favoriting items</h3>
+    <h3 class="my-4 text-center">Inicie sesión para comenzar a marcar como favoritos los artículos</h3>
   <% end %>
 </div>
