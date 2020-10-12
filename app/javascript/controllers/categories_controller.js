@@ -1,9 +1,13 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "slider", "filterBtn" ]
+  static targets = [ "slider", "filterBtn", "filters" ]
 
   connect() {
+  }
+
+  showFilters() {
+    this.filtersTarget.classList.toggle('filters-open')
   }
 
   toggleSlider() {

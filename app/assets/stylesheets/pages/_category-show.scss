@@ -4,6 +4,9 @@
   transition: 0.25s ease-in;
   overflow-y: hidden;
   padding: 0 16px;
+  @media(max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .slider-open {
@@ -16,6 +19,27 @@
 
 .noUi-connect {
   background-color: $orange !important;
+}
+
+.filters-closed {
+  @media(max-width: 768px) {
+    height: 0px;
+    overflow-y: hidden;
+    transition: 0.25s ease-in;
+  }
+}
+
+.filters-open {
+  @media(max-width: 768px) {
+    height: 155px;
+  }
+}
+
+.filters {
+  display: flex;
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .filter-btn {
@@ -37,5 +61,10 @@
     text-decoration: none;
     background-color: #FAFAFA;
     color: $gray;
+  }
+  @media(max-width: 768px) {
+    width: 100%;
+    max-width: none;
+    margin-top: 8px;
   }
 }
