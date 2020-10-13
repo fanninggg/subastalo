@@ -180,3 +180,18 @@ path {
     display: none;
   }
 }
+
+.auction-ended-img-holder {
+  height: 237px;
+  width: 237px;
+  border-radius: 50%;
+  border: 10px solid rgba(253, 115, 31, 0.21);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auction-ended-img {
+  width: 122px;
+}

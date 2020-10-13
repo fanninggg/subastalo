@@ -9,7 +9,7 @@
       </div>
       <div class="category-grid">
         <% @categories.each do |category| %>
-          <%= link_to admin_category_path(category), class: "category-card", style: "background-image: url(#{category.photo.attached? ? cl_image_path(category.photo.key) : 'https://images.pexels.com/photos/225841/pexels-photo-225841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'})" do %>
+          <%= link_to admin_category_path(category), class: "category-card", style: "background-image: url(#{category.photo.attached? ? url_for(category.photo) : 'https://images.pexels.com/photos/225841/pexels-photo-225841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'})" do %>
             <div class="category-card-overlay"></div>
             <p class="category-card-text"><%= category.name %></p>
           <% end %>

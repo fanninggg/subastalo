@@ -1,5 +1,5 @@
 <div class="<%= admin ? 'product-card admin-product-card' : 'product-card' %>">
-  <div class="product-img" style="background-image: url('<%= cl_image_path(product.photos.first.key) %>')">
+  <div class="product-img" style="background-image: url('<%= url_for(product.photos.first) %>')">
     <div class="product-img-overlay">
       <% if product.end_time.to_datetime.past? %>
         <span class="bubble big-bubble red-bubble">Inactivo</span>

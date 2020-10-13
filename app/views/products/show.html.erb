@@ -1,5 +1,9 @@
-<div class="container position-relative">
-  <div class="product-flex" data-controller="products">
+<div class="container position-relative" data-controller="products">
+  <div class="product-flex">
+    <div data-target="products.auctionEndedBtn">
+      <button class="d-none" data-toggle="modal" data-target="#auctionEndedModal" >
+      </button>
+    </div>
     <!-- This section only appears on mobile -->
     <div class="product-stats d-none-desktop">
       <div class="product-stat w-100 time-left">
@@ -12,7 +16,7 @@
       </div>
       <div class="product-stat w-100 winning-offer">
         <span>Ultima Oferta</span>
-        <p><%= @winning_bid ? humanized_money_with_symbol(@winning_bid.price) : 'No bids yet' %></p>
+        <p><%= @winning_bid ? humanized_money_with_symbol(@winning_bid.price) : humanized_money_with_symbol(@product.opening_price) %></p>
       </div>
       <div class="product-stat w-100 your-offer">
         <span>Tu Oferta</span>
@@ -29,7 +33,7 @@
         <div class="carousel-inner">
           <% @product.photos.each_with_index do |photo, index| %>
             <div class="<%= index == 0 ? 'carousel-item active' : 'carousel-item' %>">
-              <%= cl_image_tag photo.key, crop: :fill, class: "product-show-img" %>
+              <img class="product-show-img" src="<%= url_for(photo) %>" alt="Product photo" />
             </div>
           <% end %>
         </div>
@@ -74,7 +78,7 @@
           </div>
           <div class="product-stat winning-offer">
             <span>Ultima Oferta</span>
-            <p><%= @winning_bid ? humanized_money_with_symbol(@winning_bid.price) : 'No bids yet' %></p>
+            <p><%= @winning_bid ? humanized_money_with_symbol(@winning_bid.price) : humanized_money_with_symbol(@product.opening_price) %></p>
           </div>
           <div class="product-stat your-offer">
             <span>Tu Oferta</span>
@@ -96,6 +100,7 @@
         Ofertar
       </button>
     </div>
+
   </div>
   <div class="mt-5">
     <% if @product.features.length > 0 %>
@@ -136,35 +141,53 @@
       Ofertar
     </button>
   </div>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="products">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <% if current_user %>
-          <h3 class="text-center">Escoge el monto de oferta</h3>
-          <p class="blue text-center">Monto de Oferta en USD Dolaress</p>
-          <%= simple_form_for(@bid) do |f| %>
-            <div class="d-flex align-items-center">
-              <span class="input-currency">$</span>
-              <%= f.input :price, as: :integer, label: false, input_html: { class: "bid-input", value: @product.bids.length > 0 ? humanized_money(@product.bids.last.price).delete(',').to_i : humanized_money(@product.opening_price).delete(',').to_i, data: { target: "products.bidInput" } } %>
-              <div class="arrows">
-                <svg width="22" height="17" viewBox="0 0 22 17" fill="none" class="arrow" id="upArrow" data-action="click->products#increment">
-                  <path d="M11 0L22 17H0L11 0Z" fill="#8E98B0"/>
-                </svg>
-                <svg width="22" height="17" viewBox="0 0 22 17" fill="none" class="arrow" id="downArrow" data-action="click->products#decrement">
-                  <path d="M11 0L22 17H0L11 0Z" fill="#8E98B0"/>
-                </svg>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <% if current_user %>
+            <h3 class="text-center">Escoge el monto de oferta</h3>
+            <p class="blue text-center">Monto de Oferta en USD Dolaress</p>
+            <%= simple_form_for(@bid) do |f| %>
+              <div class="d-flex align-items-center">
+                <span class="input-currency">$</span>
+                <%= f.input :price, as: :integer, label: false, input_html: { class: "bid-input", value: @product.bids.length > 0 ? humanized_money(@product.bids.last.price).delete(',').to_i : humanized_money(@product.opening_price).delete(',').to_i, data: { target: "products.bidInput" } } %>
+                <div class="arrows">
+                  <svg width="22" height="17" viewBox="0 0 22 17" fill="none" class="arrow" id="upArrow" data-action="click->products#increment">
+                    <path d="M11 0L22 17H0L11 0Z" fill="#8E98B0"/>
+                  </svg>
+                  <svg width="22" height="17" viewBox="0 0 22 17" fill="none" class="arrow" id="downArrow" data-action="click->products#decrement">
+                    <path d="M11 0L22 17H0L11 0Z" fill="#8E98B0"/>
+                  </svg>
+                </div>
               </div>
-            </div>
-            <%= hidden_field_tag 'product', @product.id %>
-            <%= f.submit "Enviar Oferta", class: "btn btn-bid btn-primary w-100" %>
+              <%= hidden_field_tag 'product', @product.id %>
+              <%= f.submit "Enviar Oferta", class: "btn btn-bid btn-primary w-100" %>
+            <% end %>
+          <% else %>
+            <h3 class="text-center">Only approved users can bid</h3>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-primary w-100" %>
           <% end %>
-        <% else %>
-          <h3 class="text-center">Only approved users can bid</h3>
-          <%= link_to "Login", new_user_session_path, class: "btn btn-primary w-100" %>
-        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auction Ended Modal -->
+
+  <div class="modal fade" id="auctionEndedModal" tabindex="-1" role="dialog" aria-labelledby="auctionEndedModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content devise-modal-content" style="height: 500px">
+        <div class="devise-modal-header">
+          <div class="auction-ended-img-holder">
+            <%= image_tag "hammer.png", alt: "Auction ended", class: "auction-ended-img" %>
+          </div>
+        </div>
+        <div class="devise-modal-body">
+          <h3 class="text-center">Subasta Cerrada</h3>
+          <p class="text-center">Si tuvo la oferta más alta al final, nos pondremos en contacto a la brevedad.</p>
+          <button type="button" class="btn btn-secondary w-100 btn-large mb-4" data-dismiss="modal">Continuar</button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,43 @@
+require 'json'
+
+abort('You must provide a name for the bucket') if ARGV.empty?
+
+name = "#{ARGV[0]}-#{Time.now.strftime('%Y%m%d%H%M%S')}"
+bucket_name ="#{ARGV[0]}-assets-#{Time.now.strftime('%Y%m%d%H%M%S')}"
+region = ARGV[1] || 'eu-west-2'
+
+puts '== Creating User =='
+IO.popen("aws iam create-user --user-name #{name} > /dev/null 2>&1")
+sleep(2)
+puts '== Adding User To ActiveStorage-S3 Permissions Group =='
+IO.popen("aws iam add-user-to-group --user-name #{name} --group-name S3-ActiveStorage > /dev/null 2>&1")
+puts '== Creating S3 Bucket =='
+IO.popen(
+          "aws s3api create-bucket --bucket #{bucket_name}  \
+          --region #{region} \
+          --create-bucket-configuration LocationConstraint=#{region} \
+          > /dev/null 2>&1"
+        )
+sleep(2)
+puts '== Blocking Public Access To Bucket =='
+IO.popen(
+          "aws s3api put-public-access-block \
+          --bucket #{bucket_name} \
+          --public-access-block-configuration \"BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true\"
+          > /dev/null 2>&1"
+        )
+puts '== Creating User Credentials =='
+r = IO.popen("aws iam create-access-key --user-name #{name}")
+creds = JSON.parse(r.readlines.join(''))
+
+puts '== Adding Credentials To .env =='
+system("echo AWS_S3_ACCESS_KEY_ID=#{creds.dig('AccessKey', 'AccessKeyId')} >> .env")
+system("echo AWS_S3_SECRET_ACCESS_KEY=#{creds.dig('AccessKey', 'SecretAccessKey')} >> .env")
+system("echo AWS_S3_BUCKET_NAME=#{bucket_name} >> .env")
+system("echo AWS_S3_REGION=#{region} >> .env")
+
+puts '== Outputting User And Bucket Credentials =='
+puts "ACCESS_KEY_ID: #{creds.dig('AccessKey', 'AccessKeyId')}"
+puts "SECRET_ACCESS_KEY: #{creds.dig('AccessKey', 'SecretAccessKey')}"
+puts "BUCKET_NAME: #{bucket_name}"
+puts "BUCKET_REGION: #{region}"

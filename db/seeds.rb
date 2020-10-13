@@ -45,8 +45,4 @@ product = Product.new(name: "Audi A3", description: "A standard German vehicles.
 product.photos.attach(io: file, filename: 'audi.png', content_type: 'image/png')
 product.save
 
-file = URI.open('https://cdn2.carbuyer.co.uk/sites/carbuyer_d7/files/toyota-prius-hybrid-hatchback-cutout.jpg')
-product = Product.new(name: "Toyota Prius", description: "Thinking of becoming an uber driver? Look no further", opening_price: 200000, maximum_price: 2350000, start_time: DateTime.new(2021,5,2,17), end_time: DateTime.new(2021,5,6,17), category: vehicles)
-product.photos.attach(io: file, filename: 'toyota.png', content_type: 'image/png')
-product.save
 
