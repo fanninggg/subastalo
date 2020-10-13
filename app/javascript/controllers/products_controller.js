@@ -2,7 +2,7 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
 
-  static targets = ['timer', 'bidInput']
+  static targets = ['timer', 'bidInput', 'visibilityLabel']
 
   connect() {
     if(this.hasTimerTarget) {
@@ -38,6 +38,15 @@ export default class extends Controller {
       this.bidInputTarget.value = 1
     } else {
       this.bidInputTarget.value = parseInt(this.bidInputTarget.value) - 1
+    }
+  }
+
+  changeVisibility() {
+    console.log('tirgger')
+    if (this.visibilityLabelTarget.innerText === 'Visible') {
+      this.visibilityLabelTarget.innerText = 'Oculto'
+    } else {
+      this.visibilityLabelTarget.innerText = 'Visible'
     }
   }
 }
