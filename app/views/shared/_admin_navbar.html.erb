@@ -20,7 +20,7 @@
             <div class="burger-slice"></div>
           </div>
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, alt: "alttext", class: "navbar-avatar" %>
+            <img class="navbar-avatar" src="<%= url_for(current_user.photo) %>" alt="User photo" />
           <% else %>
             <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg", alt: "alttext", class: "navbar-avatar" %>
           <% end %>

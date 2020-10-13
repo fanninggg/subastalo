@@ -4,13 +4,15 @@
     <% @user.documents.each do |document| %>
       <div class="document">
         <% if document.blob.filename.to_s.include?('pdf') %>
-          <%= image_tag "pdf-logo.png", alt: "alttext", class: "pdf-logo" %>
+          <p class="blue text-center m-0 mb-2"><%= document.blob.filename %></p>
+          <a href="<%= url_for document %>" target="_blank">Download</a>
         <% elsif document.blob.content_type.to_s.include?('image') %>
           <%= image_tag rails_blob_path(document, disposition: 'preview'), alt: "Preview of document", class: "document-preview" %>
+          <a href="<%= url_for document %>" target="_blank">Download</a>
         <% else %>
           <h2 class="text-center"><%= document.blob.content_type %></h2>
+          <a href="<%= url_for document %>" target="_blank">Download</a>
         <% end %>
-        <p class="blue text-center m-0 mt-2"><%= document.blob.filename %></p>
       </div>
     <% end %>
   </div>

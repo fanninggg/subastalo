@@ -58,7 +58,7 @@
     <%= f.error_notification %>
     <div class="profile-section profile-image-section">
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, alt: "alttext", class: "profile-img", data: { target: 'devise.photoPreview' } %>
+        <img class="profile-img" src="<%= url_for(current_user.photo) %>" alt="User photo" data-target="devise.photoPreview" />
       <% else %>
         <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg", alt: "alttext", class: "profile-img", data: { target: 'devise.photoPreview' } %>
       <% end %>
