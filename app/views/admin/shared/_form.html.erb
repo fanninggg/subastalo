@@ -3,18 +3,19 @@
     <div>
       <div class="new-product-card">
         <h5>Detalles</h5>
-        <%= f.input :name, label: "Nombre de Producto", placeholder: "LandCruiser 4X4 Sahara Edition" %>
-        <%= f.input :description, label: "Descripcion" %>
-        <%= f.association :category %>
+        <%= f.input :name, label: "Nombre de Producto", placeholder: "LandCruiser 4X4 Sahara Edition", input_html: { class: "contact-input" } %>
+        <%= f.input :description, label: "Descripcion", input_html: { class: "contact-input" } %>
+        <%= f.association :category, input_html: { class: "contact-input" } %>
       </div>
       <div class="new-product-card">
         <h5>Fotos</h5>
+        <p>Para agregar varios archivos, mantenga presionada la tecla Mayús mientras selecciona archivos</p>
         <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
       </div>
       <div class="new-product-card">
         <h5>Precio</h5>
-        <%= f.input :opening_price, as: :integer, label: 'Precio Inicial' %>
-        <%= f.input :maximum_price, as: :integer, label: 'Precio Maximo' %>
+        <%= f.input :opening_price, as: :integer, label: 'Precio Inicial', input_html: { class: "contact-input" } %>
+        <%= f.input :maximum_price, as: :integer, label: 'Precio Maximo', input_html: { class: "contact-input" } %>
       </div>
       <div class="new-product-card">
         <h5>Fechas</h5>
@@ -26,15 +27,17 @@
       </div>
       <div class="new-product-card">
         <h5>Documentos</h5>
+        <p>Para agregar varios archivos, mantenga presionada la tecla Mayús mientras selecciona archivos</p>
         <%= f.input :documents, as: :file, input_html: { multiple: true }, label: false %>
       </div>
       <div class="new-product-card">
         <h5>Opciones</h5>
+        <p class="small-text grey">Por ejemplo: Kilómetros => 100,000</p>
         <%= f.fields_for :feature do |a| %>
           <% product.features.each do |feature| %>
             <div class="form-inline justify-content-around mb-3">
-              <%= a.input :key, required: false, input_html: { name: 'product[current_features][][key]', value: feature.key } %>
-              <%= a.input :value, required: false, input_html: { name: 'product[current_features][][value]', value: feature.value } %>
+              <%= a.input :key, required: false, input_html: { name: 'product[current_features][][key]', value: feature.key, class: "contact-input" } %>
+              <%= a.input :value, required: false, input_html: { name: 'product[current_features][][value]', value: feature.value, class: "contact-input" } %>
               <%= link_to admin_feature_path(feature), method: :delete  do %>
                 <button class="btn btn-danger">Delete</button>
               <% end %>
@@ -43,12 +46,19 @@
         <% end %>
         <button type="button" id="feature-btn" class="btn btn-secondary mt-4">Agregar Otra Opción </button>
       </div>
-      <%= f.submit class: "btn btn-primary" %>
     </div>
-    <div class="new-product-card small-new-product-card">
+    <div class="new-product-card small-new-product-card" data-controller="products">
       <h5>Disponibilidad del Producto</h5>
-      <%= f.input :hidden %>
+      <div class="switch-holder">
+        <label class="form-check-label boolean optional switch" for="product_hidden">
+          <input name="product[hidden]" type="hidden" value="0">
+          <input class="form-check-input boolean optional" type="checkbox" value="1" name="product[hidden]" id="product_hidden" data-action="change->products#changeVisibility">
+          <span class="slider"></span>
+        </label>
+        <p class="medium-text mt-2" data-target="products.visibilityLabel">Oculto</p>
+      </div>
     </div>
   </div>
+  <%= f.submit class: "btn btn-primary btn-large mb-4" %>
 <% end %>
 
