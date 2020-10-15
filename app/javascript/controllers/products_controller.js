@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     if(this.hasTimerTarget) {
-      setInterval(this._tick, 1000);
+      this.interval = window.setInterval(this._tick, 1000);
     }
   }
 
@@ -45,9 +45,13 @@ export default class extends Controller {
       timer.innerText = `${days}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
     })
     if (distance < 0) {
-      clearInterval(x);
-      this.timerTarget.classList.add('timer-finished')
-      this.timerTarget.innerText = "Subasta terminada";
+      clearInterval(this.interval);
+      this.timerTargets.forEach((timer) => {
+        timer.classList.add('timer-finished')
+      })
+      this.timerTargets.forEach((timer) => {
+        timer.innerText = "Subasta terminada";
+      })
       this._openEndedModal()
     }
   }
