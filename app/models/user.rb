@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :strikes, dependent: :destroy
   has_one_attached :photo
   has_many_attached :documents
+  validates :name, :address, :sex, :age, presence: true
 
   def check_for_completion
     return if completed?
