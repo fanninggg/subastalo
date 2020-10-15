@@ -96,11 +96,16 @@
           <h4 class="text-center">No bids yet. Be the first to make an offer</h4>
         <% end %>
       </div>
-      <button type="button" class="btn btn-primary w-100 d-none-mobile" data-toggle="modal" data-target="#exampleModal">
-        Ofertar
-      </button>
+      <% if @product.end_time.to_datetime.past? %>
+        <button type="button" class="btn btn-secondary btn-bid w-100" disabled>
+          Subasta finalizada
+        </button>
+      <% else %>
+        <button type="button" class="btn btn-primary w-100 d-none-mobile" data-toggle="modal" data-target="#exampleModal">
+          Ofertar
+        </button>
+      <% end %>
     </div>
-
   </div>
   <div class="mt-5">
     <% if @product.features.length > 0 %>
@@ -137,9 +142,15 @@
     <% end %>
   </div>
   <div class="fixed-offer-button-holder">
-    <button type="button" class="btn btn-primary btn-bid w-100" data-toggle="modal" data-target="#exampleModal">
-      Ofertar
-    </button>
+    <% if @product.end_time.to_datetime.past? %>
+      <button type="button" class="btn btn-secondary btn-bid w-100" disabled>
+        Subasta finalizada
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-primary btn-bid w-100" data-toggle="modal" data-target="#exampleModal">
+        Ofertar
+      </button>
+    <% end %>
   </div>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
