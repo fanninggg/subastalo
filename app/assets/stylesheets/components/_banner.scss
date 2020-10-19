@@ -12,21 +12,34 @@
 
 .banner-content {
   color: #fff;
-  padding: 0 0 0 80px;
+  padding: 0 0 0 88px;
   p {
     margin: 0;
     font-size: 24px;
-    line-height: 29px;
-    // Weight not working atm
-    font-weight: lighter;
+    font-family: neue-haas-unica, sans-serif;
+    font-weight: 300 !important;
+    font-style: normal;
+    line-height: 36px !important;
   }
+
+  h1 {
+    font-family: tablet-gothic, sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+  }
+
   @media(max-width: 768px) {
     padding: 0 0 0 20px;
     h1 {
+      font-family: tablet-gothic, sans-serif;
       font-size: 40px;
+      font-weight: 700;
     }
     p {
       font-size: 18px;
+      font-family: neue-haas-unica, sans-serif;
+      font-weight: 400;
+      font-style: normal;
     }
   }
 }

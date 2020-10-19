@@ -4,14 +4,14 @@
     <p class="mt-4">Donde podrás encontrar vehículos, propiedades</p>
     <p>motocicletas, arte y mucho artículos mas.</p>
     <div class="d-flex mt-4">
-      <%= link_to "Subastas", categories_path, class: "btn btn-primary btn-large" %>
+      <%= link_to "Subastas", categories_path, class: "btn btn-primary" %>
       <%= link_to "Nostros", about_path, class: "btn btn-secondary btn-large ml-3" %>
     </div>
   </div>
 </div>
 <div class="container margin-80-top text-center-mobile">
   <h3>Subastas</h3>
-  <p class="w-50-desktop mb-5">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
+  <p class="margin-8-top w-50-desktop mb-5">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
   <% if @categories.length > 0 %>
     <div class="category-grid">
       <% @categories.each do |category| %>
@@ -35,11 +35,10 @@
   <div class="d-flex margin-80-top margin-80-bottom flex-column-mobile text-center-mobile">
     <div class="pr-5-desktop">
       <h3>Nuestra Empresa</h3>
-      <p>Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
+      <p class="margin-8-top">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
       <p>Aqui podremos hablar de algunos de los fundadores y de los valores de la empresa.</p>
       <p>Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
-      <p>Aqui podremos hablar de algunos de los fundadores y de los valores de la empresa.</p>
-      <p>Siempre ponemos Textos ejemplares para seguir mostrando.</p>
+      <p class="margin-32-bottom">Aqui podremos hablar de algunos de los fundadores y de los valores de la empresa.</p>
       <%= link_to "Empresa", about_path, class: "btn btn-primary" %>
     </div>
     <%= image_tag "people.png", alt: "People on a crosswalk", class: 'home-image d-none-mobile' %>

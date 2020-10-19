@@ -9,10 +9,10 @@ body {
 // Not sure this looks great, discuss with el designo
 .container {
   max-width: calc(100% - 20px) !important;
-  padding-right: 10px !important;
-  padding-left: 10px !important;
-  margin-right: 10px !important;
-  margin-left: 10px !important;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+  // margin-right: 20px !important;
+  // margin-left: 20px !important;
 }
 
 .devise-container {
@@ -31,14 +31,18 @@ h3 {
   font-size: 32px;
   font-family: "tablet-gothic", sans-serif;
   font-weight: 700;
+  line-height: 40px;
    @media(max-width: 768px) {
     font-size: 24px;
   }
 }
 
 p {
-  font-family: "neue-haas-unica", sans-serif;
-  font-size: 14px;
+  font-family: neue-haas-unica, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .orange {
@@ -84,21 +88,59 @@ p {
 
 .btn-primary {
   color: #fff !important;
-  padding: 6px 20px;
+  padding: 12px 32px;
   border-radius: 4px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  transition: 0.35s;
+  font-family: neue-haas-unica, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 1px;
+
+  &:hover {
+    box-shadow: 2px 6px 9px rgba(0,0,0,0.19);
+  }
 }
 
 .btn-secondary {
   background-color: #CAD0D9 !important;
   border-color: #CAD0D9 !important;
   color: #626A79 !important;
-  padding: 6px 20px;
+  padding: 12px 32px;
   border-radius: 4px;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+    background-color: #DFE3EA !important;
+  }
 }
 
+.padding-40-horizontal {
+  padding: 0 40px;
+  @media(max-width: 768px) {
+    padding: 0 12px !important;
+  }
+}
 
 .btn-large {
   padding: 10px 30px !important;
+}
+
+.margin-8-bottom {
+  margin-bottom: 8px;
+}
+
+.margin-16-bottom {
+  margin-bottom: 16px;
+}
+
+.margin-32-bottom {
+  margin-bottom: 32px;
+}
+
+.margin-8-top {
+  margin-top: 8px;
 }
 
 .margin-80-top {
