@@ -10,4 +10,5 @@ class Product < ApplicationRecord
   monetize :opening_price_cents
   monetize :maximum_price_cents
   monetize :highest_bid_cents, allow_nil: true
+  validates_size_of :photos, maximum: 100.kilobytes, message: "should be less than 100KB"
 end
