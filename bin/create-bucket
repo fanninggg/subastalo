@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'json'
 
 abort('You must provide a name for the bucket') if ARGV.empty?
@@ -12,12 +14,20 @@ sleep(2)
 puts '== Adding User To ActiveStorage-S3 Permissions Group =='
 IO.popen("aws iam add-user-to-group --user-name #{name} --group-name S3-ActiveStorage > /dev/null 2>&1")
 puts '== Creating S3 Bucket =='
-IO.popen(
-          "aws s3api create-bucket --bucket #{bucket_name}  \
-          --region #{region} \
-          --create-bucket-configuration LocationConstraint=#{region} \
-          > /dev/null 2>&1"
-        )
+if region == 'us-east-1'
+  IO.popen(
+            "aws s3api create-bucket --bucket #{bucket_name}  \
+            --region #{region} \
+            > /dev/null 2>&1"
+          )
+else
+  IO.popen(
+            "aws s3api create-bucket --bucket #{bucket_name}  \
+            --region #{region} \
+            --create-bucket-configuration LocationConstraint=#{region} \
+            > /dev/null 2>&1"
+          )
+end
 sleep(2)
 puts '== Blocking Public Access To Bucket =='
 IO.popen(
