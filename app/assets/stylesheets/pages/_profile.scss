@@ -1,7 +1,7 @@
 .profile-container {
   margin: 0 40px;
   @media(max-width: 768px) {
-    margin: 0 20px;
+    margin: 0 16px;
   }
 }
 
@@ -63,12 +63,26 @@
   height: 141px;
   display: flex;
   align-items: center;
+  @media(max-width: 440px) {
+    h3 {
+      font-size: 20px
+    }
+    p {
+      font-size: 12px;
+      margin: 0;
+    }
+  }
 }
 
 .profile-alert-img {
   height: 89px;
   width: 89px;
   margin: 0 16px;
+  @media(max-width: 440px) {
+    height: 40px;
+    width: 40px;
+    margin: 0 8px;
+  }
 }
 
 .rejection-alert {

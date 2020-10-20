@@ -38,6 +38,7 @@ gem 'acts_as_favoritor'
 gem 'money-rails', '~>1.12'
 gem "aws-sdk-s3", require: false
 gem 'aws-sdk-rails', '~> 3'
+gem 'activestorage-validator'
 
 
 group :development, :test do  gem 'pry-byebug'
