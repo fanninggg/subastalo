@@ -29,7 +29,7 @@
       <p class="blue m-0">Ultima Oferta:</p>
       <p class="m-0 green"><%= product.bids.length > 0 ? humanized_money_with_symbol(product.bids.last.price) : "No bids" %></p>
       <p class="blue m-0 mt-2">Tiempo Restante:</p>
-      <p class="m-0 orange"><%= product.start_time.strftime('%l:%M %p, %e %b %Y') %></p>
+      <p class="m-0 orange"><%= product.start_time.strftime('%l:%M, %e %b') %></p>
       <% if product.features.length > 0 %>
         <p class="blue m-0 mt-2"><%= product.features[0].key %></p>
         <p class="m-0 grey"><%= product.features[0].value %></p>
@@ -40,7 +40,7 @@
       <p class="blue m-0">Precio de Inicio:</p>
       <p class="m-0 green"><%= humanized_money_with_symbol product.opening_price %></p>
       <p class="blue m-0 mt-2">Fecha de Terminación:</p>
-      <p class="m-0 orange"><%= product.end_time.strftime('%l:%M %p, %e %b %Y') %></p>
+      <p class="m-0 orange"><%= product.end_time.strftime('%l:%M, %e %b') %></p>
       <% if product.features.length > 1 %>
         <p class="blue m-0 mt-2"><%= product.features[1].key %></p>
         <p class="m-0 grey"><%= product.features[1].value %></p>
