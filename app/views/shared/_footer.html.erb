@@ -2,37 +2,37 @@
   <div class="footer-top">
     <div class="footer-section">
       <%= image_tag "white-logo.png", alt: "alttext", width: 247 %>
-      <div class="d-flex my-3 align-items-center">
+      <div class="d-flex my-2 align-items-center">
         <div class="icon-holder">
           <i class="fas fa-map-pin"></i>
         </div>
-        <p class="m-0 ml-3">139 Avenida de Palmas, Panama City, Panama  423 -998</p>
+        <p class="m-0 ml-3 size-12">139 Avenida de Palmas, Panama City, Panama  423 -998</p>
       </div>
-      <div class="d-flex my-3 align-items-center">
+      <div class="d-flex my-2 align-items-center">
         <div class="icon-holder">
           <i class="fas fa-phone-alt"></i>
         </div>
-        <p class="m-0 ml-3">+353 344 385 888</p>
+        <p class="m-0 ml-3 size-12">+353 344 385 888</p>
       </div>
-      <div class="d-flex my-3 align-items-center">
+      <div class="d-flex my-2 align-items-center">
         <div class="icon-holder">
           <i class="far fa-envelope"></i>
         </div>
-        <p class="m-0 ml-3">contact@subastalo.pty</p>
+        <p class="m-0 ml-3 size-12">contact@subastalo.pty</p>
       </div>
     </div>
     <div class="footer-section">
       <p><strong>Paginas</strong> </p>
-      <%= link_to "Inicio", categories_path  %>
-      <%= link_to "Nostros", about_path  %>
-      <%= link_to "Eventos", root_path %>
-      <%= link_to "Contacto", contact_path  %>
+      <%= link_to "Inicio", categories_path, class: "my-1"  %>
+      <%= link_to "Nostros", about_path, class: "my-1"  %>
+      <%= link_to "Eventos", root_path, class: "my-1" %>
+      <%= link_to "Contacto", contact_path, class: "my-1"  %>
     </div>
     <div class="footer-section">
       <p><strong>Informacion</strong> </p>
-      <%= link_to "Politica de Privacidad", root_path  %>
-      <%= link_to "Términos y Condiciónenos ", root_path  %>
-      <%= link_to "Licencia de Subastas", root_path %>
+      <%= link_to "Politica de Privacidad", root_path, class: "my-1"  %>
+      <%= link_to "Términos y Condiciónenos ", root_path, class: "my-1"  %>
+      <%= link_to "Licencia de Subastas", root_path, class: "my-1" %>
     </div>
     <div class="footer-section footer-inputs">
       <p class="size-13">Aplica a Nuestros Trabajos</p>
@@ -43,7 +43,7 @@
         </fieldset>
         <input type="submit" value="Enviar" class="btn-footer">
       </form>
-      <div class="d-flex mt-4 footer-mobile-center">
+      <div class="d-flex mt-4">
         <div class="icon-holder large-icon-holder mr-3">
           <i class="fab fa-facebook-f"></i>
         </div>
