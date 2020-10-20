@@ -9,17 +9,17 @@
           <span><%= pluralize(current_user.strikes.length, 'Strike') %></span>
           <%= image_tag "down.png", alt: "alttext", class: "hidden-profile-status-img" %>
         </div>
-      <% elsif current_user.approved %>
-        <div class="profile-status status-approved">
-          <%= image_tag "tick.png", alt: "alttext", class: "profile-status-img" %>
-          <span>Perfil Habilitado</span>
-          <%= image_tag "tick.png", alt: "alttext", class: "hidden-profile-status-img" %>
-        </div>
       <% elsif !current_user.completed %>
         <div class="profile-status status-pending">
           <%= image_tag "alert.png", alt: "alttext", class: "profile-status-img" %>
           <span>Perfil incompleto</span>
           <%= image_tag "cross.png", alt: "alttext", class: "hidden-profile-status-img" %>
+        </div>
+      <% elsif current_user.approved %>
+        <div class="profile-status status-approved">
+          <%= image_tag "tick.png", alt: "alttext", class: "profile-status-img" %>
+          <span>Perfil Habilitado</span>
+          <%= image_tag "tick.png", alt: "alttext", class: "hidden-profile-status-img" %>
         </div>
       <% elsif current_user.rejection.nil? %>
         <div class="profile-status status-pending">
