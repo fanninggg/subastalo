@@ -9,6 +9,9 @@
   margin: 40px 0;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(98,106,121,0.2);
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 .profile-header-section {

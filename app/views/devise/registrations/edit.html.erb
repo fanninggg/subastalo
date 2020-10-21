@@ -139,20 +139,6 @@
       </div>
       <p class="m-0 ml-3" data-target="devise.documentNames"></p>
     </div>
-    <div class="profile-section">
-      <h4 class="blue">Cambio de Contraseña</h4>
-      <%= f.input :password,
-                  hint: "Favor dejar en blanco si no desea cambiar contraseña",
-                  required: false,
-                  input_html: { autocomplete: "new-password", class: "contact-input" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password", class: "contact-input" } %>
-      <%= f.input :current_password,
-                  hint: "Necesitamos su contraseña actual para efectuar cambios en su perfil",
-                  required: true,
-                  input_html: { autocomplete: "current-password", class: "contact-input" } %>
-    </div>
   <% end %>
   <button type="submit" form="edit_user" class="btn btn-primary w-100 mb-4 d-none-desktop">Guardar Cambios</button>
 </div>
