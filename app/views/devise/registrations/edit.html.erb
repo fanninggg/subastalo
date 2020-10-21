@@ -142,14 +142,14 @@
     <div class="profile-section">
       <h4 class="blue">Cambio de Contraseña</h4>
       <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
+                  hint: "Favor dejar en blanco si no desea cambiar contraseña",
                   required: false,
                   input_html: { autocomplete: "new-password", class: "contact-input" } %>
       <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password", class: "contact-input" } %>
       <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
+                  hint: "Necesitamos su contraseña actual para efectuar cambios en su perfil",
                   required: true,
                   input_html: { autocomplete: "current-password", class: "contact-input" } %>
     </div>
