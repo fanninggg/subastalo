@@ -10,5 +10,6 @@ class Product < ApplicationRecord
   monetize :opening_price_cents
   monetize :maximum_price_cents
   monetize :highest_bid_cents, allow_nil: true
+  validates :name, :description, :start_time, :end_time, :opening_price_cents, :maximum_price_cents, :category_id, presence: true
   validates :photos, presence: true, blob: { content_type: :image, size_range: 1..100.kilobytes }
 end
