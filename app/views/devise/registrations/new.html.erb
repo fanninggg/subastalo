@@ -37,10 +37,11 @@
                       placeholder: "Direccion",
                       input_html: { autocomplete: "address" }%>
           <%= f.input :sex,
+                      collection: ['Masculino', 'Femenino', 'Prefiero no decir'],
                       required: true,
                       autofocus: true,
                       label: false,
-                      placeholder: "Sexo",
+                      prompt: "Sexo",
                       input_html: { autocomplete: "sex" }%>
           <%= f.input :age,
                       required: true,

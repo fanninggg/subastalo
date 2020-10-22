@@ -12,5 +12,9 @@
         <% end %>
       </div>
     </div>
+    <div class="ml-3 mt-5">
+      <%= link_to "Editar categoria", edit_admin_category_path(@category), class: "btn btn-secondary" %>
+      <%= link_to "Eliminar categoria", admin_category_path(@category), method: :delete, data: { confirm: "Esto eliminará todas las subastas en esta categoría. Estas seguro?" }, class: "btn btn-secondary ml-3" %>
+    </div>
   </div>
 </div>
