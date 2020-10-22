@@ -3,7 +3,7 @@
   <div class="sidebar-aware-container">
     <div class="container pt-4">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3><%= @category.name %></h3>
+        <h3><%= @category.display_name %></h3>
         <%= link_to "+ Agregar Subasta", new_admin_product_path, class: "btn btn-primary btn-large" %>
       </div>
       <div class="product-grid">
