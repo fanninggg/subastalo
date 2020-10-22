@@ -3,6 +3,8 @@
     <div class="product-img-overlay">
       <% if product.end_time.to_datetime.past? %>
         <span class="bubble big-bubble red-bubble">Inactivo</span>
+      <% elsif product.hidden %>
+        <span class="bubble big-bubble yellow-bubble">Oculto</span>
       <% else %>
         <span class="bubble big-bubble green-bubble">Activo</span>
       <% end %>

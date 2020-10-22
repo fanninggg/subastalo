@@ -35,7 +35,11 @@ class Admin::ProductsController < ApplicationController
     if @product.update(product_params)
       handle_existing_features
       handle_features
-      redirect_to product_path(@product)
+      if @product.hidden
+        redirect_to admin_category_path(@product.category)
+      else
+        redirect_to product_path(@product)
+      end
     else
       render :edit
     end

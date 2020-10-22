@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="w-50-desktop pr-3-desktop">
-      <div id="productCarousel" class="carousel slide" data-ride="carousel">
+      <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval=3000>
         <ol class="carousel-indicators">
           <% @product.photos.each_with_index do |_photo, index| %>
             <li data-target="#productCarousel" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
