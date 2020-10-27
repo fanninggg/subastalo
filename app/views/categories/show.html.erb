@@ -1,9 +1,14 @@
 <div class="container" data-controller="categories">
-  <h3 class="my-3 text-break"><%= @category.name %></h3>
+  <div class="breadcrumb m-0 mt-3">
+    <%= link_to "Subastas", categories_path %>
+    <span class="mx-1">/</span>
+    <span><%= @category.name %></span>
+  </div>
+  <h3 class="mb-3 text-break"><%= @category.name %></h3>
   <% if @products.length > 0 %>
     <div>
       <% if @products.length > 1 %>
-        <a class="btn btn-primary" data-action="click->categories#showFilters">Mostrar filtros</a>
+        <a class="btn btn-primary d-none-desktop" data-action="click->categories#showFilters">Mostrar filtros</a>
         <%= simple_form_for :filter, url: category_path(@category), method: :get do |f| %>
             <div class="filters filters-closed" data-target="categories.filters">
               <%= link_to "Filtros Claros", category_path(@category), class: "filter-btn" %>

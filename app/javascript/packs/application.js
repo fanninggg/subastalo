@@ -32,6 +32,8 @@ import flatpickr from "flatpickr";
 
 
 document.addEventListener('turbolinks:load', () => {
+  // Preloader
+  $(".se-pre-con").fadeOut("slow");
   initFilterSlider()
   initMapbox()
   initProdForm()

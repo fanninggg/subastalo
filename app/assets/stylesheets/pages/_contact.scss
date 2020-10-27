@@ -5,10 +5,32 @@
   }
 }
 
+.contact-left-side {
+  padding-right: 76px;
+  @media(max-width: 768px) {
+    padding-right: 0;
+  }
+}
+
 .contact-input {
   background-color: #F5F5F5;
   margin-bottom: 16px;
   border-radius: 4px !important;
+  height: 51px !important;
+}
+
+#fs-frm-inputs {
+  textarea {
+    min-height: 190px;
+  }
+}
+
+.map-holder {
+  margin-top: 60px;
+  width: 50% !important;
+  @media(max-width: 768px) {
+    width: 100% !important;
+  }
 }
 
 #map {

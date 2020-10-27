@@ -1,6 +1,5 @@
 .product-flex {
   display: flex;
-  padding-top: 3rem;
   @media(max-width: 768px) {
     flex-direction: column;
     padding-top: 1rem;
@@ -38,7 +37,7 @@
   height: 138px;
   border: 1px solid $light-gray;
   border-radius: 4px;
-  padding: 16px;
+  padding: 0 16px 16px 16px;
   overflow: scroll;
   margin-bottom: 16px;
 }
@@ -46,6 +45,15 @@
 .breadcrumb {
   background-color: #fff;
   padding: 0;
+  margin-bottom: 0;
+  a {
+    font-size: 12px;
+    color: #626A79;
+  }
+  span {
+    font-size: 12px;
+    color: #626A79;
+  }
 }
 
 .product-details {
@@ -74,6 +82,8 @@
     color: $orange;
     margin: 0;
     line-height: 22px;
+    font-weight: 400;
+    letter-spacing: 2px
   }
 }
 

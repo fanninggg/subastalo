@@ -79,7 +79,7 @@
       line-height: 24px;
     }
 
-  @media(max-width: 440px) {
+  @media(max-width: 540px) {
     h3 {
       font-size: 20px;
       letter-spacing: 1px;
@@ -100,6 +100,13 @@
     width: 40px;
     margin: 0 8px;
   }
+}
+
+.profile-alert-text {
+  height: 89px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .rejection-alert {
@@ -219,7 +226,7 @@
 
 .document-preview {
   width: 80%;
-  height: 70%;
+  height: 60%;
   object-position: center;
   object-fit: cover;
   border-radius: 5px;
@@ -236,6 +243,13 @@
   width: 100%;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+  &:hover {
+    background-color: rgba(202,208,217,0.48);
+    .document-upload-text {
+      color: #626A79;
+    }
+  }
 }
 
 .document-upload-img {
@@ -253,6 +267,7 @@
   margin-top: 67px;
   color: #CAD0D9;
   font-size: 20px;
+  transition: color 0.15s ease-in-out;
   @media(max-width: 768px) {
     font-size: 16px;
     bottom: 18px;
