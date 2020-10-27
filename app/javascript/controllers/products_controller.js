@@ -50,7 +50,7 @@ export default class extends Controller {
         timer.classList.add('timer-finished')
       })
       this.timerTargets.forEach((timer) => {
-        timer.innerText = "Subasta terminada";
+        timer.innerText = "00:00:00:00";
       })
       this._openEndedModal()
     }
