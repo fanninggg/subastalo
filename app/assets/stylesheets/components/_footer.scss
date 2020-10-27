@@ -27,6 +27,20 @@
   }
 }
 
+.desktop-large-footer-section {
+  width: 30%;
+  @media(max-width: 768px) {
+    width: inherit;
+  }
+}
+
+.footer-logo {
+  width: 247px;
+  @media(max-width: 1000px) {
+    width: 208px;
+  }
+}
+
 .footer-inputs {
   width: 25%;
   @media(max-width: 768px) {
@@ -74,7 +88,7 @@
   border: 1px solid #fff;
   border-radius: 4px;
   background-color: $orange;
-  padding: 10px 20px;
+  padding: 8px 48px;
   cursor: pointer;
   color: #fff;
 }

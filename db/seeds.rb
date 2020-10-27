@@ -8,9 +8,9 @@ puts "*****************"
 
 puts "Creating users"
 User.create(email: 'juan@subastalo.com', password: 'password', name: "JuanRa Sosa", address: "Panama", sex: "male", age: 21, admin: true, approved: true)
-# User.create(email: 'tomjones@gmail.com', password: 'password', name: "Tom Jones", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 50, admin: false, approved: false)
-# User.create(email: 'berniesanders@dnc.com', password: 'password', name: "Bernie Sanders", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 79, admin: false, approved: false)
-# User.create(email: 'alfredhitchcock@imdb.com', password: 'password', name: "Alfred Hitchcock", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 90, admin: false, approved: true)
+User.create(email: 'tomjones@gmail.com', password: 'password', name: "Tom Jones", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 50, admin: false, approved: false)
+User.create(email: 'berniesanders@dnc.com', password: 'password', name: "Bernie Sanders", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 79, admin: false, approved: false)
+User.create(email: 'alfredhitchcock@imdb.com', password: 'password', name: "Alfred Hitchcock", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 90, admin: false, approved: true)
 
 # puts "Creating categories"
 # vehicles = Category.new(name: 'Vehiculos', photo: "")

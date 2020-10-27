@@ -40,7 +40,7 @@
   <% if !current_user.approved && current_user.rejection %>
     <div class="profile-alert rejection-alert">
       <%= image_tag "cross.png", alt: "alttext", class: "profile-alert-img" %>
-      <div>
+      <div class="profile-alert-text">
         <h3>Aplicación Rechazada</h3>
         <p>Tu aplicación ha sido rechazada por: <%= current_user.rejection %></p>
       </div>
@@ -48,7 +48,7 @@
   <% elsif !current_user.completed %>
     <div class="profile-alert incomplete-alert">
       <%= image_tag "alert.png", alt: "alttext", class: "profile-alert-img" %>
-      <div>
+      <div class="profile-alert-text">
         <h3>Perfil incompleto</h3>
         <p>Para pujar por productos, debe completar su perfil, incluida la carga de una copia de su pasaporte o licencia de conducir.</p>
       </div>

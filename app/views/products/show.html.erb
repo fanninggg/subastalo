@@ -1,4 +1,4 @@
-<div class="container position-relative" data-controller="products">
+<div class="container position-relative margin-80-top" data-controller="products">
   <div class="product-flex">
     <div data-target="products.auctionEndedBtn">
       <button class="d-none" data-toggle="modal" data-target="#auctionEndedModal" >
@@ -23,7 +23,7 @@
         <p><%= @users_offers.length > 0 ? humanized_money_with_symbol(@users_offers.last.price) : '$00.00'%></p>
       </div>
     </div>
-    <div class="w-50-desktop pr-3-desktop">
+    <div class="w-50-desktop pr-5-desktop">
       <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval=3000>
         <ol class="carousel-indicators">
           <% @product.photos.each_with_index do |_photo, index| %>
@@ -93,7 +93,7 @@
             <p class="<%= index.odd? ? 'bid highlighted-bid' : 'bid' %>"><%= bid.created_at.strftime(' %B %e, %Y') %> | <%= bid.created_at.strftime(' %l:%M:%S %p') %> | <%= humanized_money_with_symbol bid.price %></p>
           <% end %>
         <% else %>
-          <h4 class="text-center">No bids yet. Be the first to make an offer</h4>
+          <h4 class="text-center mt-4">Aún no hay ofertas. Sea el primero en hacer una oferta</h4>
         <% end %>
       </div>
       <% if @product.end_time.to_datetime.past? %>
@@ -112,8 +112,8 @@
       <h4>Detalles de Producto</h4>
       <div class="product-details">
         <% @product.features.each do |feature| %>
-          <p class="blue mt-4"><%= feature.key %></p>
-          <p class="orange"><%= feature.value %></p>
+          <p class="blue mb-0"><%= feature.key %></p>
+          <p class="orange bold size-20 mb-4"><%= feature.value %></p>
         <% end %>
       </div>
     <% elsif current_user %>
@@ -122,11 +122,11 @@
       <% end %>
     <% end %>
     <% if @product.documents.length > 0 %>
-      <h4>Documentos</h4>
+      <h4 class="margin-80-top">Documentos</h4>
       <div class="product-details d-flex mb-5">
         <div class="documents-grid">
           <% @product.documents.each do |document| %>
-            <div class="document">
+            <div class="document white-background">
               <% if document.blob.filename.to_s.include?('pdf') %>
                 <%= image_tag "pdf-logo.png", alt: "alttext", class: "pdf-logo" %>
               <% elsif document.blob.content_type.to_s.include?('image') %>
@@ -134,7 +134,12 @@
               <% else %>
                 <h2 class="text-center"><%= document.blob.content_type %></h2>
               <% end %>
-              <p class="blue text-center m-0 mt-2"><%= document.blob.filename %></p>
+              <p class="blue text-center m-0 mt-2"><%= document.blob.filename.to_s.truncate(20) %></p>
+              <% if current_user %>
+                <a href="<%= url_for document %>" target="_blank">Descargar</a>
+              <% else %>
+                <p class="text-center grey small-text">Iniciar sesión para ver</p>
+              <% end %>
             </div>
           <% end %>
         </div>

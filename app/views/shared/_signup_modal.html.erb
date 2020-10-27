@@ -65,6 +65,7 @@
                 <%= f.input :documents, as: :file, input_html: { multiple: true, class: 'd-none', data: {action: "change->devise#documentPreview"} }, label_html: { class: 'upload-photo'}, label: 'Subir Fotos' %>
                 <p class="m-0 ml-3" data-target="devise.documentNames"></p>
               </div>
+              <p class="size-12 grey">Sugerencia: para agregar más de un archivo, mantenga presionada la tecla ctrl (cmd en mac) mientras selecciona.</p>
               <%= f.button :submit, "Enviar Aplicación", class: "btn-primary btn-devise" %>
             </div>
           </div>
