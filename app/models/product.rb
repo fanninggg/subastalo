@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   acts_as_favoritable
   belongs_to :category
   has_many :likes, dependent: :destroy

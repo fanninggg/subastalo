@@ -1,9 +1,10 @@
 class Admin::ProductsController < ApplicationController
   before_action :set_categories
   before_action :authenticate_user!
+  before_action :set_product, only: [:edit, :update, :destroy, :hide]
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
     @bids = @product.bids.sort_by { |bid| bid.price_cents }.reverse!
     @time_left = @product.end_time - Time.now
     @mm, @ss = @time_left.divmod(60)
@@ -27,11 +28,9 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       handle_existing_features
       handle_features
@@ -46,19 +45,21 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @category = @product.category
     @product.delete
     redirect_to admin_category_path(@category)
   end
 
   def hide
-    @product = Product.find(params[:id])
     @product.update(hidden: !@product.hidden?)
     redirect_to admin_category_path(@product.category)
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def handle_existing_features
     features = params.dig(:product, :current_features)

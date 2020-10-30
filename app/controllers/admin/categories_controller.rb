@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :set_categories
   before_action :authenticate_user!
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
     @category = Category.new
@@ -21,6 +21,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.friendly.find(params[:id])
   end
 
   def edit

@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
     @products = @category.products.where(hidden: false)
     @min = @products.minimum(:opening_price_cents)
     @max = @products.maximum(:opening_price_cents)
