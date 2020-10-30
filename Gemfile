@@ -29,6 +29,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'friendly_id', git: 'https://github.com/norman/friendly_id'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

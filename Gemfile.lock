@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/norman/friendly_id
+  revision: 819c0b111b0f722809c0a13ad025c5191a278f85
+  specs:
+    friendly_id (5.4.0)
+      activerecord (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -302,6 +309,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass
+  friendly_id!
   jbuilder (~> 2.7)
   listen (~> 3.2)
   money-rails (~> 1.12)
