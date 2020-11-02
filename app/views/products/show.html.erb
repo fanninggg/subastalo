@@ -32,7 +32,7 @@
         </ol>
         <div class="carousel-inner">
           <% @product.photos.each_with_index do |photo, index| %>
-            <div class="<%= index == 0 ? 'carousel-item active' : 'carousel-item' %>">
+            <div class="<%= index == 0 ? 'pointer carousel-item active' : 'pointer carousel-item' %>" data-toggle="modal" data-target="#imageModal">
               <img class="product-show-img" src="<%= url_for(photo) %>" alt="Product photo" />
             </div>
           <% end %>
@@ -203,6 +203,30 @@
           <h3 class="text-center">Subasta Cerrada</h3>
           <p class="text-center">Si tuvo la oferta más alta al final, nos pondremos en contacto a la brevedad.</p>
           <button type="button" class="btn btn-secondary w-100 btn-large mb-4" data-dismiss="modal">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg image-modal-dialog" role="document">
+      <div class="modal-content image-modal-content">
+        <div id="imageCarousel" class="carousel slide" data-ride="carousel" data-interval=3000>
+          <div class="carousel-inner">
+            <% @product.photos.each_with_index do |photo, index| %>
+              <div class="<%= index == 0 ? 'carousel-item active' : 'carousel-item' %>" data-toggle="modal" data-target="#imageModal">
+                <img src="<%= url_for(photo) %>" alt="Product photo" />
+              </div>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
       </div>
     </div>
