@@ -1,4 +1,4 @@
-<div class="container position-relative margin-80-top" data-controller="products">
+<div class="container position-relative margin-80-top-desktop" data-controller="products">
   <div class="product-flex">
     <div data-target="products.auctionEndedBtn">
       <button class="d-none" data-toggle="modal" data-target="#auctionEndedModal" >
@@ -49,15 +49,15 @@
     </div>
     <div class="w-50-desktop pl-3-desktop pt-5-mobile">
       <div class="d-flex justify-content-between">
-        <div class="pr-3">
+        <div class="pr-3 text-width-limit">
           <div class="breadcrumb">
             <%= link_to "Subastas", categories_path %>
             <span class="mx-1">/</span>
             <%= link_to @product.category.name.capitalize, category_path(@product.category) %>
             <span class="mx-1">/</span>
-            <span><%= @product.name %></span>
+            <span><%= @product.name.truncate(30) %></span>
           </div>
-          <h3><%= @product.name %></h3>
+          <h3 class="product-show-title"><%= @product.name %></h3>
           <% if current_user %>
             <% if current_user.admin? %>
               <%= link_to "Edit this product", edit_admin_product_path(@product) %>

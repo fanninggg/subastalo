@@ -169,6 +169,13 @@ background-color: #fff !important;
   margin-top: 80px;
 }
 
+.margin-80-top-desktop {
+  margin-top: 80px;
+  @media(max-width: 768px) {
+    margin-top: 0
+  }
+}
+
 .margin-80-bottom {
   margin-bottom: 80px;
 }

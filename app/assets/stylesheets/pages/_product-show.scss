@@ -33,6 +33,20 @@
   }
 }
 
+.product-show-title {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-width-limit {
+  width: calc(100% - 159px);
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+}
+
 .bids {
   height: 138px;
   border: 1px solid $light-gray;
@@ -103,9 +117,6 @@
   }
 }
 
-.timer-finished {
-  font-size: 16px !important;
-}
 
 .input-currency {
   font-size: 80px;

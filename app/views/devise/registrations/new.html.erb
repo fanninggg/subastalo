@@ -43,12 +43,12 @@
                       label: false,
                       prompt: "Sexo",
                       input_html: { autocomplete: "sex" }%>
-          <%= f.input :age,
+          <%= f.input :dob,
                       required: true,
                       autofocus: true,
                       label: false,
-                      placeholder: "Edad",
-                      input_html: { autocomplete: "age" }%>
+                      placeholder: "Fecha de nacimiento",
+                      input_html: { autocomplete: "dob" }%>
           <p>Debe subir un documento legal llámese, Pasaporte, Cédula, Licencia de Conducción o Certificado de Nacimiento de Ambos Lados.</p>
           <div class="d-flex align-items-center mb-4">
             <%= f.input :documents, as: :file, input_html: { multiple: true, class: 'd-none', data: {action: "change->devise#documentPreview"} }, label_html: { class: 'upload-photo'}, label: 'Subir Fotos' %>

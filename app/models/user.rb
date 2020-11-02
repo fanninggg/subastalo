@@ -13,11 +13,11 @@ class User < ApplicationRecord
   has_many :strikes, dependent: :destroy
   has_one_attached :photo
   has_many_attached :documents
-  validates :name, :address, :sex, :age, presence: true
+  validates :name, :address, :sex, :dob, presence: true
 
   def check_for_completion
     return if completed?
-    fields_complete = %w[name address sex age].all? { |attr| send(attr).present? }
+    fields_complete = %w[name address sex dob].all? { |attr| send(attr).present? }
     update_column('completed', true) if fields_complete && documents.attached?
   end
 end

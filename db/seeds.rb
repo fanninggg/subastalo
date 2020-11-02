@@ -12,18 +12,18 @@ User.create(email: 'tomjones@gmail.com', password: 'password', name: "Tom Jones"
 User.create(email: 'berniesanders@dnc.com', password: 'password', name: "Bernie Sanders", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 79, admin: false, approved: false)
 User.create(email: 'alfredhitchcock@imdb.com', password: 'password', name: "Alfred Hitchcock", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 90, admin: false, approved: true)
 
-# puts "Creating categories"
-# vehicles = Category.new(name: 'Vehiculos', photo: "")
-# vehicles.save
+puts "Creating categories"
+vehicles = Category.new(name: 'Vehiculos', photo: "")
+vehicles.save
 # Category.create!(name: 'Arte', photo: "")
 # Category.create!(name: 'Motocicletas', photo: "")
 # Category.create!(name: 'Bicicletas', photo: "")
 
-# puts "Creating Products"
-# file = URI.open('https://www.carscoops.com/wp-content/uploads/2020/02/2020-toyota-laund-cruiser-horizon-sahara-edition-australia-1.jpg')
-# product = Product.new(name: "LandCruiser Sahara Edition 6.0L", description: "A rugged piece of kit which can take on everything you can throw at it. Repossessed from a cartel boss.", opening_price: 200000, maximum_price: 20000000, start_time: DateTime.new(2021,9,2,17), end_time: DateTime.new(2021,9,1,17), category: vehicles)
-# product.photos.attach(io: file, filename: 'landcruiser.png', content_type: 'image/png')
-# product.save
+puts "Creating Products"
+file = URI.open('https://www.carscoops.com/wp-content/uploads/2020/02/2020-toyota-laund-cruiser-horizon-sahara-edition-australia-1.jpg')
+product = Product.new(name: "LandCruiser Sahara Edition 6.0L", description: "A rugged piece of kit which can take on everything you can throw at it. Repossessed from a cartel boss.", opening_price: 200000, maximum_price: 20000000, start_time: DateTime.new(2021,9,2,17), end_time: DateTime.new(2021,9,1,17), category: vehicles)
+product.photos.attach(io: file, filename: 'landcruiser.png', content_type: 'image/png')
+product.save
 
 # file = URI.open('https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/8QgAAOSwAkZelmos/$_57.JPG?set_id=8800005007')
 # product = Product.new(name: "Ford Escape", description: "The best car Ben Fanning ever owned. Literally a machine", opening_price: 200000, maximum_price: 20000000, start_time: DateTime.new(2021,9,2,17), end_time: DateTime.new(2021,9,1,17), category: vehicles)
