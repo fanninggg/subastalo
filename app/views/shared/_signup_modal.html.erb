@@ -36,26 +36,26 @@
                           autofocus: true,
                           label: false,
                           placeholder: "Nombre",
-                          input_html: { autocomplete: "name" }%>
+                          input_html: { autocomplete: "name", class: "contact-input" }%>
               <%= f.input :address,
                           required: true,
                           autofocus: true,
                           label: false,
                           placeholder: "Direccion",
-                          input_html: { autocomplete: "address" }%>
+                          input_html: { autocomplete: "address", class: "contact-input" }%>
               <%= f.input :sex,
                           collection: ['Masculino', 'Femenino', 'Prefiero no decir'],
                           required: true,
                           autofocus: true,
                           label: false,
                           prompt: "Sexo",
-                          input_html: { autocomplete: "sex" }%>
+                          input_html: { autocomplete: "sex", class: "contact-input" }%>
               <%= f.input :dob,
                           required: true,
                           autofocus: true,
                           label: false,
                           placeholder: "Fecha de nacimiento",
-                          input_html: { autocomplete: "dob" }%>
+                          input_html: { autocomplete: "dob", class: "contact-input" }%>
               <div class="btn btn-primary btn-devise" data-page="3" data-action="click->devise#nextPage">Continuar Aplición</div>
 
             </div>
