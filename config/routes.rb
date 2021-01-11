@@ -31,7 +31,11 @@ Rails.application.routes.draw do
         end
         resources :strikes, only: [:new, :create]
       end
-      resources :categories, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :categories, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+        member do
+          patch '/hide', to: 'categories#hide'
+        end
+      end
     end
   end
 end

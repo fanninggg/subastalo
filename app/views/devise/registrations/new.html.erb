@@ -44,6 +44,8 @@
                       prompt: "Sexo",
                       input_html: { autocomplete: "sex" }%>
           <%= f.input :dob,
+                      start_year: Time.now.year - 100,
+                      end_year: Time.now.year - 18,
                       required: true,
                       autofocus: true,
                       label: false,

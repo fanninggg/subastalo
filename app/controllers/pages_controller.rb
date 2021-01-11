@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
 
   def home
-    @categories = Category.first(6)
+    @categories = Category.where(hidden: false).first(6)
     # No idea how featured things are meant to be assigned 🤷‍♂️. For now it's the first 6
-    @featured = Product.where(hidden: false).first(6)
+    @featured = Product.joins(:category).where(hidden: false, categories: { hidden: false }).first(6)
   end
 
   def about

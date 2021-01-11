@@ -58,7 +58,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
   end
 
   def handle_existing_features

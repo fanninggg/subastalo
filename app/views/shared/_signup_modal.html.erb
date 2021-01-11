@@ -41,8 +41,8 @@
                           required: true,
                           autofocus: true,
                           label: false,
-                          placeholder: "Direccion",
-                          input_html: { autocomplete: "address", class: "contact-input" }%>
+                          placeholder: "País",
+                          input_html: { autocomplete: "country", class: "contact-input" }%>
               <%= f.input :sex,
                           collection: ['Masculino', 'Femenino', 'Prefiero no decir'],
                           required: true,
@@ -51,6 +51,8 @@
                           prompt: "Sexo",
                           input_html: { autocomplete: "sex", class: "contact-input" }%>
               <%= f.input :dob,
+                          start_year: Time.now.year - 100,
+                          end_year: Time.now.year - 18,
                           required: true,
                           autofocus: true,
                           label: false,

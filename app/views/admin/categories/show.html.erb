@@ -3,7 +3,7 @@
   <div class="sidebar-aware-container">
     <div class="container pt-4">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3><%= @category.display_name %></h3>
+        <h3><%= @category.display_name %> (<%= @category.hidden ? 'Oculto' : 'Activo' %>)</h3>
         <%= link_to "+ Agregar Subasta", new_admin_product_path, class: "btn btn-primary btn-large" %>
       </div>
       <div class="product-grid">
@@ -12,9 +12,10 @@
         <% end %>
       </div>
     </div>
-    <div class="ml-3 mt-5">
-      <%= link_to "Editar categoria", edit_admin_category_path(@category), class: "btn btn-secondary" %>
-      <%= link_to "Eliminar categoria", admin_category_path(@category), method: :delete, data: { confirm: "Esto eliminará todas las subastas en esta categoría. Estas seguro?" }, class: "btn btn-secondary ml-3" %>
+    <div class="container my-5">
+      <%= link_to "Alternar visibilidad", hide_admin_category_path(@category), method: :patch, class: "btn btn-secondary" %>
+      <%= link_to "Editar categoria", edit_admin_category_path(@category), class: "btn btn-secondary ml-2" %>
+      <%= link_to "Eliminar categoria", admin_category_path(@category), method: :delete, data: { confirm: "Esto eliminará todas las subastas en esta categoría. Estas seguro?" }, class: "btn btn-secondary ml-2" %>
     </div>
   </div>
 </div>
