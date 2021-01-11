@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   before_action :set_categories
   before_action :authenticate_user!
-  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy, :hide]
 
   def index
     @category = Category.new
@@ -33,7 +33,6 @@ class Admin::CategoriesController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
@@ -41,13 +40,18 @@ class Admin::CategoriesController < ApplicationController
     redirect_to admin_categories_path
   end
 
+  def hide
+    @category.update(hidden: !@category.hidden?)
+    redirect_to admin_category_path(@category)
+  end
+
   private
 
   def category_params
-    params.require(:category).permit(:name, :photo)
+    params.require(:category).permit(:name, :photo, :hidden, :terms, :description)
   end
 
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
   end
 end

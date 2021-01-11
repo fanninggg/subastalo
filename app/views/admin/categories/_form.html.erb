@@ -1,5 +1,30 @@
-<%= simple_form_for [:admin, category] do |f|%>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit class: "btn btn-primary" %>
+<%= simple_form_for([:admin, category]) do |f| %>
+  <div class="new-product-container">
+    <div>
+      <div class="new-product-card">
+        <h5>Detalles</h5>
+        <%= f.input :name, label: "Nombre de Evento", placeholder: "Vehiculos", input_html: { class: "contact-input" } %>
+        <%= f.input :description, label: "Descripcion", input_html: { class: "contact-input" } %>
+        <%= f.input :terms, label: "Términos y Condiciones", input_html: { class: "contact-input" } %>
+      </div>
+      <div class="new-product-card">
+        <h5>Foto</h5>
+        <p>Para agregar varios archivos, mantenga presionada la tecla Mayús mientras selecciona archivos</p>
+        <%= f.input :photo, as: :file, label: false %>
+      </div>
+    </div>
+    <div class="new-product-card small-new-product-card" data-controller="products">
+      <h5>Disponibilidad del Producto</h5>
+      <div class="switch-holder">
+        <label class="form-check-label boolean optional switch" for="category_hidden">
+          <input name="category[hidden]" type="hidden" value="0">
+          <input class="form-check-input boolean optional" type="checkbox" value="1" name="category[hidden]" id="category_hidden" data-action="change->products#changeVisibility">
+          <span class="slider"></span>
+        </label>
+        <p class="medium-text mt-2" data-target="products.visibilityLabel">Visible</p>
+      </div>
+    </div>
+  </div>
+  <%= f.submit class: "btn btn-primary btn-large mb-4" %>
 <% end %>
+

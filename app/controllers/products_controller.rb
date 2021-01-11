@@ -1,10 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:favorite, :unfavorite]
+  before_action :set_product, only: [:favorite, :unfavorite, :show]
   before_action :check_hidden, only: [:favorite, :unfavorite]
 
   def show
-    @product = Product.friendly.find(params[:id])
-    # check_hidden
     @bid = Bid.new
     @time_left = @product.end_time - Time.now
     @mm, @ss = @time_left.divmod(60)
@@ -27,7 +25,7 @@ class ProductsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
   end
 
   def check_hidden

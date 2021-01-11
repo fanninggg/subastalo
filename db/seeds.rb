@@ -7,20 +7,21 @@ Product.destroy_all
 puts "*****************"
 
 puts "Creating users"
-User.create(email: 'juan@subastalo.com', password: 'password', name: "JuanRa Sosa", address: "Panama", sex: "male", age: 21, admin: true, approved: true)
-User.create(email: 'tomjones@gmail.com', password: 'password', name: "Tom Jones", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 50, admin: false, approved: false)
-User.create(email: 'berniesanders@dnc.com', password: 'password', name: "Bernie Sanders", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 79, admin: false, approved: false)
-User.create(email: 'alfredhitchcock@imdb.com', password: 'password', name: "Alfred Hitchcock", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", age: 90, admin: false, approved: true)
+User.create(email: 'juan@subastalo.com', password: 'password', name: "JuanRa Sosa", address: "Panama", sex: "male", dob: DateTime.new(1980,9,1,17), admin: true, approved: true)
+User.create(email: 'tomjones@gmail.com', password: 'password', name: "Tom Jones", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", dob: DateTime.new(1980,9,1,17), admin: false, approved: false)
+User.create(email: 'berniesanders@dnc.com', password: 'password', name: "Bernie Sanders", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", dob: DateTime.new(1980,9,1,17), admin: false, approved: false)
+User.create(email: 'alfredhitchcock@imdb.com', password: 'password', name: "Alfred Hitchcock", address: "33 Peacock Place, Islington, N1 1YG", sex: "male", dob: DateTime.new(1980,9,1,17), admin: false, approved: true)
 
 puts "Creating categories"
-vehicles = Category.new(name: 'Vehiculos', photo: "")
+file = URI.open('https://www.carscoops.com/wp-content/uploads/2020/02/2020-toyota-laund-cruiser-horizon-sahara-edition-australia-1.jpg')
+vehicles = Category.new(name: 'Vehiculos', hidden: false, description: "Test description", terms: "All your rights are mine")
+vehicles.photo.attach(io: file, filename: 'landcruiser.png', content_type: 'image/png')
 vehicles.save
 # Category.create!(name: 'Arte', photo: "")
 # Category.create!(name: 'Motocicletas', photo: "")
 # Category.create!(name: 'Bicicletas', photo: "")
 
 puts "Creating Products"
-file = URI.open('https://www.carscoops.com/wp-content/uploads/2020/02/2020-toyota-laund-cruiser-horizon-sahara-edition-australia-1.jpg')
 product = Product.new(name: "LandCruiser Sahara Edition 6.0L", description: "A rugged piece of kit which can take on everything you can throw at it. Repossessed from a cartel boss.", opening_price: 200000, maximum_price: 20000000, start_time: DateTime.new(2021,9,2,17), end_time: DateTime.new(2021,9,1,17), category: vehicles)
 product.photos.attach(io: file, filename: 'landcruiser.png', content_type: 'image/png')
 product.save
