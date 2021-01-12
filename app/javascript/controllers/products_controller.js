@@ -12,13 +12,35 @@ export default class extends Controller {
 
   increment() {
     const increment = parseInt(this.bidInputTarget.dataset.increment)
-    this.bidInputTarget.value = parseInt(this.bidInputTarget.value) + increment
+    if(increment) {
+      this.bidInputTarget.value = parseInt(this.bidInputTarget.value) + increment
+    } else {
+      this.bidInputTarget.value = parseInt(this.bidInputTarget.value) + 1
+    }
   }
 
   decrement() {
     const winningBid = parseInt(this.bidInputTarget.dataset.winning) / 100
     const minimum = parseInt(this.bidInputTarget.dataset.minimum / 100)
     const increment = parseInt(this.bidInputTarget.dataset.increment)
+    if(increment) {
+      this._changeCounter(minimum, winningBid, increment)
+    } else {
+      this._changeCounter(minimum, winningBid, 1)
+    }
+  }
+
+  changeVisibility() {
+    if (this.visibilityLabelTarget.innerText === 'Visible') {
+      this.visibilityLabelTarget.innerText = 'Oculto'
+    } else {
+      this.visibilityLabelTarget.innerText = 'Visible'
+    }
+  }
+
+  // Private Methods
+
+  _changeCounter(minimum, winningBid, increment) {
     if(winningBid) {
       if(parseInt(this.bidInputTarget.value) - increment <= winningBid) {
         this.bidInputTarget.value = winningBid + increment
@@ -33,16 +55,6 @@ export default class extends Controller {
       }
     }
   }
-
-  changeVisibility() {
-    if (this.visibilityLabelTarget.innerText === 'Visible') {
-      this.visibilityLabelTarget.innerText = 'Oculto'
-    } else {
-      this.visibilityLabelTarget.innerText = 'Visible'
-    }
-  }
-
-  // Private Methods
 
   _tick = () => {
     const endTime = new Date(this.timerTarget.dataset.time)

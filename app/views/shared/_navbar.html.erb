@@ -4,7 +4,7 @@
   <% end %>
 
   <div class="d-flex align-items-center">
-    <div class="desktop-flex align-items-center d-none-mobile">
+    <div class="navbar-flex navbar-sm-hidden">
       <%= link_to "Nosotros", about_path, class: "nav-link" %>
       <%= link_to "Favoritos", favorites_path, class: "nav-link" %>
       <%= link_to "Contacto", contact_path, class: "nav-link" %>
@@ -12,7 +12,7 @@
     </div>
     <% if user_signed_in? %>
       <div class="navbar-user">
-        <p class="orange m-0 d-none-mobile">Hola, <%= current_user.name.split[0] %></p>
+        <p class="orange m-0 navbar-sm-hidden">Hola, <%= current_user.name.split[0] %></p>
         <div class="avatar-holder" id="navbarDropdown" data-toggle="dropdown" aria-haspopup=true aria-expanded=false>
           <div class="navbar-burger">
             <div class="burger-slice"></div>

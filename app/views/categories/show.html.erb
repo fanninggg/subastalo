@@ -9,8 +9,12 @@
     <div class="banner-content">
       <h1><%= @category.name %></h1>
       <div class="d-flex mt-4">
-        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#descriptionModal">Sobre la subasta</a>
-        <a href="#" class="btn btn-secondary btn-large ml-3" data-toggle="modal" data-target="#termsModal">Términos y Condiciones</a>
+        <% if !@category.description.blank? %>
+          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#descriptionModal">Sobre la subasta</a>
+        <% end %>
+        <% if !@category.terms.blank? %>
+          <a href="#" class="btn btn-secondary btn-large ml-3" data-toggle="modal" data-target="#termsModal">Términos y Condiciones</a>
+        <% end %>
       </div>
     </div>
   </div>
@@ -49,30 +53,34 @@
   <% end %>
 </div>
 
-<div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="category-modal-header">
-        <h6>Sobre la subasta</h6>
-        <h3><%= @category.name %></h3>
-      </div>
-      <div class="modal-body category-modal-body">
-        <p><%= @category.description %></p>
+<% if !@category.description.blank? %>
+  <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="category-modal-header">
+          <h6>Sobre la subasta</h6>
+          <h3><%= @category.name %></h3>
+        </div>
+        <div class="modal-body category-modal-body">
+          <p><%= @category.description %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
-<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="category-modal-header">
-        <h6>Términos y Condiciones</h6>
-        <h3><%= @category.name %></h3>
-      </div>
-      <div class="modal-body category-modal-body">
-        <p><%= @category.terms %></p>
+<% if !@category.terms.blank? %>
+  <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="category-modal-header">
+          <h6>Términos y Condiciones</h6>
+          <h3><%= @category.name %></h3>
+        </div>
+        <div class="modal-body category-modal-body">
+          <p><%= @category.terms %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
