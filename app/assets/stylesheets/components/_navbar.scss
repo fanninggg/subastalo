@@ -11,6 +11,17 @@
   }
 }
 
+.navbar-flex {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-sm-hidden {
+  @media(max-width: 869px) {
+    display: none;
+  }
+}
+
 .dropdown-menu {
   padding: 4px;
   .nav-link {
