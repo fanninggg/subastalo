@@ -11,14 +11,26 @@ export default class extends Controller {
   }
 
   increment() {
-    this.bidInputTarget.value = parseInt(this.bidInputTarget.value) + 1
+    const increment = parseInt(this.bidInputTarget.dataset.increment)
+    this.bidInputTarget.value = parseInt(this.bidInputTarget.value) + increment
   }
 
   decrement() {
-    if(parseInt(this.bidInputTarget.value) - 1 === 0) {
-      this.bidInputTarget.value = 1
+    const winningBid = parseInt(this.bidInputTarget.dataset.winning) / 100
+    const minimum = parseInt(this.bidInputTarget.dataset.minimum / 100)
+    const increment = parseInt(this.bidInputTarget.dataset.increment)
+    if(winningBid) {
+      if(parseInt(this.bidInputTarget.value) - increment <= winningBid) {
+        this.bidInputTarget.value = winningBid + increment
+      } else {
+        this.bidInputTarget.value = parseInt(this.bidInputTarget.value) - increment
+      }
     } else {
-      this.bidInputTarget.value = parseInt(this.bidInputTarget.value) - 1
+      if(parseInt(this.bidInputTarget.value) - increment <= minimum) {
+        this.bidInputTarget.value = minimum
+      } else {
+        this.bidInputTarget.value = parseInt(this.bidInputTarget.value) - increment
+      }
     }
   }
 

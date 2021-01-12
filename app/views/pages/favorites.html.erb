@@ -3,7 +3,7 @@
     <h3 class="my-4">Me Favoritos</h3>
     <div class="product-grid mb-5">
       <% @favorites.each do |product| %>
-        <%= render "shared/product_card", product: product, admin: false %>
+        <%= render "shared/product_card", product: product, admin: false, bids: false %>
       <% end %>
     </div>
   <% elsif current_user %>

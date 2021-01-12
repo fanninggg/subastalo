@@ -24,7 +24,7 @@
     <p class="text-center center-padding-desktop">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina.</p>
     <div class="product-grid mt-5">
       <% @featured.each do |product| %>
-        <%= render "shared/product_card", product: product, admin: false %>
+        <%= render "shared/product_card", product: product, admin: false, bids: false %>
       <% end %>
     </div>
   <% else %>

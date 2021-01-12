@@ -1,4 +1,4 @@
-<div class="<%= admin ? 'product-card admin-product-card' : 'product-card' %>">
+<div class="<%= admin || bids ? 'product-card admin-product-card' : 'product-card' %>">
   <div class="product-img" style="background-image: url('<%= url_for(product.photos.first) %>')">
     <div class="product-img-overlay">
       <% if product.end_time.to_datetime.past? %>
@@ -25,6 +25,21 @@
       <% end %>
     </div>
   </div>
+  <% if bids %>
+    <% winning = bids.last.price == product.bids.last.price %>
+    <div class="product-card-bid">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <p>Mi oferta más alta: <span class="<%= winning ? 'green' : 'outbid' %>"><%= humanized_money_with_symbol(bids.last.price) %></span></p>
+        <p class="bid-status <%= winning ? 'winning' : 'outbid pr-2' %>"><%= winning ? 'Victorioso' : 'Sobrepujar' %></p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <p>Número total de pujas: <span class="grey"><%= bids.length %></span></p>
+        <% if !winning %>
+          <%= link_to "Ofertar", product_path(product), class: "btn btn-sm-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <h5 class="product-name"><%= product.name.truncate(65) %></h5>
   <div class="product-info">
     <div class="product-info-panel">

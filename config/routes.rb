@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/contact", to: "pages#contact"
   get "/favorites", to: "pages#favorites"
+  get "/history", to: "pages#history"
+  get "/terms", to: "pages#terms"
+  get "/privacy", to: "pages#privacy"
   resources :products, only: [:show] do
     member do
       post "/favorite", to: "products#favorite"

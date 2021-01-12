@@ -1,0 +1,72 @@
+<mjml>
+  <mj-body background-color="#F4F5F7" style="padding-top: 40px">
+    <mj-section background-color="#fff" padding="0px">
+      <mj-column>
+
+        <mj-image width="200px" src="https://i.imgur.com/evz7vjR.png" padding="30px 0"></mj-image>
+
+        <mj-divider border-color="#FFE2D1" border-width="1px"></mj-divider>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-top="40px" padding-bottom="25px">Estimado <strong><%= @user.name %></strong>,</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="25px" line-height="19px">Su cuenta ha sido <span style="color: #FD7323 !important">verificada</span> y <span style="color: #FD7323 !important">aprobada!</span>Ya puedes empezar a participar en todas nuestras subastas.</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="25px" line-height="19px">Asegurase de estar familiarizado con los Términos y Condiciones de Subástalo. Esperamos verte en sitio web. Buen suerte con sus ofertas!</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="40px" line-height="19px"> 
+          Cordialmente,
+          <br>
+          Juan de Subástalo
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0px" background-color="#fff">
+      <mj-column>
+        <mj-button width="100%" height="40px" font-weight="300" font-size="16px" background-color="#FD7323" href="<%= categories_url %>" padding="0px 25px">Ver Ultimas Subastas</mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-bottom="40px" background-color="#fff">
+      <mj-column>
+        <mj-button width="100%" height="40px" font-weight="300" font-size="16px" background-color="#fff" color="#FD7323" href="<%= privacy_url %>" padding="0px 25px">Politica de Privacidad</mj-button>
+      </mj-column>
+    </mj-section >
+    <mj-section>
+      <mj-column>
+        <mj-divider padding="0px" border-width="0px" border-style="solid" border-color="FFE2D1" />
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#fff">
+      <mj-column>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" ><strong>Siguenos</strong></mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" line-height="19px" padding-bottom="0px">Siempre estamos buscando talento y colaboradores.</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" line-height="19px">Abajo nuestras redes sociales para que nos visites.</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-top="20px" padding-bottom="0px"><strong>Escribenos</strong></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0px" background-color="#fff">
+      <mj-group>
+        <mj-column>
+          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="left" padding="0" href="https://www.google.com" >contacto@subastalo.pr</mj-button>
+        </mj-column>
+        <mj-column>
+          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="right" padding="0" href="https://www.google.com" >+52 335-2323-848</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section >
+    <mj-section padding-top="20px" padding-bottom="40px" background-color="#fff">
+      <mj-group>
+        <mj-column>
+          <mj-image src="https://i.imgur.com/in4SuZw.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+        </mj-column>
+        <mj-column>
+          <mj-image src="https://i.imgur.com/ePmAnNC.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+        </mj-column>
+        <mj-column>
+          <mj-image src="https://i.imgur.com/usPPqiF.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+        </mj-column>
+        <mj-column>
+        </mj-column>
+        <mj-column>
+        </mj-column>
+        <mj-column>
+        </mj-column>
+      </mj-group>
+    </mj-section >
+  </mj-body>
+</mjml>

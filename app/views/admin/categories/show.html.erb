@@ -8,7 +8,7 @@
       </div>
       <div class="product-grid">
         <% @category.products.each do |product| %>
-          <%= render "shared/product_card", product: product, admin: true %>
+          <%= render "shared/product_card", product: product, admin: true, bids: false %>
         <% end %>
       </div>
     </div>

@@ -1,0 +1,95 @@
+<mjml>
+  <mj-body background-color="#F4F5F7" padding="">
+    <mj-section background-color="#fff" padding="0px">
+      <mj-column>
+
+        <mj-image width="200px" src="https://i.imgur.com/evz7vjR.png"></mj-image>
+
+        <mj-divider border-color="#FFE2D1" border-width="1px"></mj-divider>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-top="40px" padding-bottom="25px">Felicitaciones <strong><%= @bid.user.name %></strong>!</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="0px" line-height="19px">Tu oferta por:</mj-text>
+        <mj-text align="left" font-size="16px" color="#FD7323" font-family="helvetica" padding-bottom="25px" line-height="19px">
+          <%= @bid.product.name %><br>
+          <%= humanized_money_with_symbol(@bid.price_cents / 100) %> USD
+          <%= @bid.created_at.strftime("%b %e, %Y %l:%M %p") %>
+        </mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="20px" line-height="19px">Ha sido la ganadora! Tiene 24 horas para completar la transferencia y así reclamar su articulo.</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="40px" line-height="19px"> 
+          Cordialmente,
+          <br>
+          Juan de Subástalo
+        </mj-text>  
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-divider padding="0px" border-width="0px" border-style="solid" border-color="FFE2D1" />
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0px" background-color="#fff">
+    	<mj-column>
+        <mj-text align="center" font-size="16px" color="#FD7323" font-family="helvetica" padding-top="40px" padding-bottom="20px">Datos Bancarios:</mj-text>
+      	<mj-divider border-color="#FFE2D1" border-width="1px"></mj-divider>
+        <mj-text align="center" font-size="16px" color="#8C95A7" font-family="helvetica" font-weight="200" padding-top="20px" padding-bottom="0px">Numero de Cuenta:</mj-text>
+        <mj-text align="center" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="20px">02-2232-2324-2323</mj-text>
+        <mj-text align="center" font-size="16px" color="#8C95A7" font-family="helvetica" font-weight="200" padding-bottom="0px">Nombre de Banco:
+</mj-text>
+        <mj-text align="center" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="20px">Banco de Panama</mj-text>
+        <mj-text align="center" font-size="16px" color="#8C95A7" font-family="helvetica" font-weight="200" padding-bottom="0px">SWIFT/BIC:
+</mj-text>
+        <mj-text align="center" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="20px">GB02328-2323-23232</mj-text>
+        <mj-text align="center" font-size="16px" color="#8C95A7" font-family="helvetica" font-weight="200" padding-bottom="0px">Correo Electrónico:</mj-text>
+        <mj-text align="center" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="20px">juan@subastalo.com.pty</mj-text>
+        <mj-text align="center" font-size="16px" color="#8C95A7" font-family="helvetica" font-weight="200" padding-bottom="0px">Numero de Compañía:</mj-text>
+        <mj-text align="center" font-size="16px" color="#626A79" font-family="helvetica" padding-bottom="00px">9424-42424-2424-23</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-bottom="40px" background-color="#fff">
+    	<mj-column>
+      	
+      </mj-column>
+    </mj-section >
+    <mj-section>
+      <mj-column>
+        <mj-divider padding="0px" border-width="0px" border-style="solid" border-color="FFE2D1" />
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#fff">
+      <mj-column>
+      	<mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" ><strong>Siguenos</strong></mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" line-height="19px" padding-bottom="0px">Siempre estamos buscando talento y colaboradores.</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" line-height="19px">Abajo nuestras redes sociales para que nos visites.</mj-text>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-top="20px" padding-bottom="0px"><strong>Escribenos</strong></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0px" background-color="#fff">
+      <mj-group>
+        <mj-column>
+          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="left" padding="0" href="https://www.google.com" >contacto@subastalo.pr</mj-button>
+        </mj-column>
+        <mj-column>
+          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="right" padding="0" href="https://www.google.com" >+52 335-2323-848</mj-button>
+        </mj-column>
+      </mj-group>
+    </mj-section >
+    <mj-section padding-top="20px" padding-bottom="40px" background-color="#fff">
+      <mj-group>
+        <mj-column>
+          <mj-image src="https://i.imgur.com/in4SuZw.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+        </mj-column>
+        <mj-column>
+          <mj-image src="https://i.imgur.com/ePmAnNC.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+        </mj-column>
+        <mj-column>
+          <mj-image src="https://i.imgur.com/usPPqiF.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+        </mj-column>
+        <mj-column>
+        </mj-column>
+        <mj-column>
+        </mj-column>
+        <mj-column>
+        </mj-column>
+      </mj-group>
+    </mj-section >
+  </mj-body>
+</mjml>
