@@ -56,32 +56,34 @@
     </mj-section>
     <mj-section background-color="#fff">
       <mj-column>
-      	<mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" ><strong>Siguenos</strong></mj-text>
-        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" line-height="19px" padding-bottom="0px">Siempre estamos buscando talento y colaboradores.</mj-text>
-        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" line-height="19px">Abajo nuestras redes sociales para que nos visites.</mj-text>
         <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-top="20px" padding-bottom="0px"><strong>Escribenos</strong></mj-text>
       </mj-column>
     </mj-section>
     <mj-section padding="0px" background-color="#fff">
       <mj-group>
         <mj-column>
-          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="left" padding="0" href="https://www.google.com" >contacto@subastalo.pr</mj-button>
+          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="left" padding="0" href="mailto:hola@subastalo.app">hola@subastalo.app</mj-button>
         </mj-column>
         <mj-column>
-          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="right" padding="0" href="https://www.google.com" >+52 335-2323-848</mj-button>
+          <mj-button font-weight="300" font-size="14px" background-color="#fff" color="#FD7323" align="right" padding="0" href="tel:+507 6070-6368" >+507 6070-6368</mj-button>
         </mj-column>
       </mj-group>
     </mj-section >
+        <mj-section background-color="#fff">
+      <mj-column>
+        <mj-text align="left" font-size="16px" color="#626A79" font-family="helvetica" padding-top="40px" padding-bottom="0px">Siguenos en nuestras redes sociales:</mj-text>
+      </mj-column>
+    </mj-section>
     <mj-section padding-top="20px" padding-bottom="40px" background-color="#fff">
       <mj-group>
         <mj-column>
-          <mj-image src="https://i.imgur.com/in4SuZw.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+          <mj-image src="https://i.imgur.com/in4SuZw.png" width="30px" height="30px" href="https://www.instagram.com/subastalo.app/?hl=en"  padding="0"/>
         </mj-column>
         <mj-column>
-          <mj-image src="https://i.imgur.com/ePmAnNC.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+          <mj-image src="https://i.imgur.com/ePmAnNC.png" width="30px" height="30px" href="https://twitter.com/subastalo_app"  padding="0"/>
         </mj-column>
         <mj-column>
-          <mj-image src="https://i.imgur.com/usPPqiF.png" width="30px" height="30px" href="https://www.google.com"  padding="0"/>
+          <mj-image src="https://i.imgur.com/usPPqiF.png" width="30px" height="30px" href="https://www.subastalo.app"  padding="0"/>
         </mj-column>
         <mj-column>
         </mj-column>
