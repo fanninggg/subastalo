@@ -20,4 +20,5 @@ class User < ApplicationRecord
     fields_complete = %w[name address sex dob].all? { |attr| send(attr).present? }
     update_column('completed', true) if fields_complete && documents.attached?
   end
+
 end

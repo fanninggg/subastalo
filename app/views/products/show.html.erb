@@ -4,7 +4,8 @@
       <button class="d-none" data-toggle="modal" data-target="#auctionEndedModal" >
       </button>
     </div>
-    <!-- This section only appears on mobile -->
+
+    <!-- This section only appears on mobile START-->
     <div class="product-stats d-none-desktop">
       <div class="product-stat w-100 time-left">
         <span>Tiempo Restante</span>
@@ -23,6 +24,8 @@
         <p><%= @users_offers.length > 0 ? humanized_money_with_symbol(@users_offers.last.price) : '$00.00'%></p>
       </div>
     </div>
+    <!-- This section only appears on mobile END-->
+
     <div class="w-50-desktop pr-5-desktop">
       <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval=3000>
         <ol class="carousel-indicators">
@@ -37,14 +40,16 @@
             </div>
           <% end %>
         </div>
-        <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <% if @product.photos.length > 1 %>
+          <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        <% end %>
       </div>
     </div>
     <div class="w-50-desktop pl-3-desktop pt-5-mobile">
@@ -66,7 +71,8 @@
           <p class="blue m-0">Descripción:</p>
           <p><%= @product.description %></p>
         </div>
-        <!-- This section only appears on desktop -->
+
+        <!-- This section only appears on desktop START -->
         <div class="product-stats d-none-mobile">
           <div class="product-stat time-left">
             <span>Tiempo Restante</span>
@@ -85,6 +91,8 @@
             <p><%= @users_offers.length > 0 ? humanized_money_with_symbol(@users_offers.last.price) : '$00.00'%></p>
           </div>
         </div>
+        <!-- This section only appears on desktop END -->
+
       </div>
       <p class="blue">Historial de Ofertas:</p>
       <div class="bids">
@@ -99,6 +107,10 @@
       <% if @product.end_time.to_datetime.past? %>
         <button type="button" class="btn btn-secondary btn-bid w-100" disabled>
           Subasta finalizada
+        </button>
+      <% elsif @product.start_time.to_datetime.future? %>
+        <button type="button" class="btn btn-secondary btn-bid w-100" disabled>
+          Subasta empieza a <%= @product.start_time.strftime('%l:%M %p, %e %b') %>
         </button>
       <% else %>
         <button type="button" class="btn btn-primary w-100 d-none-mobile" data-toggle="modal" data-target="#exampleModal">
@@ -163,11 +175,12 @@
         <div class="modal-body">
           <% if current_user %>
             <h3 class="text-center">Escoge el monto de oferta</h3>
-            <p class="blue text-center">Monto de Oferta en USD Dolaress</p>
+            <p class="blue text-center m-0">Monto de Oferta en USD Dólares</p>
+            <p class="blue text-center"><small>(Incremento mínimo $<%= @product.bid_increment %>)</small></p>
             <%= simple_form_for(@bid) do |f| %>
               <div class="d-flex align-items-center">
                 <span class="input-currency">$</span>
-                <%= f.input :price, as: :integer, label: false, input_html: { class: "bid-input", value: @product.bids.length > 0 ? humanized_money(@product.bids.last.price).delete(',').to_i : humanized_money(@product.opening_price).delete(',').to_i, data: { target: "products.bidInput" } } %>
+                <%= f.input :price, as: :integer, label: false, input_html: { class: "bid-input", value: @product.bids.length > 0 ? humanized_money(@product.bids.last.price).delete(',').to_i + @product.bid_increment : humanized_money(@product.opening_price).delete(',').to_i, data: { winning: @product.bids.last ? @product.bids.last.price.cents : '', minimum: @product.opening_price_cents, increment: @product.bid_increment, target: "products.bidInput" } } %>
                 <div class="arrows">
                   <svg width="22" height="17" viewBox="0 0 22 17" fill="none" class="arrow" id="upArrow" data-action="click->products#increment">
                     <path d="M11 0L22 17H0L11 0Z" fill="#8E98B0"/>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_113610) do
+ActiveRecord::Schema.define(version: 2021_01_11_140640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_113610) do
     t.boolean "hidden", default: false
     t.integer "highest_bid_cents"
     t.string "slug"
+    t.integer "bid_increment"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["slug"], name: "index_products_on_slug", unique: true
   end

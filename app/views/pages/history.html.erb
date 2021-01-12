@@ -1,0 +1,15 @@
+<div class="container">
+  <% if @bids.length > 0 %>
+    <h3 class="my-4">Mis ofertas</h3>
+    <div class="product-grid mb-5">
+      <% @products.each do |product| %>
+        <!-- Last bid will always be the highest bid -->
+        <%= render "shared/product_card", product: product, admin: false, bids: product.bids.where(user: current_user) %>
+      <% end %>
+    </div>
+  <% elsif current_user %>
+    <h3 class="my-4 text-center">Aún no has pujado por nada</h3>
+  <% else %>
+    <h3 class="my-4 text-center">Inicie sesión para ver su historial de ofertas</h3>
+  <% end %>
+</div>

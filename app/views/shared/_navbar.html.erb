@@ -33,9 +33,10 @@
             <%= link_to "Subastas", root_path, class: "nav-link light-orange-nav-link" %>
           </div>
           <%= link_to "Mi Perfil", edit_user_registration_path, class: "nav-link orange-nav-link" %>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link light-orange-nav-link" %>
+          <%= link_to "Historia", history_path, class: "nav-link light-orange-nav-link" %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link orange-nav-link" %>
           <% if current_user && current_user.admin %>
-            <%= link_to "Admin", admin_categories_path, class: "orange nav-link orange-nav-link" %>
+            <%= link_to "Admin", admin_categories_path, class: "orange nav-link light-orange-nav-link" %>
           <% end %>
         </div>
       </div>

@@ -16,11 +16,15 @@ class Bid < ApplicationRecord
 
   def price_in_range
     if price_cents < product&.opening_price_cents
-      errors.add(:price, 'must be greater than or equal to opening price')
+      errors.add(:bid, 'must be greater than or equal to opening price')
     elsif price_cents > product&.maximum_price_cents
-      errors.add(:price, 'must be less than or equal to maximum price')
+      errors.add(:bid, 'must be less than or equal to maximum price')
     elsif price_cents <= (product&.bids&.maximum(:price_cents) || 0)
-      errors.add(:price, 'must be greater than previous bid')
+      errors.add(:bid, 'must be greater than previous bid')
+    elsif product&.bids.length > 1
+      if price_cents < (product&.bids&.maximum(:price_cents) + (product&.bid_increment * 100))
+        errors.add(:bid, "must increase in increments of $#{product.bid_increment}")
+      end
     end
   end
 

@@ -13,6 +13,9 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    if @user.approved
+      UserMailer.with(user: @user).welcome.deliver_now
+    end
     redirect_back(fallback_location: admin_users_path)
   end
 

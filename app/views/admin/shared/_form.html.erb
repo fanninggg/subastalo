@@ -16,15 +16,18 @@
         <h5>Precio</h5>
         <%= f.input :opening_price, as: :integer, label: 'Precio Inicial', input_html: { class: "contact-input" } %>
         <%= f.input :maximum_price, as: :integer, label: 'Precio Maximo', input_html: { class: "contact-input" } %>
+        <%= f.input :bid_increment, as: :integer, label: 'Incremento', input_html: { class: "contact-input" } %>
       </div>
-      <div class="new-product-card">
-        <h5>Fechas</h5>
-        <%#= f.label :start_time, label: "Fecha de Incio" %>
-        <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <br>
-        <%#= f.label :end_time, label: "Fecha Final" %>
-        <%= f.input :end_time, as: :string, required: false, input_html: {class: "datepicker"} %>
-      </div>
+      <% if action === 'new' %>
+        <div class="new-product-card">
+          <h5>Fechas</h5>
+          <%#= f.label :start_time, label: "Fecha de Incio" %>
+          <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <br>
+          <%#= f.label :end_time, label: "Fecha Final" %>
+          <%= f.input :end_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+        </div>
+      <% end %>
       <div class="new-product-card">
         <h5>Documentos</h5>
         <p>Para agregar varios archivos, mantenga presionada la tecla Mayús mientras selecciona archivos</p>
