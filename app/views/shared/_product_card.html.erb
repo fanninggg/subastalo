@@ -1,89 +1,92 @@
-<div class="<%= admin || bids ? 'product-card admin-product-card' : 'product-card' %>">
-  <div class="product-img" style="background-image: url('<%= url_for(product.photos.first) %>')">
-    <div class="product-img-overlay">
-      <% if product.end_time.to_datetime.past? %>
-        <span class="bubble big-bubble red-bubble">Inactivo</span>
-      <% elsif product.hidden %>
-        <span class="bubble big-bubble yellow-bubble">Oculto</span>
-      <% else %>
-        <span class="bubble big-bubble green-bubble">Activo</span>
-      <% end %>
-      <% unless admin %>
-        <% if current_user.nil? %>
-          <%= link_to new_user_session_path do %>
-            <i class="far fa-heart size-20"></i>
-          <% end %>
-        <% elsif current_user.favorited?(product) %>
-          <%= link_to unfavorite_product_path(product), method: :post do %>
-            <i class="fas fa-heart size-20"></i>
-          <% end %>
+<div class="grid-fill">
+  <div class="<%= admin || bids ? 'product-card admin-product-card' : 'product-card' %>">
+    <div class="product-img" style="background-image: url('<%= url_for(product.photos.first) %>')">
+      <div class="product-img-overlay">
+        <% if product.end_time.to_datetime.past? %>
+          <span class="bubble big-bubble red-bubble">Inactivo</span>
+        <% elsif product.hidden %>
+          <span class="bubble big-bubble yellow-bubble">Oculto</span>
         <% else %>
-          <%= link_to favorite_product_path(product), method: :post do %>
-            <i class="far fa-heart size-20"></i>
+          <span class="bubble big-bubble green-bubble">Activo</span>
+        <% end %>
+        <% unless admin %>
+          <% if current_user.nil? %>
+            <%= link_to new_user_session_path do %>
+              <i class="far fa-heart size-20"></i>
+            <% end %>
+          <% elsif current_user.favorited?(product) %>
+            <%= link_to unfavorite_product_path(product), method: :post do %>
+              <i class="fas fa-heart size-20"></i>
+            <% end %>
+          <% else %>
+            <%= link_to favorite_product_path(product), method: :post do %>
+              <i class="far fa-heart size-20"></i>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
+    <% if bids %>
+      <% winning = bids.last.price == product.bids.last.price %>
+      <div class="product-card-bid">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <p>Mi oferta más alta: <span class="<%= winning ? 'green' : 'outbid' %>"><%= humanized_money_with_symbol(bids.last.price) %></span></p>
+          <p class="bid-status <%= winning ? 'winning' : 'outbid pr-2' %>"><%= winning ? 'Victorioso' : 'Sobrepujar' %></p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <p>Número total de pujas: <span class="grey"><%= bids.length %></span></p>
+          <% if !winning %>
+            <%= link_to "Ofertar", product_path(product), class: "btn btn-sm-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <h5 class="product-name"><%= product.name.truncate(65) %></h5>
+    <div class="product-info">
+      <div class="product-info-panel">
+        <p class="blue m-0">Ultima Oferta:</p>
+        <p class="m-0 green"><%= product.bids.length > 0 ? humanized_money_with_symbol(product.bids.last.price) : "No bids" %></p>
+        <p class="blue m-0 mt-2">Tiempo Restante:</p>
+        <p class="m-0 orange"><%= product.start_time.strftime('%l:%M, %e %b') %></p>
+        <% if product.features.length > 0 %>
+          <p class="blue m-0 mt-2"><%= product.features[0].key %></p>
+          <p class="m-0 grey"><%= product.features[0].value %></p>
+        <% end %>
+      </div>
+      <div class="product-info-divider"></div>
+      <div class="product-info-panel">
+        <p class="blue m-0">Precio de Inicio:</p>
+        <p class="m-0 green"><%= humanized_money_with_symbol product.opening_price %></p>
+        <p class="blue m-0 mt-2">Fecha de Terminación:</p>
+        <p class="m-0 orange"><%= product.end_time.strftime('%l:%M, %e %b') %></p>
+        <% if product.features.length > 1 %>
+          <p class="blue m-0 mt-2"><%= product.features[1].key %></p>
+          <p class="m-0 grey"><%= product.features[1].value %></p>
+        <% end %>
+      </div>
+    </div>
+    <% if admin %>
+      <div class="admin-info">
+        <div class="admin-offers">
+          <p class="m-0">Offertas:</p>
+          <p class="m-0 ml-2 bubble orange-bubble"><%= product.bids.length %></p>
+        </div>
+        <div class="admin-links">
+          <%= link_to hide_admin_product_path(product), method: :patch, class: "admin-link hide-link" do %>
+            <i class="fas fa-eye-slash"></i>
+          <% end %>
+          <%= link_to edit_admin_product_path(product), class: "admin-link edit-link" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to admin_product_path(product), method: :delete, class: "admin-link delete-link" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to "Ver Subasta", admin_product_path(product), class: "product-card-link" %>
+    <% else %>
+      <%= link_to "Ver Producto", product_path(product), class: "product-card-link" %>
+    <% end %>
   </div>
-  <% if bids %>
-    <% winning = bids.last.price == product.bids.last.price %>
-    <div class="product-card-bid">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <p>Mi oferta más alta: <span class="<%= winning ? 'green' : 'outbid' %>"><%= humanized_money_with_symbol(bids.last.price) %></span></p>
-        <p class="bid-status <%= winning ? 'winning' : 'outbid pr-2' %>"><%= winning ? 'Victorioso' : 'Sobrepujar' %></p>
-      </div>
-      <div class="d-flex justify-content-between align-items-center">
-        <p>Número total de pujas: <span class="grey"><%= bids.length %></span></p>
-        <% if !winning %>
-          <%= link_to "Ofertar", product_path(product), class: "btn btn-sm-primary" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-  <h5 class="product-name"><%= product.name.truncate(65) %></h5>
-  <div class="product-info">
-    <div class="product-info-panel">
-      <p class="blue m-0">Ultima Oferta:</p>
-      <p class="m-0 green"><%= product.bids.length > 0 ? humanized_money_with_symbol(product.bids.last.price) : "No bids" %></p>
-      <p class="blue m-0 mt-2">Tiempo Restante:</p>
-      <p class="m-0 orange"><%= product.start_time.strftime('%l:%M, %e %b') %></p>
-      <% if product.features.length > 0 %>
-        <p class="blue m-0 mt-2"><%= product.features[0].key %></p>
-        <p class="m-0 grey"><%= product.features[0].value %></p>
-      <% end %>
-    </div>
-    <div class="product-info-divider"></div>
-    <div class="product-info-panel">
-      <p class="blue m-0">Precio de Inicio:</p>
-      <p class="m-0 green"><%= humanized_money_with_symbol product.opening_price %></p>
-      <p class="blue m-0 mt-2">Fecha de Terminación:</p>
-      <p class="m-0 orange"><%= product.end_time.strftime('%l:%M, %e %b') %></p>
-      <% if product.features.length > 1 %>
-        <p class="blue m-0 mt-2"><%= product.features[1].key %></p>
-        <p class="m-0 grey"><%= product.features[1].value %></p>
-      <% end %>
-    </div>
-  </div>
-  <% if admin %>
-    <div class="admin-info">
-      <div class="admin-offers">
-        <p class="m-0">Offertas:</p>
-        <p class="m-0 ml-2 bubble orange-bubble"><%= product.bids.length %></p>
-      </div>
-      <div class="admin-links">
-        <%= link_to hide_admin_product_path(product), method: :patch, class: "admin-link hide-link" do %>
-          <i class="fas fa-eye-slash"></i>
-        <% end %>
-        <%= link_to edit_admin_product_path(product), class: "admin-link edit-link" do %>
-          <i class="fas fa-edit"></i>
-        <% end %>
-        <%= link_to admin_product_path(product), method: :delete, class: "admin-link delete-link" do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </div>
-    </div>
-    <%= link_to "Ver Subasta", admin_product_path(product), class: "product-card-link" %>
-  <% else %>
-    <%= link_to "Ver Producto", product_path(product), class: "product-card-link" %>
-  <% end %>
+  
 </div>
