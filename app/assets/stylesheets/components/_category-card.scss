@@ -1,5 +1,6 @@
 .category-card {
   height: 300px;
+  width: 346px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -16,6 +17,9 @@
     .category-card-text {
       opacity: 1;
     }
+  }
+  @media(max-width: 400px) {
+    width: 100%;
   }
 }
 
