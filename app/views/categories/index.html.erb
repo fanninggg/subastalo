@@ -3,10 +3,12 @@
   <p class="w-50-desktop">Con todo el contenido podemos hacer una variedad de textos para probar diferentes tipos de tipografía. En cuestión de momentos podremos decidir qué tipo de letra y forma encaja mejor con el branding de la pagina. </p>
   <div class="category-grid">
     <% @categories.each do |category| %>
-      <%= link_to category_path(category), class: "category-card", style: "background-image: url(#{category.photo.attached? ? url_for(category.photo) : 'https://images.pexels.com/photos/225841/pexels-photo-225841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'})" do %>
-        <div class="category-card-overlay"></div>
-        <p class="category-card-text"><%= category.display_name %></p>
-      <% end %>
+      <div class="grid-fill">
+        <%= link_to category_path(category), class: "category-card", style: "background-image: url(#{category.photo.attached? ? url_for(category.photo) : 'https://images.pexels.com/photos/225841/pexels-photo-225841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'})" do %>
+          <div class="category-card-overlay"></div>
+          <p class="category-card-text"><%= category.display_name %></p>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
