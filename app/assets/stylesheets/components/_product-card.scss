@@ -1,9 +1,21 @@
+.grid-fill {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .product-card {
+  width: 346px;
   height: 497px;
   border: 1px solid #CAD0D9;
   p {
     font-size: 13px;
-    @media(max-width: 350px) {
+  }
+  @media(max-width: 400px) {
+    width: 100%;
+    p {
       font-size: 12px;
     }
   }
